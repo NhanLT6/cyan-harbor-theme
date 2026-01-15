@@ -1,5 +1,9 @@
 # Cyan Harbor Theme - Color Palette & Features
 
+A pastel dark theme for JetBrains Rider with oceanic blues, soft aqua, and gentle rose accents. Designed for long coding sessions with harmonious colors that support each other, not fight for attention.
+
+---
+
 ## 🎨 Color Palette
 
 ### Syntax Colors
