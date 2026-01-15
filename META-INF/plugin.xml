@@ -1,0 +1,32 @@
+<idea-plugin>
+  <id>com.nhan.cyan-harbor</id>
+  <name>Cyan Harbor</name>
+  <version>1.0.0</version>
+  <vendor email="letrongnhan1306@gmail.com">Nhan Le</vendor>
+
+  <description><![CDATA[
+    A modern dark theme with Islands UI support, teal accent colors,
+    and reduced contrast for comfortable long coding sessions.
+
+    Features:
+    - Dimmed Text: Foreground text reduced by ~20% brightness (#9eaab8) for comfortable reading
+    - Oceanic Color Palette: Cyan (#4dd0e1), Medium Cyan (#26c6da), Mint Aqua (#64ffda)
+    - Clear Distinction: Each syntax element has unique, easily distinguishable colors
+    - Calm Harbor Vibes: Based on Islands theme with improved contrast and ocean theme
+    - Special Operator Visibility: Important operators (!, ?, ??) stand out clearly
+  ]]></description>
+
+  <change-notes><![CDATA[
+    <ul>
+      <li>v1.0: Initial release</li>
+    </ul>
+  ]]>  </change-notes>
+
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <themeProvider id="com.nhan.cyan-harbor" path="/cyan-harbor.theme.json" />
+
+    <bundledColorScheme path="/cyan-harbor" />
+  </extensions>
+</idea-plugin>
