@@ -1,0 +1,507 @@
+{
+  "allColors": [
+    "#009688",
+    "#03EDF9",
+    "#12404B",
+    "#1A1F29",
+    "#1ABC9C",
+    "#1B2529",
+    "#1B262B",
+    "#1E272C",
+    "#1E2A30",
+    "#219598",
+    "#252B39",
+    "#263238",
+    "#264B33",
+    "#293F45",
+    "#2A3F44",
+    "#2C403D",
+    "#2E3C43",
+    "#303C41",
+    "#314549",
+    "#32424A",
+    "#3498DB",
+    "#353746",
+    "#354039",
+    "#36F9F6",
+    "#37474F",
+    "#39ADB5",
+    "#3B4950",
+    "#3B514D",
+    "#411F7E",
+    "#412D31",
+    "#41454B",
+    "#415967",
+    "#425B67",
+    "#43698D",
+    "#447152",
+    "#475F63",
+    "#4A4D50",
+    "#4B1515",
+    "#4D4520",
+    "#4D6168",
+    "#4F6269",
+    "#536C46",
+    "#536D78",
+    "#546E7A",
+    "#5D4E1F",
+    "#5FB8AA",
+    "#607D86",
+    "#607D8B",
+    "#63C0EE",
+    "#646877",
+    "#656E76",
+    "#65737E",
+    "#6DC2B8",
+    "#6EC4BC",
+    "#6FD9E8",
+    "#7B9CE7",
+    "#808080",
+    "#80CBC4",
+    "#89B4F7",
+    "#89DDF7",
+    "#8DD9E6",
+    "#908B25",
+    "#90D89F",
+    "#9373A5",
+    "#939FA5",
+    "#9B59B6",
+    "#A2A2A2",
+    "#A7DBD8",
+    "#A8D7D1",
+    "#AB7967",
+    "#AEAE80",
+    "#B03435",
+    "#B0BEC5",
+    "#B2CCD6",
+    "#B8C5D0",
+    "#BD92EA",
+    "#BFA7FF",
+    "#C14360",
+    "#C3D3DE",
+    "#C3E887",
+    "#C4B3A3",
+    "#C7C8F5",
+    "#D9E6E6",
+    "#DBDBDB",
+    "#E5E1C0",
+    "#E67E22",
+    "#E74C3C",
+    "#EEFFE3",
+    "#F36E3A",
+    "#F39C12",
+    "#F3F349",
+    "#F49810",
+    "#F77669",
+    "#F8B4AB",
+    "#F8F8F0",
+    "#FC9867",
+    "#FF355B",
+    "#FF7597",
+    "#FF9CAC",
+    "#FFCC00",
+    "#FFD97D",
+    "#FFEB95",
+    "#FFF5C8",
+    "#FFFBF7",
+    "#FFFFFF"
+  ],
+  "languageConfigs": {
+    "General": {
+      "DEFAULT_KEYWORD": {
+        "label": "Keywords",
+        "description": "Language keywords (if, for, class, etc.)",
+        "foreground": "#BFA7FF",
+        "fontStyle": "italic"
+      },
+      "DEFAULT_STRING": {
+        "label": "Strings",
+        "description": "String literals",
+        "foreground": "#90D89F",
+        "fontStyle": ""
+      },
+      "DEFAULT_NUMBER": {
+        "label": "Numbers",
+        "description": "Numeric literals",
+        "foreground": "#FFD97D",
+        "fontStyle": ""
+      },
+      "DEFAULT_OPERATION_SIGN": {
+        "label": "Operators",
+        "description": "Operators (+, -, *, etc.)",
+        "foreground": "#F8B4AB",
+        "fontStyle": ""
+      },
+      "DEFAULT_LINE_COMMENT": {
+        "label": "Line Comments",
+        "description": "Single-line comments (//)",
+        "foreground": "#546E7A",
+        "fontStyle": "italic"
+      },
+      "DEFAULT_BLOCK_COMMENT": {
+        "label": "Block Comments",
+        "description": "Multi-line comments (/* */)",
+        "foreground": "#546E7A",
+        "fontStyle": "italic"
+      },
+      "DEFAULT_DOC_COMMENT": {
+        "label": "Doc Comments",
+        "description": "Documentation comments (///)",
+        "foreground": "#546E7A",
+        "fontStyle": "italic"
+      },
+      "DEFAULT_CLASS_NAME": {
+        "label": "Class Names",
+        "description": "Class identifiers",
+        "foreground": "#6EC4BC",
+        "fontStyle": ""
+      },
+      "DEFAULT_INTERFACE_NAME": {
+        "label": "Interface Names",
+        "description": "Interface identifiers",
+        "foreground": "#5FB8AA",
+        "fontStyle": "italic"
+      },
+      "DEFAULT_FUNCTION_DECLARATION": {
+        "label": "Function Declarations",
+        "description": "Function definitions",
+        "foreground": "#89B4F7",
+        "fontStyle": ""
+      },
+      "DEFAULT_FUNCTION_CALL": {
+        "label": "Function Calls",
+        "description": "Function invocations",
+        "foreground": "#89B4F7",
+        "fontStyle": ""
+      },
+      "DEFAULT_LOCAL_VARIABLE": {
+        "label": "Local Variables",
+        "description": "Local variable names",
+        "foreground": "#EEFFE3",
+        "fontStyle": ""
+      },
+      "DEFAULT_PARAMETER": {
+        "label": "Parameters",
+        "description": "Function parameters",
+        "foreground": "#A7DBD8",
+        "fontStyle": ""
+      },
+      "DEFAULT_INSTANCE_FIELD": {
+        "label": "Instance Fields",
+        "description": "Object properties",
+        "foreground": "#D9E6E6",
+        "fontStyle": ""
+      },
+      "DEFAULT_STATIC_FIELD": {
+        "label": "Static Fields",
+        "description": "Static properties",
+        "foreground": "#D9E6E6",
+        "fontStyle": "italic"
+      },
+      "DEFAULT_INSTANCE_METHOD": {
+        "label": "Instance Methods",
+        "description": "Object methods",
+        "foreground": "#7B9CE7",
+        "fontStyle": ""
+      },
+      "DEFAULT_STATIC_METHOD": {
+        "label": "Static Methods",
+        "description": "Static methods",
+        "foreground": "#7B9CE7",
+        "fontStyle": "italic"
+      },
+      "DEFAULT_BRACES": {
+        "label": "Braces",
+        "description": "Curly braces { }",
+        "foreground": "#F8B4AB",
+        "fontStyle": ""
+      },
+      "DEFAULT_BRACKETS": {
+        "label": "Brackets",
+        "description": "Square brackets [ ]",
+        "foreground": "#F8B4AB",
+        "fontStyle": ""
+      },
+      "DEFAULT_PARENTHS": {
+        "label": "Parentheses",
+        "description": "Round brackets ( )",
+        "foreground": "#F8B4AB",
+        "fontStyle": ""
+      },
+      "DEFAULT_COMMA": {
+        "label": "Commas",
+        "description": "Comma separators",
+        "foreground": "#F8B4AB",
+        "fontStyle": ""
+      },
+      "DEFAULT_DOT": {
+        "label": "Dots",
+        "description": "Dot accessor",
+        "foreground": "#F8B4AB",
+        "fontStyle": ""
+      },
+      "DEFAULT_SEMICOLON": {
+        "label": "Semicolons",
+        "description": "Statement terminators",
+        "foreground": "#F8B4AB",
+        "fontStyle": ""
+      }
+    },
+    "CSS": {
+      "CSS.TAG_NAME": {
+        "label": "Tag Selectors",
+        "description": "div, span, etc.",
+        "foreground": "#A7DBD8",
+        "fontStyle": ""
+      },
+      "CSS.CLASS_NAME": {
+        "label": "Class Names",
+        "description": ".className",
+        "foreground": "#FF9CAC",
+        "fontStyle": "italic"
+      },
+      "CSS.HASH": {
+        "label": "IDs",
+        "description": "#id",
+        "foreground": "#89B4F7",
+        "fontStyle": ""
+      },
+      "CSS.PSEUDO": {
+        "label": "Pseudo Classes/Elements",
+        "description": ":hover, ::before",
+        "foreground": "#BFA7FF",
+        "fontStyle": "italic"
+      },
+      "CSS.PROPERTY_NAME": {
+        "label": "Property Names",
+        "description": "color, padding, etc.",
+        "foreground": "#80CBC4",
+        "fontStyle": ""
+      },
+      "CSS.PROPERTY_VALUE": {
+        "label": "Property Values",
+        "description": "Property values",
+        "foreground": "#90D89F",
+        "fontStyle": ""
+      },
+      "CSS.FUNCTION": {
+        "label": "Functions",
+        "description": "calc(), rgb(), etc.",
+        "foreground": "#7B9CE7",
+        "fontStyle": ""
+      }
+    },
+    "HTML": {
+      "HTML_TAG_NAME": {
+        "label": "Tag Names",
+        "description": "<div>, <span>",
+        "foreground": "#89B4F7",
+        "fontStyle": ""
+      },
+      "DEFAULT_ATTRIBUTE": {
+        "label": "Attribute Names",
+        "description": "class, id, src",
+        "foreground": "#80CBC4",
+        "fontStyle": "italic"
+      }
+    },
+    "JavaScript": {
+      "JS.THIS_SUPER": {
+        "label": "this/super",
+        "description": "Special keywords",
+        "foreground": "#FC9867",
+        "fontStyle": ""
+      },
+      "JS.NULL_UNDEFINED": {
+        "label": "null/undefined",
+        "description": "Null values",
+        "foreground": "#FF9CAC",
+        "fontStyle": "italic"
+      },
+      "JS.MODULE_KEYWORD": {
+        "label": "Module Keywords",
+        "description": "import, export",
+        "foreground": "#F8B4AB",
+        "fontStyle": "italic"
+      },
+      "JS.REGEXP": {
+        "label": "Regular Expressions",
+        "description": "RegExp literals",
+        "foreground": "#90D89F",
+        "fontStyle": ""
+      }
+    },
+    "TypeScript": {
+      "TS.TYPE_PARAMETER": {
+        "label": "Type Parameters",
+        "description": "Generic type params <T>",
+        "foreground": "#FFD97D",
+        "fontStyle": ""
+      }
+    },
+    "JSON": {
+      "JSON.PROPERTY_KEY": {
+        "label": "Property Keys",
+        "description": "Object keys",
+        "foreground": "#80CBC4",
+        "fontStyle": ""
+      },
+      "JSON.KEYWORD": {
+        "label": "Keywords",
+        "description": "true, false, null",
+        "foreground": "#BFA7FF",
+        "fontStyle": "italic"
+      }
+    },
+    "YAML": {
+      "YAML_SCALAR_KEY": {
+        "label": "Keys",
+        "description": "YAML keys",
+        "foreground": "#6EC4BC",
+        "fontStyle": ""
+      },
+      "YAML_SCALAR_VALUE": {
+        "label": "Values",
+        "description": "YAML values",
+        "foreground": "#F8B4AB",
+        "fontStyle": ""
+      }
+    },
+    "Markdown": {
+      "MARKDOWN_HEADER_LEVEL_1": {
+        "label": "Headers",
+        "description": "# Headers",
+        "foreground": "#BFA7FF",
+        "fontStyle": ""
+      },
+      "MARKDOWN_BOLD": {
+        "label": "Bold Text",
+        "description": "**bold**",
+        "foreground": "#6EC4BC",
+        "fontStyle": "bold"
+      },
+      "MARKDOWN_ITALIC": {
+        "label": "Italic Text",
+        "description": "*italic*",
+        "foreground": "#80CBC4",
+        "fontStyle": "italic"
+      },
+      "MARKDOWN_STRIKETHROUGH": {
+        "label": "Strikethrough",
+        "description": "~~strike~~",
+        "foreground": "#A7DBD8",
+        "fontStyle": ""
+      },
+      "MARKDOWN_CODE_SPAN": {
+        "label": "Inline Code",
+        "description": "`code`",
+        "foreground": "#89B4F7",
+        "fontStyle": "italic"
+      },
+      "MARKDOWN_BLOCK_QUOTE": {
+        "label": "Block Quote",
+        "description": "> quote",
+        "foreground": "#7B9CE7",
+        "fontStyle": "italic"
+      },
+      "MARKDOWN_LINK_TEXT": {
+        "label": "Link Text",
+        "description": "[text](url)",
+        "foreground": "#7B9CE7",
+        "fontStyle": ""
+      },
+      "MARKDOWN_HRULE": {
+        "label": "Horizontal Rule",
+        "description": "---",
+        "foreground": "#546E7A",
+        "fontStyle": ""
+      },
+      "MARKDOWN_LIST_MARKER": {
+        "label": "List Marker",
+        "description": "- or 1.",
+        "foreground": "#6EC4BC",
+        "fontStyle": "italic"
+      }
+    },
+    "Bash": {
+      "BASH.EXTERNAL_COMMAND": {
+        "label": "Commands",
+        "description": "Shell commands",
+        "foreground": "#7B9CE7",
+        "fontStyle": "italic"
+      }
+    },
+    "XML": {
+      "XML_TAG_NAME": {
+        "label": "Tag Names",
+        "description": "<tag>",
+        "foreground": "#89B4F7",
+        "fontStyle": ""
+      }
+    },
+    "C#": {
+      "ReSharper.NAMESPACE_IDENTIFIER": {
+        "label": "Namespaces",
+        "description": "Namespace names",
+        "foreground": "#80CBC4",
+        "fontStyle": ""
+      },
+      "ReSharper.STRUCT_IDENTIFIER": {
+        "label": "Structs",
+        "description": "C# Struct names",
+        "foreground": "#80CBC4",
+        "fontStyle": ""
+      },
+      "ReSharper.ENUM_IDENTIFIER": {
+        "label": "Enums",
+        "description": "Enum types",
+        "foreground": "#FFF5C8",
+        "fontStyle": ""
+      },
+      "ENUM_CONST": {
+        "label": "Enum Members",
+        "description": "Enum member values",
+        "foreground": "#E5E1C0",
+        "fontStyle": ""
+      },
+      "ReSharper.DELEGATE_IDENTIFIER": {
+        "label": "Delegates",
+        "description": "Delegate types",
+        "foreground": "#BD92EA",
+        "fontStyle": "bold"
+      },
+      "CSHARP_OPERATOR_SIGN": {
+        "label": "C# Operators",
+        "description": "C# specific operators",
+        "foreground": "#F8B4AB",
+        "fontStyle": ""
+      }
+    },
+    "SQL": {
+      "SQL_KEYWORD": {
+        "label": "SQL Keywords",
+        "description": "SELECT, FROM, WHERE, etc.",
+        "foreground": "#BFA7FF",
+        "fontStyle": "italic"
+      },
+      "SQL_STRING": {
+        "label": "SQL Strings",
+        "description": "'string'",
+        "foreground": "#90D89F",
+        "fontStyle": ""
+      },
+      "SQL_NUMBER": {
+        "label": "SQL Numbers",
+        "description": "123",
+        "foreground": "#FFD97D",
+        "fontStyle": ""
+      },
+      "SQL_COMMENT": {
+        "label": "SQL Comments",
+        "description": "-- single line or /* multi-line */",
+        "foreground": "#546E7A",
+        "fontStyle": "italic"
+      }
+    }
+  }
+}

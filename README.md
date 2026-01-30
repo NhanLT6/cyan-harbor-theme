@@ -69,6 +69,38 @@ A pastel dark theme for JetBrains Rider with oceanic blues, soft aqua, and gentl
 
 ---
 
+## 🌐 Web Syntax Highlighting & Theme Editor
+
+Want to use this theme on the web or customize it? Check out the **[shiki/](./shiki/)** folder!
+
+### Interactive Theme Editor ⭐
+- 📝 **[theme-editor.html](./shiki/theme-editor.html)** - Edit 51 token types across 11 languages
+- 🎨 Color picker with 108 theme colors + manual hex input
+- 🔍 **Color discovery** - See which tokens use each color + hover tooltips on swatches
+- ⌨️ **Keyboard navigation** - Arrow keys to navigate swatches, Enter to save, Esc to cancel
+- 🔤 Toggle bold/italic font styles
+- ⚡ **Instant preview** - Changes appear immediately as you click colors (no save needed!)
+- 👀 Live preview with real code examples across 10 languages
+- 💾 Export customized theme as JSON
+
+### Features
+- ✅ Automatic conversion from IntelliJ XML to TextMate/Shiki format
+- ✅ 61 token color rules mapped
+- ✅ Works with 190+ programming languages
+- ✅ Interactive theme editor with live preview for 10 languages
+- ✅ Ready to use in websites, documentation, and static site generators
+
+**Quick Start:**
+```bash
+cd shiki/
+npm install
+npm run editor    # Launch interactive editor
+```
+
+See [shiki/README.md](./shiki/README.md) for full documentation.
+
+---
+
 ## 📋 Theme Building Checklist
 
 Use this as a guide when building new themes:

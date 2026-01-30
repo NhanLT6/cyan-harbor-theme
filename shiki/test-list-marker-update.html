@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    :root {
+      --token-MARKDOWN_LIST_MARKER: #6EC4BC;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test: Does querySelector work?</h1>
+  
+  <div id="preview">
+    <span data-token="MARKDOWN_LIST_MARKER" style="color:var(--token-MARKDOWN_LIST_MARKER);font-style:italic">-</span>
+    <span>First item</span>
+    <br>
+    <span data-token="MARKDOWN_LIST_MARKER" style="color:var(--token-MARKDOWN_LIST_MARKER);font-style:italic">1.</span>
+    <span>Second item</span>
+  </div>
+
+  <button onclick="testUpdate()">Change Color to #FF9CAC</button>
+  <button onclick="testViaCSS()">Change via CSS Variable</button>
+  
+  <script>
+    function testUpdate() {
+      console.log('Testing direct style update...');
+      const spans = document.querySelectorAll('[data-token="MARKDOWN_LIST_MARKER"]');
+      console.log('Found spans:', spans.length);
+      spans.forEach(span => {
+        console.log('Updating span:', span.textContent);
+        span.style.color = '#FF9CAC';
+      });
+    }
+    
+    function testViaCSS() {
+      console.log('Testing CSS variable update...');
+      document.documentElement.style.setProperty('--token-MARKDOWN_LIST_MARKER', '#FF9CAC');
+    }
+  </script>
+</body>
+</html>
