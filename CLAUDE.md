@@ -1,7 +1,7 @@
 # Cyan Harbor Theme - Development Documentation
 
-**Last Updated:** 2026-01-18
-**Project:** IntelliJ Theme with Web Preview & Interactive Editor
+**Last Updated:** 2026-02-01
+**Project:** IntelliJ Theme with Web Preview & Interactive Editor & Build Automation
 
 ---
 
@@ -10,10 +10,12 @@
 1. [Project Overview](#project-overview)
 2. [Project Structure](#project-structure)
 3. [Development History](#development-history)
-4. [Technical Implementation](#technical-implementation)
-5. [Key Features](#key-features)
-6. [Build & Development](#build--development)
-7. [Future Improvements](#future-improvements)
+4. [Color Strategy](#color-strategy)
+5. [Build Automation](#build-automation)
+6. [Technical Implementation](#technical-implementation)
+7. [Key Features](#key-features)
+8. [Build & Development](#build--development)
+9. [Future Improvements](#future-improvements)
 
 ---
 
@@ -27,15 +29,24 @@
 - **No Fighting Colors**: Every color supports others, nothing overpowers
 - **Clear Structure**: Operators and methods are easily scannable
 
-### Color Palette
-- **Background**: `#263238` (dark blue-gray)
-- **Foreground**: `#b8c5d0` (light gray-blue)
-- **Primary Accent**: `#009688` (teal)
-- **Methods**: `#7B9CE7` (pastel blue)
-- **Keywords**: `#BFA7FF` (pastel purple)
-- **Operators**: `#F8B4AB` (soft rose)
-- **Strings**: `#90d89f` (soft green)
-- **Class Names**: `#ffd97d` (soft yellow)
+### Current Color Strategy (Refined 2026-02-01)
+Colors organized by semantic groups for visual harmony:
+
+**Syntax Groups:**
+- **Purple**: `#BFA7FF` (keywords), `#D0B8E0` (delegates)
+- **Blue**: `#89B4F7` (functions/tags), `#7B9CE7` (methods)
+- **Teal**: `#80CBC4` (namespace), `#6EC4BC` (class), `#5FB8AA` (interface/enum)
+- **Green**: `#90D89F` (strings, property values)
+- **Cyan**: `#A7DBD8` (parameters), `#D9E6E6` (fields)
+- **Gold**: `#F0E0C0` (numbers, type parameters)
+- **Rose**: `#F8B4AB` (operators/brackets), `#F0B8A8` (this/super)
+- **Gray**: `#546E7A` (comments), `#65737E` (doc tags)
+- **Accent**: `#E8C5A0` (CSS classes)
+
+**VCS Colors:**
+- Added: `#90D89F` (green)
+- Modified: `#F0E0C0` (gold)
+- Deleted: `#E8A8A8` (soft red)
 
 ---
 
@@ -316,6 +327,58 @@ cyan-harbor-theme/
        "editor": "node extract-theme-colors.js && node generate-interactive-editor.js && start theme-editor.html"
      }
      ```
+
+---
+
+## 🎨 Color Strategy
+
+### Color Refinement Process (2026-02-01)
+
+**Goal**: Create unified, balanced pastel colors that feel harmonious without fighting for attention.
+
+**Approach**:
+1. **Organize by semantic meaning** - Group similar tokens (functions, types, keywords) by category
+2. **Use color families** - Each group has a main color + lighter/darker variants for hierarchy
+3. **Lighten palette** - Increase lightness to maintain soft, non-distracting aesthetic
+4. **Ensure consistency** - Colors within language constructs share palette (CSS/HTML/XML, etc.)
+
+**Key Decisions**:
+- **Type hierarchy** (Teal family): Namespace (#80CBC4) → Class (#6EC4BC) → Interface (#5FB8AA)
+- **Unified enums**: C# enums, enum members, JS global functions all use #5FB8AA for consistency
+- **CSS balance**: Changed tag selectors to blue (#89B4F7) to match HTML, kept class names in warm accent (#E8C5A0)
+- **Property consistency**: YAML values use green (#90D89F) like property values, not operators
+- **Special keywords**: this/super use warm peach (#F0B8A8) to distinguish from cool palette
+- **VCS clarity**: Deleted lines use soft red (#E8A8A8) for clear visual distinction
+
+**Commit Messages**: Keep them brief (2-3 sentences max), focus on "why" not "what"
+
+---
+
+## 🔨 Build Automation
+
+### JAR Build Script (2026-02-01)
+
+**Setup** (one time):
+```bash
+npm install          # Installs archiver dependency
+```
+
+**Build**:
+```bash
+npm run build        # Creates cyan-harbor-{version}.jar in releases/
+```
+
+**Files**:
+- `build.js` - Node.js script that creates versioned JAR files
+- `package.json` - Root config with build scripts and version
+- `BUILD.md` - Complete build documentation
+
+**Version Updates**:
+1. Update `version` in root `package.json`
+2. Run `npm run build`
+3. New JAR created: `releases/cyan-harbor-{new-version}.jar`
+
+**No external tools needed** - Uses Node.js archiver (lightweight, standard dependency)
 
 ---
 
