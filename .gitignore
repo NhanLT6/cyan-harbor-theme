@@ -143,6 +143,8 @@ fabric.properties
 
 # Shiki / Node.js
 shiki/node_modules/
+node_modules/
+package-lock.json
 
 # Deprecated preview files (preview now integrated into editor)
 theme-preview-old.html

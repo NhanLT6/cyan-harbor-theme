@@ -82,12 +82,18 @@
     "#C3E887",
     "#C4B3A3",
     "#C7C8F5",
+    "#D0B8E0",
     "#D9E6E6",
     "#DBDBDB",
+    "#DCC9D5",
     "#E5E1C0",
     "#E67E22",
     "#E74C3C",
+    "#E8A8A8",
+    "#E8C5A0",
     "#EEFFE3",
+    "#F0B8A8",
+    "#F0E0C0",
     "#F36E3A",
     "#F39C12",
     "#F3F349",
@@ -102,7 +108,6 @@
     "#FFCC00",
     "#FFD97D",
     "#FFEB95",
-    "#FFF5C8",
     "#FFFBF7",
     "#FFFFFF"
   ],
@@ -123,7 +128,7 @@
       "DEFAULT_NUMBER": {
         "label": "Numbers",
         "description": "Numeric literals",
-        "foreground": "#FFD97D",
+        "foreground": "#F0E0C0",
         "fontStyle": ""
       },
       "DEFAULT_OPERATION_SIGN": {
@@ -251,13 +256,13 @@
       "CSS.TAG_NAME": {
         "label": "Tag Selectors",
         "description": "div, span, etc.",
-        "foreground": "#A7DBD8",
+        "foreground": "#89B4F7",
         "fontStyle": ""
       },
       "CSS.CLASS_NAME": {
         "label": "Class Names",
         "description": ".className",
-        "foreground": "#FF9CAC",
+        "foreground": "#E8C5A0",
         "fontStyle": "italic"
       },
       "CSS.HASH": {
@@ -309,13 +314,13 @@
       "JS.THIS_SUPER": {
         "label": "this/super",
         "description": "Special keywords",
-        "foreground": "#FC9867",
+        "foreground": "#F0B8A8",
         "fontStyle": ""
       },
       "JS.NULL_UNDEFINED": {
         "label": "null/undefined",
         "description": "Null values",
-        "foreground": "#FF9CAC",
+        "foreground": "#DCC9D5",
         "fontStyle": "italic"
       },
       "JS.MODULE_KEYWORD": {
@@ -363,7 +368,7 @@
       "YAML_SCALAR_VALUE": {
         "label": "Values",
         "description": "YAML values",
-        "foreground": "#F8B4AB",
+        "foreground": "#90D89F",
         "fontStyle": ""
       }
     },
@@ -455,19 +460,19 @@
       "ReSharper.ENUM_IDENTIFIER": {
         "label": "Enums",
         "description": "Enum types",
-        "foreground": "#FFF5C8",
+        "foreground": "#5FB8AA",
         "fontStyle": ""
       },
       "ENUM_CONST": {
         "label": "Enum Members",
         "description": "Enum member values",
-        "foreground": "#E5E1C0",
+        "foreground": "#5FB8AA",
         "fontStyle": ""
       },
       "ReSharper.DELEGATE_IDENTIFIER": {
         "label": "Delegates",
         "description": "Delegate types",
-        "foreground": "#BD92EA",
+        "foreground": "#D0B8E0",
         "fontStyle": "bold"
       },
       "CSHARP_OPERATOR_SIGN": {
@@ -493,7 +498,7 @@
       "SQL_NUMBER": {
         "label": "SQL Numbers",
         "description": "123",
-        "foreground": "#FFD97D",
+        "foreground": "#F0E0C0",
         "fontStyle": ""
       },
       "SQL_COMMENT": {

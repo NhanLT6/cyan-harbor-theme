@@ -92,7 +92,7 @@ async function generateEditor() {
     const usages = colorUsageMap.get(color);
     paletteHtml += `
       <div class="palette-card">
-        <div class="palette-swatch" style="background-color: var(--theme-color-${color.substring(1)})"></div>
+        <div class="palette-swatch" style="background-color: ${color}"></div>
         <div class="palette-info">
           <div class="palette-hex">${color}</div>
           <div class="palette-usage-count">${usages.length} tokens</div>
@@ -109,6 +109,9 @@ async function generateEditor() {
     `;
   });
   paletteHtml += `</div></div>`;
+
+  // Add palette to preview panes
+  initialPreviews.palette = paletteHtml;
   // Generate list of all token variables for :root
   const allTokens = [];
   Object.values(themeData.languageConfigs).forEach(configs => {

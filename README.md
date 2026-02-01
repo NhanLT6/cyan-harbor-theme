@@ -1,175 +1,50 @@
-# Cyan Harbor Theme - Color Palette & Features
+# Cyan Harbor Theme
 
-A pastel dark theme for JetBrains Rider with oceanic blues, soft aqua, and gentle rose accents. Designed for long coding sessions with harmonious colors that support each other, not fight for attention.
-
----
+A pastel dark theme for JetBrains IDEs. Soft colors designed for comfortable long coding sessions.
 
 ## 🎨 Color Palette
 
-### Syntax Colors
-| Token | Color | Notes |
-|-------|-------|-------|
-| **Methods** | `#7B9CE7` | Pastel blue - instance & static methods |
-| **Keywords** | `#BFA7FF` | Pastel purple - `public`, `async`, `var`, etc. |
-| **Types/Parameters** | `#6FD9E8` | Pastel aqua - `int`, `string`, `IEnumerable<T>` |
-| **Operators** | `#F8B4AB` | Soft rose - `=`, `==`, `!=`, `&&`, `||`, `!`, `()`, `{}` |
-| **Strings** | `#90d89f` | Soft green |
-| **Class Names** | `#ffd97d` | Soft yellow |
-| **Comments** | `#546e7a` | Muted gray-blue |
+### Color Groups
+Colors are organized by semantic meaning to create visual harmony.
 
-### UI Accent Colors
-| Element | Color | Usage |
-|---------|-------|-------|
-| **Primary Accent** | `#009688` | Teal - selected tabs, focus borders, scrollbar |
-| **Secondary Accent** | `#80cbc4` | Light teal - hover states, tooltip borders |
-| **Background** | `#263238` | Dark blue-gray base |
-| **Foreground** | `#b8c5d0` | Light gray-blue text |
-| **Selection** | `#314549` | Subtle blue-gray |
-| **Caret** | `#e6cc00` | Bright yellow |
+| Group | Colors | Usage |
+|-------|--------|-------|
+| **Purple** | `#BFA7FF` (keywords), `#D0B8E0` (delegates) | Keywords, control flow, special types |
+| **Blue** | `#89B4F7` (functions/tags), `#7B9CE7` (methods) | Functions, methods, HTML/XML tags, IDs |
+| **Teal** | `#80CBC4` (namespace), `#6EC4BC` (class), `#5FB8AA` (interface/enum) | Type hierarchy - namespace → class → interface |
+| **Green** | `#90D89F` (strings), property values, regex | String literals, content values |
+| **Cyan** | `#A7DBD8` (parameters), `#D9E6E6` (fields) | Variables, parameters, field declarations |
+| **Gold** | `#F0E0C0` (numbers) | Numeric literals, type parameters |
+| **Rose** | `#F8B4AB` (operators/brackets), `#F0B8A8` (this/super) | All operators, punctuation, special keywords |
+| **Gray** | `#546E7A` (comments), `#65737E` (doc tags) | Comments, documentation |
+| **Accent** | `#E8C5A0` (CSS classes) | CSS class names, special emphasis |
 
-### Semantic Colors
+### VCS Colors
 | Type | Color | Usage |
 |------|-------|-------|
-| **Error** | `#ff7597` | Soft coral red |
-| **Warning** | `#e6b858` | Muted amber |
-| **Info** | `#7B9CE7` | Pastel blue (matches methods) |
-| **VCS Added** | `#aed67d` | Soft lime green |
-| **VCS Modified** | `#7B9CE7` | Pastel blue |
-| **VCS Deleted** | `#ff7597` | Soft coral red |
+| Added | `#90D89F` | New lines (green) |
+| Modified | `#F0E0C0` | Changed lines (gold) |
+| Deleted | `#E8A8A8` | Removed lines (soft red) |
 
----
+## 🔧 Building
 
-## 🎯 Theme Features
+### Create JAR File
+```bash
+npm install          # First time only
+npm run build        # Build cyan-harbor-{version}.jar
+```
 
-### Color Harmony
-- ✅ **Pastel philosophy** - All syntax colors are soft, light, easy on eyes
-- ✅ **Cool base with warm accent** - Oceanic blues/cyans + soft rose operators
-- ✅ **Connected color families** - Teal → Cyan → Blue gradient feels cohesive
-- ✅ **No fighting colors** - Every color supports others, nothing overpowers
-- ✅ **Consistent saturation/lightness** - Pastels maintain similar 65-75% lightness
+Output: `releases/cyan-harbor-{version}.jar`
 
-### Syntax Highlighting
-- ✅ **Method visibility** - Methods use distinct pastel blue (#7B9CE7)
-- ✅ **Operator highlighting** - All operators in soft rose (#F8B4AB) for structure clarity
-- ✅ **Type distinction** - Types/parameters in aqua (#6FD9E8) clearly separated from keywords
-- ✅ **Semantic differentiation** - Keywords, strings, classes each have clear identity
+To update version: Edit `package.json` version field, then run `npm run build`.
 
-### UI/UX Design
-- ✅ **Islands Dark parent** - Uses Islands UI design system with rounded corners
-- ✅ **Consistent borders** - Teal (#009688) for focus, light teal (#80cbc4) for hover
-- ✅ **Tooltip styling** - Custom border color matching button hovers
-- ✅ **Tab underlines** - 2px teal accent on active tabs
-- ✅ **Scrollbar theming** - Teal scrollbar with transparency support
-
-### Developer Experience
-- ✅ **Long coding session friendly** - Pastel colors reduce eye strain
-- ✅ **Clear code structure** - Operators and methods easily scannable
-- ✅ **Professional appearance** - Balanced, not toy-like or overwhelming
-- ✅ **VCS integration** - Clear visual feedback for git changes
-
----
-
-## 🌐 Web Syntax Highlighting & Theme Editor
-
-Want to use this theme on the web or customize it? Check out the **[shiki/](./shiki/)** folder!
-
-### Interactive Theme Editor ⭐
-- 📝 **[theme-editor.html](./shiki/theme-editor.html)** - Edit 51 token types across 11 languages
-- 🎨 Color picker with 108 theme colors + manual hex input
-- 🔍 **Color discovery** - See which tokens use each color + hover tooltips on swatches
-- ⌨️ **Keyboard navigation** - Arrow keys to navigate swatches, Enter to save, Esc to cancel
-- 🔤 Toggle bold/italic font styles
-- ⚡ **Instant preview** - Changes appear immediately as you click colors (no save needed!)
-- 👀 Live preview with real code examples across 10 languages
-- 💾 Export customized theme as JSON
-
-### Features
-- ✅ Automatic conversion from IntelliJ XML to TextMate/Shiki format
-- ✅ 61 token color rules mapped
-- ✅ Works with 190+ programming languages
-- ✅ Interactive theme editor with live preview for 10 languages
-- ✅ Ready to use in websites, documentation, and static site generators
-
-**Quick Start:**
+### Interactive Theme Editor
 ```bash
 cd shiki/
 npm install
-npm run editor    # Launch interactive editor
+npm run editor       # Open theme-editor.html in browser
 ```
 
-See [shiki/README.md](./shiki/README.md) for full documentation.
+Edit 51 token types across 11 languages with live preview.
 
----
-
-## 📋 Theme Building Checklist
-
-Use this as a guide when building new themes:
-
-### 1. Define Color Palette
-- [ ] Choose 3-4 core syntax colors (methods, keywords, types, operators)
-- [ ] Select 2 accent colors (primary/secondary for UI)
-- [ ] Define semantic colors (error, warning, info, success)
-- [ ] Ensure color harmony (complementary or analogous scheme)
-- [ ] Test readability on dark background
-
-### 2. Syntax Token Mapping
-- [ ] Methods: `DEFAULT_INSTANCE_METHOD`, `DEFAULT_STATIC_METHOD`
-- [ ] Keywords: `DEFAULT_KEYWORD`
-- [ ] Types/Parameters: `DEFAULT_PARAMETER`, `DEFAULT_NUMBER`
-- [ ] Operators: `DEFAULT_OPERATION_SIGN`, `CSHARP_OPERATOR_SIGN`, `DEFAULT_PARENTHS`
-- [ ] Strings: `DEFAULT_STRING`
-- [ ] Classes: `DEFAULT_CLASS_NAME`
-- [ ] Comments: `DEFAULT_LINE_COMMENT`, `DEFAULT_BLOCK_COMMENT`
-
-### 3. UI Element Theming
-- [ ] Tab underlines and selection states
-- [ ] Button hover/focus states
-- [ ] Tooltip borders and backgrounds
-- [ ] Scrollbar colors (with transparency)
-- [ ] Focus borders across all components
-- [ ] Selection backgrounds (editor + lists)
-
-### 4. VCS Integration
-- [ ] File status colors (added, modified, deleted, changed)
-- [ ] Git log colors (local branch, remote branch, tags)
-- [ ] Debugger colors (breakpoints, changed values, errors)
-- [ ] Error stripe markers
-
-### 5. Fine-Tuning
-- [ ] Test with real code examples
-- [ ] Verify color contrast ratios
-- [ ] Check harmony across all color families
-- [ ] Ensure operators are visible but not overwhelming
-- [ ] Test across different file types (C#, JSON, XML, etc.)
-
----
-
-## 🔄 Next Theme Template
-
-When building a new theme, copy this structure:
-
-```
-Theme Name: _______________
-Philosophy: _______________
-
-SYNTAX COLORS:
-- Methods:     #______
-- Keywords:    #______
-- Types:       #______
-- Operators:   #______
-- Strings:     #______
-- Classes:     #______
-
-UI ACCENTS:
-- Primary:     #______
-- Secondary:   #______
-- Background:  #______
-- Foreground:  #______
-
-SEMANTIC:
-- Error:       #______
-- Warning:     #______
-- Info:        #______
-```
-
-Apply checklist above, test with Cyan Harbor as reference for balance/harmony.
+See [BUILD.md](./BUILD.md) for details.

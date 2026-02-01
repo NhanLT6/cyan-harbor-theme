@@ -41,7 +41,7 @@
     <option name="CARET_COLOR" value="FFCC00" />
     <option name="CARET_ROW_COLOR" value="1B2529" />
     <option name="CONSOLE_BACKGROUND_KEY" value="263238" />
-    <option name="DELETED_LINES_COLOR" value="6ec4bc" />
+    <option name="DELETED_LINES_COLOR" value="E8A8A8" />
     <option name="DIAGRAM_ANNOTATION_EDGE" value="89b4f7" />
     <option name="DIAGRAM_COARSE_GRID" value="546E7A" />
     <option name="DIAGRAM_DEFAULT_EDGE" value="b8c5d0" />
@@ -440,7 +440,7 @@
     </option>
     <option name="CSS.CLASS_NAME">
       <value>
-        <option name="FOREGROUND" value="FF9CAC" />
+        <option name="FOREGROUND" value="E8C5A0" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -488,7 +488,7 @@
     </option>
     <option name="CSS.TAG_NAME">
       <value>
-        <option name="FOREGROUND" value="A7DBD8" />
+        <option name="FOREGROUND" value="89B4F7" />
       </value>
     </option>
     <option name="CSS.URL">
@@ -597,7 +597,7 @@
     </option>
     <option name="DEFAULT_DOC_COMMENT_TAG">
       <value>
-        <option name="FOREGROUND" value="89b4f7" />
+        <option name="FOREGROUND" value="65737E" />
         <option name="FONT_TYPE" value="3" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
@@ -700,7 +700,7 @@
     </option>
     <option name="DEFAULT_NUMBER">
       <value>
-        <option name="FOREGROUND" value="FFD97D" />
+        <option name="FOREGROUND" value="F0E0C0" />
       </value>
     </option>
     <option name="DEFAULT_OPERATION_SIGN">
@@ -827,7 +827,7 @@
     </option>
     <option name="ENUM_CONST">
       <value>
-        <option name="FOREGROUND" value="e5e1c0" />
+        <option name="FOREGROUND" value="5FB8AA" />
       </value>
     </option>
     <option name="ERRORS_ATTRIBUTES">
@@ -1098,7 +1098,7 @@
     </option>
     <option name="JS.GLOBAL_FUNCTION">
       <value>
-        <option name="FOREGROUND" value="ffd97d" />
+        <option name="FOREGROUND" value="5FB8AA" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -1142,7 +1142,7 @@
     </option>
     <option name="JS.NULL_UNDEFINED">
       <value>
-        <option name="FOREGROUND" value="FF9CAC" />
+        <option name="FOREGROUND" value="DCC9D5" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -1163,7 +1163,7 @@
     </option>
     <option name="JS.THIS_SUPER">
       <value>
-        <option name="FOREGROUND" value="FC9867" />
+        <option name="FOREGROUND" value="F0B8A8" />
       </value>
     </option>
     <option name="JS.TRY_CATCH">
@@ -1695,13 +1695,13 @@
     </option>
     <option name="ReSharper.DELEGATE_IDENTIFIER">
       <value>
-        <option name="FOREGROUND" value="BD92EA" />
+        <option name="FOREGROUND" value="D0B8E0" />
         <option name="FONT_TYPE" value="1" />
       </value>
     </option>
     <option name="ReSharper.ENUM_IDENTIFIER">
       <value>
-        <option name="FOREGROUND" value="fff5c8" />
+        <option name="FOREGROUND" value="5FB8AA" />
       </value>
     </option>
     <option name="ReSharper.EVENT_IDENTIFIER">
@@ -2070,7 +2070,7 @@
     </option>
     <option name="YAML_SCALAR_VALUE">
       <value>
-        <option name="FOREGROUND" value="F8B4AB" />
+        <option name="FOREGROUND" value="90D89F" />
         <option name="EFFECT_TYPE" value="5" />
       </value>
     </option>

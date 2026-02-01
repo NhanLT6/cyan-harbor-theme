@@ -1,0 +1,14 @@
+{
+  "name": "cyan-harbor-theme",
+  "version": "1.0.0",
+  "description": "Cyan Harbor - Pastel dark theme for JetBrains IDEs",
+  "license": "MIT",
+  "scripts": {
+    "editor": "cd shiki && npm run editor",
+    "build": "node build.js",
+    "build:jar": "npm run build"
+  },
+  "devDependencies": {
+    "archiver": "^6.0.0"
+  }
+}
