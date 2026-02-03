@@ -1912,11 +1912,13 @@
     <option name="TAB_SELECTED">
       <value>
         <option name="FOREGROUND" value="ffffff" />
+        <option name="BACKGROUND" value="263238" />
       </value>
     </option>
     <option name="TAB_SELECTED_INACTIVE">
       <value>
         <option name="FOREGROUND" value="546e7a" />
+        <option name="BACKGROUND" value="263238" />
       </value>
     </option>
     <option name="TEMPLATE_VARIABLE_ATTRIBUTES">
