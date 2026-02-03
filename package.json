@@ -1,7 +1,7 @@
 {
-  "name": "cyan-harbor-theme",
+  "name": "ocean-harbor-theme",
   "version": "1.0.1",
-  "description": "Cyan Harbor - Pastel dark theme for JetBrains IDEs",
+  "description": "Ocean Harbor - Pastel dark theme for JetBrains IDEs",
   "license": "MIT",
   "scripts": {
     "editor": "cd shiki && npm run editor",

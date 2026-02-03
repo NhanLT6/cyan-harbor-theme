@@ -2,7 +2,7 @@ const { createHighlighter } = require('shiki');
 const fs = require('fs');
 
 (async () => {
-    const theme = require('./cyan-harbor-shiki-theme.json');
+    const theme = require('./ocean-harbor-shiki-theme.json');
     const highlighter = await createHighlighter({
         themes: [theme],
         langs: ['markdown']
@@ -13,7 +13,7 @@ const fs = require('fs');
 
     const html = highlighter.codeToHtml(markdown, {
         lang: 'markdown',
-        theme: 'Cyan Harbor'
+        theme: 'Ocean Harbor'
     });
 
     console.log('===== SHIKI OUTPUT =====');

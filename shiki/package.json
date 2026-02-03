@@ -1,7 +1,7 @@
 {
-  "name": "cyan-harbor-shiki-demo",
+  "name": "ocean-harbor-shiki-demo",
   "version": "1.0.0",
-  "description": "Cyan Harbor theme for Shiki syntax highlighter",
+  "description": "Ocean Harbor theme for Shiki syntax highlighter",
   "main": "shiki-demo.js",
   "scripts": {
     "editor": "node extract-theme-colors.js && node convert-to-shiki.js && node generate-interactive-editor.js && node editor-server.js"

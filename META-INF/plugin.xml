@@ -1,6 +1,6 @@
 <idea-plugin>
-  <id>com.nhan.cyan-harbor</id>
-  <name>Cyan Harbor</name>
+  <id>com.nhan.ocean-harbor</id>
+  <name>Ocean Harbor</name>
   <version>1.0.0</version>
   <vendor email="letrongnhan1306@gmail.com">Nhan Le</vendor>
 
@@ -25,8 +25,8 @@
   <depends>com.intellij.modules.platform</depends>
 
   <extensions defaultExtensionNs="com.intellij">
-    <themeProvider id="com.nhan.cyan-harbor" path="/cyan-harbor.theme.json" />
+    <themeProvider id="com.nhan.ocean-harbor" path="/ocean-harbor.theme.json" />
 
-    <bundledColorScheme path="/cyan-harbor" />
+    <bundledColorScheme path="/ocean-harbor" />
   </extensions>
 </idea-plugin>

@@ -15,7 +15,7 @@ if (!fs.existsSync(releasesDir)) {
 }
 
 // Define output file
-const outputFilename = `cyan-harbor-${version}.jar`;
+const outputFilename = `ocean-harbor-${version}.jar`;
 const outputPath = path.join(releasesDir, outputFilename);
 
 // Remove existing file if it exists
@@ -49,11 +49,11 @@ archive.directory('META-INF/', 'META-INF');
 console.log('  ✓ Added META-INF/');
 
 // Add theme files
-archive.file('cyan-harbor.xml', { name: 'cyan-harbor.xml' });
-console.log('  ✓ Added cyan-harbor.xml');
+archive.file('ocean-harbor.xml', { name: 'ocean-harbor.xml' });
+console.log('  ✓ Added ocean-harbor.xml');
 
-archive.file('cyan-harbor.theme.json', { name: 'cyan-harbor.theme.json' });
-console.log('  ✓ Added cyan-harbor.theme.json');
+archive.file('ocean-harbor.theme.json', { name: 'ocean-harbor.theme.json' });
+console.log('  ✓ Added ocean-harbor.theme.json');
 
 // Finalize the archive
 output.on('close', () => {

@@ -1,15 +1,15 @@
 /**
- * Converts IntelliJ theme (cyan-harbor.xml) to Shiki-compatible TextMate theme
+ * Converts IntelliJ theme (ocean-harbor.xml) to Shiki-compatible TextMate theme
  *
  * Usage: node convert-to-shiki.js
- * Output: cyan-harbor-shiki-theme.json
+ * Output: ocean-harbor-shiki-theme.json
  */
 
 const fs = require('fs');
 const path = require('path');
 
 // Read and parse the XML file
-const xmlContent = fs.readFileSync('../cyan-harbor.xml', 'utf-8');
+const xmlContent = fs.readFileSync('../ocean-harbor.xml', 'utf-8');
 
 /**
  * Extract color value from XML option tag
@@ -80,7 +80,7 @@ const editorForeground = getColor('TEXT')?.match(/FOREGROUND" value="([^"]+)/)?.
 
 // Build the theme object
 const theme = {
-  name: 'Cyan Harbor',
+  name: 'Ocean Harbor',
   type: 'dark',
   colors: {
     'editor.background': getColor('TEXT')?.split('"')[3] ? '#' + getColor('TEXT').split('"')[3] : '#263238',
@@ -553,7 +553,7 @@ mappings.forEach(mapping => {
 });
 
 // Write the output
-const outputPath = './cyan-harbor-shiki-theme.json';
+const outputPath = './ocean-harbor-shiki-theme.json';
 fs.writeFileSync(outputPath, JSON.stringify(theme, null, 2), 'utf-8');
 
 console.log('✅ Conversion complete!');
@@ -563,5 +563,5 @@ console.log(`🔢 Token colors: ${theme.tokenColors.length} rules`);
 console.log('\nNext steps:');
 console.log('1. Review the generated theme file');
 console.log('2. Import it in your Shiki setup:');
-console.log('   const theme = require("./cyan-harbor-shiki-theme.json");');
+console.log('   const theme = require("./ocean-harbor-shiki-theme.json");');
 console.log('   const highlighter = await createHighlighter({ themes: [theme], langs: [...] });');

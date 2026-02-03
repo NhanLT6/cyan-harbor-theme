@@ -5,7 +5,7 @@
 const { createHighlighter } = require('shiki');
 const fs = require('fs');
 
-const cyanHarborTheme = require('./cyan-harbor-shiki-theme.json');
+const cyanHarborTheme = require('./ocean-harbor-shiki-theme.json');
 const themeData = require('./theme-data.json');
 const comprehensiveSamples = require('./comprehensive-samples');
 
@@ -58,7 +58,7 @@ async function generateEditor() {
     console.log(`Generating preview for ${lang}...`);
     let html = highlighter.codeToHtml(codeExamples[lang], {
       lang,
-      theme: 'Cyan Harbor'
+      theme: 'Ocean Harbor'
     });
 
     // Use per-token variables to decouple styling
@@ -133,7 +133,7 @@ async function generateEditor() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cyan Harbor - Interactive Theme Editor</title>
+  <title>Ocean Harbor - Interactive Theme Editor</title>
 
   <!-- Pickr CSS -->
   <link rel="stylesheet" href="./node_modules/@simonwep/pickr/dist/themes/monolith.min.css">
@@ -802,7 +802,7 @@ ${cssVariables}
 </head>
 <body>
   <div class="header">
-    <h1>🌊 Cyan Harbor - Theme Editor</h1>
+    <h1>🌊 Ocean Harbor - Theme Editor</h1>
     <div class="header-actions">
       <button class="btn" onclick="resetTheme()">Reset</button>
       <button class="btn btn-primary" onclick="saveToXml()">Save to XML</button>
@@ -1329,7 +1329,7 @@ ${cssVariables}
         const result = await response.json();
         
         if (result.success) {
-          alert('✅ Theme saved successfully to cyan-harbor.xml!');
+          alert('✅ Theme saved successfully to ocean-harbor.xml!');
           // Optionally trigger a re-conversion of Shiki if needed, 
           // but we usually need to restart the editor for that since it's a Node process.
         } else {

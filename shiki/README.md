@@ -1,6 +1,6 @@
-# Cyan Harbor - Interactive Theme Editor
+# Ocean Harbor - Interactive Theme Editor
 
-This directory contains the interactive web editor for the **Cyan Harbor** IntelliJ theme. It allows you to fine-tune colors and font styles with a live syntax-highlighted preview and save them directly back to your source XML.
+This directory contains the interactive web editor for the **Ocean Harbor** IntelliJ theme. It allows you to fine-tune colors and font styles with a live syntax-highlighted preview and save them directly back to your source XML.
 
 ## 🚀 Quick Start
 
@@ -14,7 +14,7 @@ This directory contains the interactive web editor for the **Cyan Harbor** Intel
    npm run editor
    ```
    This command will:
-   - Extract colors and configuration from `../cyan-harbor.xml`.
+   - Extract colors and configuration from `../ocean-harbor.xml`.
    - Convert the IntelliJ theme to Shiki format for the preview.
    - Generate the `theme-editor.html` interface.
    - Start a local server and open your browser automatically.
@@ -23,7 +23,7 @@ This directory contains the interactive web editor for the **Cyan Harbor** Intel
 
 *   **Live Preview**: Real-time syntax highlighting for 10+ languages (C#, SQL, TypeScript, etc.).
 *   **Synchronized Selection**: Click a language tab in the preview to auto-switch the configuration sidebar.
-*   **Save to XML**: Click the **"Save to XML"** button to write your changes directly back to `cyan-harbor.xml`.
+*   **Save to XML**: Click the **"Save to XML"** button to write your changes directly back to `ocean-harbor.xml`.
 *   **🎨 Palette Tab**: View a complete breakdown of every color used in your theme and which tokens use them.
 *   **Color Tracking**: Hover over any color swatch to see exactly where it's being used across all languages.
 *   **Keyboard Friendly**: Navigate color swatches using arrow keys and confirm with Enter.

@@ -1,10 +1,10 @@
 /**
- * Extracts all unique colors and language configs from cyan-harbor.xml
+ * Extracts all unique colors and language configs from ocean-harbor.xml
  */
 
 const fs = require('fs');
 
-const xmlContent = fs.readFileSync('../cyan-harbor.xml', 'utf-8');
+const xmlContent = fs.readFileSync('../ocean-harbor.xml', 'utf-8');
 
 // Extract all hex colors
 const colorMatches = xmlContent.matchAll(/value="([0-9A-Fa-f]{6})"/g);

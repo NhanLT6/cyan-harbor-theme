@@ -1,4 +1,4 @@
-# Cyan Harbor Theme
+# Ocean Harbor Theme
 
 A pastel dark theme for JetBrains IDEs. Soft colors designed for comfortable long coding sessions.
 
@@ -31,10 +31,10 @@ Colors are organized by semantic meaning to create visual harmony.
 ### Create JAR File
 ```bash
 npm install          # First time only
-npm run build        # Build cyan-harbor-{version}.jar
+npm run build        # Build ocean-harbor-{version}.jar
 ```
 
-Output: `releases/cyan-harbor-{version}.jar`
+Output: `releases/ocean-harbor-{version}.jar`
 
 To update version: Edit `package.json` version field, then run `npm run build`.
 

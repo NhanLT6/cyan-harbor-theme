@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = 3000;
-const XML_PATH = path.join(__dirname, '../cyan-harbor.xml');
+const XML_PATH = path.join(__dirname, '../ocean-harbor.xml');
 const HTML_FILE = 'theme-editor.html';
 
 const server = http.createServer((req, res) => {

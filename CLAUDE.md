@@ -1,7 +1,7 @@
-# Cyan Harbor — Theme Docs
+# Ocean Harbor — Theme Docs
 
 **Last Updated:** 2026-02-03
-**Source of truth:** `cyan-harbor.xml`
+**Source of truth:** `ocean-harbor.xml`
 
 ---
 
@@ -44,7 +44,7 @@ Pastel dark theme for JetBrains IDEs. Oceanic blues, soft aqua, gentle rose acce
 ## Project Structure
 
 ```
-cyan-harbor.xml                    ← source theme (edit colors here)
+ocean-harbor.xml                    ← source theme (edit colors here)
 shiki/
   extract-theme-colors.js          ← XML → theme-data.json
   convert-to-shiki.js              ← XML → shiki theme JSON
@@ -52,14 +52,14 @@ shiki/
   editor-server.js                 ← serves editor + saves back to XML
   theme-editor.html                ← interactive editor UI (generated)
 releases/
-  cyan-harbor-{version}.jar        ← built theme JAR
+  ocean-harbor-{version}.jar        ← built theme JAR
 ```
 
 **Data flow:**
 ```
-cyan-harbor.xml
+ocean-harbor.xml
   → extract-theme-colors.js  → theme-data.json
-  → convert-to-shiki.js      → cyan-harbor-shiki-theme.json
+  → convert-to-shiki.js      → ocean-harbor-shiki-theme.json
   → generate-interactive-editor.js → theme-editor.html
   → editor-server.js         → saves edits back to XML
 ```
@@ -80,7 +80,7 @@ Tweak colors in the browser, click "Save to XML". Done.
 
 **Build JAR for release:**
 ```bash
-npm run build  # outputs releases/cyan-harbor-{version}.jar
+npm run build  # outputs releases/ocean-harbor-{version}.jar
 ```
 Bump version: update `version` in root `package.json`, then run build.
 
@@ -98,7 +98,7 @@ Bump version: update `version` in root `package.json`, then run build.
 
 ## Notes for Claude
 
-- `cyan-harbor.xml` is the single source of truth. Everything else is generated.
+- `ocean-harbor.xml` is the single source of truth. Everything else is generated.
 - When changing a color, grep the hex first — colors are shared across tokens. Update all occurrences.
 - Respect palette bounds when picking new colors: sat ≤ 87%, lightness 55-83% for syntax tokens. Follow the teal hierarchy pattern (same hue + sat, vary lightness) for related token groups.
 - Commit messages: 1-2 sentences, focus on "why" not "what".

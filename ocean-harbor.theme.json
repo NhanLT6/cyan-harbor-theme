@@ -1,8 +1,8 @@
 {
-  "name": "Cyan Harbor",
+  "name": "Ocean Harbor",
   "dark": true,
   "author": "Nhan",
-  "editorScheme": "/cyan-harbor.xml",
+  "editorScheme": "/ocean-harbor.xml",
   "parentTheme": "Islands Dark",
   "ui": {
     "*": {

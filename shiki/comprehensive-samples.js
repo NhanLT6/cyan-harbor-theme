@@ -266,7 +266,7 @@ class DashboardController extends EventEmitter {
 </head>
 <body>
   <!-- Tag name: div, attributes: class, id, data-* -->
-  <div class="dashboard-container" id="main-dashboard" data-theme="cyan-harbor">
+  <div class="dashboard-container" id="main-dashboard" data-theme="ocean-harbor">
 
     <!-- Tag name: header, nav -->
     <header class="app-header">
@@ -375,7 +375,7 @@ body {
 }
 
 /* Attribute selector */
-[data-theme="cyan-harbor"] {
+[data-theme="ocean-harbor"] {
   --primary-color: #009688;
   --secondary-color: #00695c;
   --text-color: #b8c5d0;
