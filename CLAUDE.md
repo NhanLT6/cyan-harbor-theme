@@ -1,6 +1,6 @@
 # Ocean Harbor — Theme Docs
 
-**Last Updated:** 2026-02-03
+**Last Updated:** 2026-03-07
 **Source of truth:** `ocean-harbor.xml`
 
 ---
@@ -96,10 +96,29 @@ Bump version: update `version` in root `package.json`, then run build.
 
 ---
 
+## UI Depth Philosophy — Islands in the Ocean
+
+The theme uses a two-tier depth model inspired by the JetBrains Islands Dark parent theme.
+
+**Deep ocean** `#1e272c` — the window chrome. Nothing interactive lives here permanently.
+- `MainWindow.background`, `MainToolbar`, `NavBar`, `Toolbar`, `ToolWindow.Stripe`
+
+**Island surface** `#263238` — all content panels. Editor and tool windows sit at the same level.
+- `ToolWindow.background`, `ToolWindow.Header.*`, `EditorTabs`, `DefaultTabs`, `Island.borderColor`
+
+The contrast between the two tiers (~4% lightness) is intentional and subtle — islands float, not pop.
+
+**Borderless islands:** `Island.borderColor` matches the island surface (`#263238`) so panel outlines are invisible. Internal borders (`Borders.color: #2e3c43`, `Borders.ContrastBorderColor: #37474f`) remain to provide structure within panels without drawing attention.
+
+**Key pitfall to avoid:** `#2f3d45` is lighter (22.7%) than `#263238` (18.4%). Using it for chrome areas (toolbars, sidebars) makes them appear brighter than the content panels — the opposite of the intended depth. Always verify a new chrome color is darker than the island surface before applying it.
+
+---
+
 ## Notes for Claude
 
 - `ocean-harbor.xml` is the single source of truth. Everything else is generated.
 - When changing a color, grep the hex first — colors are shared across tokens. Update all occurrences.
 - Respect palette bounds when picking new colors: sat ≤ 87%, lightness 55-83% for syntax tokens. Follow the teal hierarchy pattern (same hue + sat, vary lightness) for related token groups.
+- UI depth: chrome keys must stay darker than `#263238`. When in doubt, use `#1e272c` for chrome and `#263238` for content.
 - Commit messages: 1-2 sentences, focus on "why" not "what".
 - The live editor uses CSS variables (`var(--theme-color-HEX)`) so color updates in the preview are instant — no regeneration needed.
