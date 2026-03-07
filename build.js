@@ -4,25 +4,40 @@ const fs = require('fs');
 const path = require('path');
 const archiver = require('archiver');
 
-// Get version from package.json
-const packageJson = require('./shiki/package.json');
-const version = packageJson.version;
-
 // Create releases folder if it doesn't exist
 const releasesDir = path.join(__dirname, 'releases');
 if (!fs.existsSync(releasesDir)) {
   fs.mkdirSync(releasesDir, { recursive: true });
 }
 
+// Detect current version from existing JAR files and increment
+function nextVersion() {
+  const PATCH_MAX = 10;
+  const MINOR_MAX = 10;
+  const files = fs.readdirSync(releasesDir);
+  const versions = files
+    .map(f => f.match(/^ocean-harbor-(\d+)\.(\d+)\.(\d+)\.jar$/))
+    .filter(Boolean)
+    .map(([, major, minor, patch]) => [+major, +minor, +patch]);
+
+  if (versions.length === 0) return '1.0.0';
+
+  // Sort descending, pick largest
+  versions.sort((a, b) => b[0] - a[0] || b[1] - a[1] || b[2] - a[2]);
+  let [major, minor, patch] = versions[0];
+
+  patch += 1;
+  if (patch >= PATCH_MAX) { patch = 0; minor += 1; }
+  if (minor >= MINOR_MAX) { minor = 0; major += 1; }
+
+  return `${major}.${minor}.${patch}`;
+}
+
+const version = nextVersion();
+
 // Define output file
 const outputFilename = `ocean-harbor-${version}.jar`;
 const outputPath = path.join(releasesDir, outputFilename);
-
-// Remove existing file if it exists
-if (fs.existsSync(outputPath)) {
-  fs.unlinkSync(outputPath);
-  console.log(`📦 Removed existing ${outputFilename}`);
-}
 
 // Create the JAR file (which is just a ZIP)
 const output = fs.createWriteStream(outputPath);
