@@ -84,6 +84,10 @@ const generalTokens = [
   { key: 'DEFAULT_INSTANCE_METHOD', label: 'Instance Methods', desc: 'Object methods' },
   { key: 'DEFAULT_STATIC_METHOD', label: 'Static Methods', desc: 'Static methods' },
 
+  // Inlay hints
+  { key: 'INLAY_DEFAULT', label: 'Inlay Hints', desc: 'Inline type hints (e.g. var type annotations, LINQ return types)' },
+  { key: 'INLAY_TEXT_WITHOUT_BACKGROUND', label: 'Inlay Hints (no bg)', desc: 'Inline hints rendered without a background pill' },
+
   // Punctuation
   { key: 'DEFAULT_BRACES', label: 'Braces', desc: 'Curly braces { }' },
   { key: 'DEFAULT_BRACKETS', label: 'Brackets', desc: 'Square brackets [ ]' },

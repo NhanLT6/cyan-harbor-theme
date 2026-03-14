@@ -25,7 +25,6 @@
     "#354039",
     "#36F9F6",
     "#37474F",
-    "#39ADB5",
     "#3B4950",
     "#3B514D",
     "#411F7E",
@@ -44,6 +43,7 @@
     "#536C46",
     "#536D78",
     "#546E7A",
+    "#567585",
     "#5D4E1F",
     "#5FB8AA",
     "#607D86",
@@ -53,13 +53,13 @@
     "#656E76",
     "#65737E",
     "#6DC2B8",
+    "#6E8E9E",
     "#6EC4BC",
-    "#6FD9E8",
-    "#7B9CE7",
     "#808080",
     "#80CBC4",
     "#89B4F7",
     "#89DDF7",
+    "#8AAABB",
     "#8DD9E6",
     "#908B25",
     "#90D89F",
@@ -72,25 +72,25 @@
     "#AB7967",
     "#AEAE80",
     "#B03435",
-    "#B0BEC5",
     "#B2CCD6",
     "#B8C5D0",
     "#BD92EA",
-    "#BFA7FF",
     "#C14360",
     "#C3D3DE",
     "#C3E887",
     "#C4B3A3",
+    "#C4B3F4",
     "#C7C8F5",
     "#D0B8E0",
     "#D9E6E6",
     "#DBDBDB",
-    "#DCC9D5",
     "#E5E1C0",
     "#E67E22",
+    "#E6B858",
     "#E74C3C",
     "#E8A8A8",
-    "#E8C5A0",
+    "#E9CCAF",
+    "#EAD2A4",
     "#EEFFE3",
     "#F0B8A8",
     "#F0E0C0",
@@ -106,7 +106,6 @@
     "#FF7597",
     "#FF9CAC",
     "#FFCC00",
-    "#FFD97D",
     "#FFEB95",
     "#FFFBF7",
     "#FFFFFF"
@@ -116,7 +115,7 @@
       "DEFAULT_KEYWORD": {
         "label": "Keywords",
         "description": "Language keywords (if, for, class, etc.)",
-        "foreground": "#BFA7FF",
+        "foreground": "#C4B3F4",
         "fontStyle": "italic"
       },
       "DEFAULT_STRING": {
@@ -128,7 +127,7 @@
       "DEFAULT_NUMBER": {
         "label": "Numbers",
         "description": "Numeric literals",
-        "foreground": "#F0E0C0",
+        "foreground": "#EAD2A4",
         "fontStyle": ""
       },
       "DEFAULT_OPERATION_SIGN": {
@@ -206,14 +205,26 @@
       "DEFAULT_INSTANCE_METHOD": {
         "label": "Instance Methods",
         "description": "Object methods",
-        "foreground": "#7B9CE7",
+        "foreground": "#89B4F7",
         "fontStyle": ""
       },
       "DEFAULT_STATIC_METHOD": {
         "label": "Static Methods",
         "description": "Static methods",
-        "foreground": "#7B9CE7",
+        "foreground": "#89B4F7",
         "fontStyle": "italic"
+      },
+      "INLAY_DEFAULT": {
+        "label": "Inlay Hints",
+        "description": "Inline type hints (e.g. var type annotations, LINQ return types)",
+        "foreground": "#6E8E9E",
+        "fontStyle": ""
+      },
+      "INLAY_TEXT_WITHOUT_BACKGROUND": {
+        "label": "Inlay Hints (no bg)",
+        "description": "Inline hints rendered without a background pill",
+        "foreground": "#567585",
+        "fontStyle": ""
       },
       "DEFAULT_BRACES": {
         "label": "Braces",
@@ -262,7 +273,7 @@
       "CSS.CLASS_NAME": {
         "label": "Class Names",
         "description": ".className",
-        "foreground": "#E8C5A0",
+        "foreground": "#E9CCAF",
         "fontStyle": "italic"
       },
       "CSS.HASH": {
@@ -274,7 +285,7 @@
       "CSS.PSEUDO": {
         "label": "Pseudo Classes/Elements",
         "description": ":hover, ::before",
-        "foreground": "#BFA7FF",
+        "foreground": "#C4B3F4",
         "fontStyle": "italic"
       },
       "CSS.PROPERTY_NAME": {
@@ -292,7 +303,7 @@
       "CSS.FUNCTION": {
         "label": "Functions",
         "description": "calc(), rgb(), etc.",
-        "foreground": "#7B9CE7",
+        "foreground": "#89B4F7",
         "fontStyle": ""
       }
     },
@@ -320,7 +331,7 @@
       "JS.NULL_UNDEFINED": {
         "label": "null/undefined",
         "description": "Null values",
-        "foreground": "#DCC9D5",
+        "foreground": "#F0B8A8",
         "fontStyle": "italic"
       },
       "JS.MODULE_KEYWORD": {
@@ -340,7 +351,7 @@
       "TS.TYPE_PARAMETER": {
         "label": "Type Parameters",
         "description": "Generic type params <T>",
-        "foreground": "#FFD97D",
+        "foreground": "#EAD2A4",
         "fontStyle": ""
       }
     },
@@ -354,7 +365,7 @@
       "JSON.KEYWORD": {
         "label": "Keywords",
         "description": "true, false, null",
-        "foreground": "#BFA7FF",
+        "foreground": "#C4B3F4",
         "fontStyle": "italic"
       }
     },
@@ -376,7 +387,7 @@
       "MARKDOWN_HEADER_LEVEL_1": {
         "label": "Headers",
         "description": "# Headers",
-        "foreground": "#BFA7FF",
+        "foreground": "#C4B3F4",
         "fontStyle": ""
       },
       "MARKDOWN_BOLD": {
@@ -406,13 +417,13 @@
       "MARKDOWN_BLOCK_QUOTE": {
         "label": "Block Quote",
         "description": "> quote",
-        "foreground": "#7B9CE7",
+        "foreground": "#89B4F7",
         "fontStyle": "italic"
       },
       "MARKDOWN_LINK_TEXT": {
         "label": "Link Text",
         "description": "[text](url)",
-        "foreground": "#7B9CE7",
+        "foreground": "#89B4F7",
         "fontStyle": ""
       },
       "MARKDOWN_HRULE": {
@@ -432,7 +443,7 @@
       "BASH.EXTERNAL_COMMAND": {
         "label": "Commands",
         "description": "Shell commands",
-        "foreground": "#7B9CE7",
+        "foreground": "#89B4F7",
         "fontStyle": "italic"
       }
     },
@@ -486,7 +497,7 @@
       "SQL_KEYWORD": {
         "label": "SQL Keywords",
         "description": "SELECT, FROM, WHERE, etc.",
-        "foreground": "#BFA7FF",
+        "foreground": "#C4B3F4",
         "fontStyle": "italic"
       },
       "SQL_STRING": {
@@ -498,7 +509,7 @@
       "SQL_NUMBER": {
         "label": "SQL Numbers",
         "description": "123",
-        "foreground": "#F0E0C0",
+        "foreground": "#EAD2A4",
         "fontStyle": ""
       },
       "SQL_COMMENT": {

@@ -1038,18 +1038,18 @@
     </option>
     <option name="INLAY_DEFAULT">
       <value>
-        <option name="FOREGROUND" value="b0bec5" />
+        <option name="FOREGROUND" value="6e8e9e" />
         <option name="BACKGROUND" value="1e272c" />
       </value>
     </option>
     <option name="INLAY_TEXT_WITHOUT_BACKGROUND">
       <value>
-        <option name="FOREGROUND" value="607d8b" />
+        <option name="FOREGROUND" value="567585" />
       </value>
     </option>
     <option name="INLINE_PARAMETER_HINT">
       <value>
-        <option name="FOREGROUND" value="b0bec5" />
+        <option name="FOREGROUND" value="6e8e9e" />
         <option name="BACKGROUND" value="1e272c" />
       </value>
     </option>
@@ -1061,7 +1061,7 @@
     </option>
     <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
       <value>
-        <option name="FOREGROUND" value="b0bec5" />
+        <option name="FOREGROUND" value="8aaabb" />
         <option name="BACKGROUND" value="546e7a" />
       </value>
     </option>

@@ -11,9 +11,9 @@
   <style>
     /* Theme color CSS variables for live updates */
     :root {
-  --token-DEFAULT_KEYWORD: #BFA7FF;
+  --token-DEFAULT_KEYWORD: #C4B3F4;
   --token-DEFAULT_STRING: #90D89F;
-  --token-DEFAULT_NUMBER: #F0E0C0;
+  --token-DEFAULT_NUMBER: #EAD2A4;
   --token-DEFAULT_OPERATION_SIGN: #F8B4AB;
   --token-DEFAULT_LINE_COMMENT: #546E7A;
   --token-DEFAULT_BLOCK_COMMENT: #546E7A;
@@ -26,8 +26,10 @@
   --token-DEFAULT_PARAMETER: #A7DBD8;
   --token-DEFAULT_INSTANCE_FIELD: #D9E6E6;
   --token-DEFAULT_STATIC_FIELD: #D9E6E6;
-  --token-DEFAULT_INSTANCE_METHOD: #7B9CE7;
-  --token-DEFAULT_STATIC_METHOD: #7B9CE7;
+  --token-DEFAULT_INSTANCE_METHOD: #89B4F7;
+  --token-DEFAULT_STATIC_METHOD: #89B4F7;
+  --token-INLAY_DEFAULT: #6E8E9E;
+  --token-INLAY_TEXT_WITHOUT_BACKGROUND: #567585;
   --token-DEFAULT_BRACES: #F8B4AB;
   --token-DEFAULT_BRACKETS: #F8B4AB;
   --token-DEFAULT_PARENTHS: #F8B4AB;
@@ -35,33 +37,33 @@
   --token-DEFAULT_DOT: #F8B4AB;
   --token-DEFAULT_SEMICOLON: #F8B4AB;
   --token-CSS_TAG_NAME: #89B4F7;
-  --token-CSS_CLASS_NAME: #E8C5A0;
+  --token-CSS_CLASS_NAME: #E9CCAF;
   --token-CSS_HASH: #89B4F7;
-  --token-CSS_PSEUDO: #BFA7FF;
+  --token-CSS_PSEUDO: #C4B3F4;
   --token-CSS_PROPERTY_NAME: #80CBC4;
   --token-CSS_PROPERTY_VALUE: #90D89F;
-  --token-CSS_FUNCTION: #7B9CE7;
+  --token-CSS_FUNCTION: #89B4F7;
   --token-HTML_TAG_NAME: #89B4F7;
   --token-DEFAULT_ATTRIBUTE: #80CBC4;
   --token-JS_THIS_SUPER: #F0B8A8;
-  --token-JS_NULL_UNDEFINED: #DCC9D5;
+  --token-JS_NULL_UNDEFINED: #F0B8A8;
   --token-JS_MODULE_KEYWORD: #F8B4AB;
   --token-JS_REGEXP: #90D89F;
-  --token-TS_TYPE_PARAMETER: #FFD97D;
+  --token-TS_TYPE_PARAMETER: #EAD2A4;
   --token-JSON_PROPERTY_KEY: #80CBC4;
-  --token-JSON_KEYWORD: #BFA7FF;
+  --token-JSON_KEYWORD: #C4B3F4;
   --token-YAML_SCALAR_KEY: #6EC4BC;
   --token-YAML_SCALAR_VALUE: #90D89F;
-  --token-MARKDOWN_HEADER_LEVEL_1: #BFA7FF;
+  --token-MARKDOWN_HEADER_LEVEL_1: #C4B3F4;
   --token-MARKDOWN_BOLD: #6EC4BC;
   --token-MARKDOWN_ITALIC: #80CBC4;
   --token-MARKDOWN_STRIKETHROUGH: #A7DBD8;
   --token-MARKDOWN_CODE_SPAN: #89B4F7;
-  --token-MARKDOWN_BLOCK_QUOTE: #7B9CE7;
-  --token-MARKDOWN_LINK_TEXT: #7B9CE7;
+  --token-MARKDOWN_BLOCK_QUOTE: #89B4F7;
+  --token-MARKDOWN_LINK_TEXT: #89B4F7;
   --token-MARKDOWN_HRULE: #546E7A;
   --token-MARKDOWN_LIST_MARKER: #6EC4BC;
-  --token-BASH_EXTERNAL_COMMAND: #7B9CE7;
+  --token-BASH_EXTERNAL_COMMAND: #89B4F7;
   --token-XML_TAG_NAME: #89B4F7;
   --token-ReSharper_NAMESPACE_IDENTIFIER: #80CBC4;
   --token-ReSharper_STRUCT_IDENTIFIER: #80CBC4;
@@ -69,9 +71,9 @@
   --token-ENUM_CONST: #5FB8AA;
   --token-ReSharper_DELEGATE_IDENTIFIER: #D0B8E0;
   --token-CSHARP_OPERATOR_SIGN: #F8B4AB;
-  --token-SQL_KEYWORD: #BFA7FF;
+  --token-SQL_KEYWORD: #C4B3F4;
   --token-SQL_STRING: #90D89F;
-  --token-SQL_NUMBER: #F0E0C0;
+  --token-SQL_NUMBER: #EAD2A4;
   --token-SQL_COMMENT: #546E7A;
     }
 
@@ -804,7 +806,85 @@
       <div class="preview-content" id="previewContent">
         
           <div id="preview-csharp" class="preview-pane" style="display: block">
-            <pre class="shiki Ocean Harbor" style="background-color:#263238;color:#b8c5d0" tabindex="0"><code><span class="line"><span data-token="DEFAULT_LINE_COMMENT" style="color: var(--token-DEFAULT_LINE_COMMENT);font-style:italic">// C# - Comprehensive Token Preview</span></span>
+            
+      <div style="
+        margin: 0;
+        padding: 12px 24px 0;
+        font-size: 12px;
+        color: #546e7a;
+        font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+        border-bottom: 1px solid #37474f;
+        background: #263238;
+      ">
+        <span style="font-size: 11px; color: #37474f; text-transform: uppercase; letter-spacing: 1px;">Inlay Hint Preview</span>
+      </div>
+      <div style="
+        margin: 0;
+        padding: 12px 24px 16px;
+        font-size: 13px;
+        line-height: 2;
+        font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+        background: #263238;
+        border-bottom: 2px solid #37474f;
+      ">
+        <span style="color: var(--token-DEFAULT_KEYWORD)">var</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> slackUserIds</span>
+        <span class="inlay-hint-demo" data-token="INLAY_DEFAULT" style="
+          color: var(--token-INLAY_DEFAULT);
+          background: #1e272c60;
+          border-radius: 3px;
+          padding: 0 3px;
+          font-size: 0.85em;
+        "> :List&lt;int?&gt;</span>
+        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> recipients</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_FUNCTION_CALL)">Select</span>
+        <span style="color: var(--token-DEFAULT_PARENTHS)">(</span>
+        <span style="color: var(--token-DEFAULT_PARAMETER)">r</span>
+        <span class="inlay-hint-demo" data-token="INLAY_DEFAULT" style="
+          color: var(--token-INLAY_DEFAULT);
+          background: #1e272c60;
+          border-radius: 3px;
+          padding: 0 3px;
+          font-size: 0.85em;
+        "> :UserRecipient</span>
+        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =&gt;</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> r</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_INSTANCE_FIELD)">UserId</span>
+        <span style="color: var(--token-DEFAULT_PARENTHS)">)</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_FUNCTION_CALL)">ToList</span>
+        <span style="color: var(--token-DEFAULT_PARENTHS)">()</span>
+        <span style="color: var(--token-DEFAULT_SEMICOLON)">;</span>
+        <span style="color: var(--token-DEFAULT_LINE_COMMENT)"> // INLAY_DEFAULT — with background pill</span>
+        <br>
+        <span style="color: var(--token-DEFAULT_KEYWORD)">var</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> results</span>
+        <span class="inlay-hint-demo" data-token="INLAY_TEXT_WITHOUT_BACKGROUND" style="
+          color: var(--token-INLAY_TEXT_WITHOUT_BACKGROUND);
+          font-size: 0.85em;
+          padding: 0 2px;
+        "> :IQueryable&lt;Notification&gt;</span>
+        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> db</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_INSTANCE_FIELD)">Notifications</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_FUNCTION_CALL)">Where</span>
+        <span style="color: var(--token-DEFAULT_PARENTHS)">(</span>
+        <span style="color: var(--token-DEFAULT_PARAMETER)">x</span>
+        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =&gt;</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> x</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_INSTANCE_FIELD)">IsRead</span>
+        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> ==</span>
+        <span style="color: var(--token-DEFAULT_KEYWORD)"> false</span>
+        <span style="color: var(--token-DEFAULT_PARENTHS)">)</span>
+        <span style="color: var(--token-DEFAULT_SEMICOLON)">;</span>
+        <span style="color: var(--token-DEFAULT_LINE_COMMENT)"> // INLAY_TEXT_WITHOUT_BACKGROUND — no pill</span>
+      </div><pre class="shiki Ocean Harbor" style="background-color:#263238;color:#b8c5d0" tabindex="0"><code><span class="line"><span data-token="DEFAULT_LINE_COMMENT" style="color: var(--token-DEFAULT_LINE_COMMENT);font-style:italic">// C# - Comprehensive Token Preview</span></span>
 <span class="line"><span data-token="DEFAULT_LINE_COMMENT" style="color: var(--token-DEFAULT_LINE_COMMENT);font-style:italic">/// &#x3C;summary></span></span>
 <span class="line"><span data-token="DEFAULT_LINE_COMMENT" style="color: var(--token-DEFAULT_LINE_COMMENT);font-style:italic">/// Documentation comment: Payment service with namespaces, enums, delegates</span></span>
 <span class="line"><span data-token="DEFAULT_LINE_COMMENT" style="color: var(--token-DEFAULT_LINE_COMMENT);font-style:italic">/// &#x3C;/summary></span></span>
@@ -1704,6 +1784,82 @@
       <div class="palette-grid">
   
       <div class="palette-card">
+        <div class="palette-swatch" style="background-color: #89B4F7"></div>
+        <div class="palette-info">
+          <div class="palette-hex">#89B4F7</div>
+          <div class="palette-usage-count">13 tokens</div>
+          <div class="palette-usage-list">
+            
+              <div class="palette-usage-item" title="General.DEFAULT_FUNCTION_DECLARATION">
+                <span class="usage-lang-tag">General</span>
+                <span class="usage-label">Function Declarations</span>
+              </div>
+            
+              <div class="palette-usage-item" title="General.DEFAULT_FUNCTION_CALL">
+                <span class="usage-lang-tag">General</span>
+                <span class="usage-label">Function Calls</span>
+              </div>
+            
+              <div class="palette-usage-item" title="General.DEFAULT_INSTANCE_METHOD">
+                <span class="usage-lang-tag">General</span>
+                <span class="usage-label">Instance Methods</span>
+              </div>
+            
+              <div class="palette-usage-item" title="General.DEFAULT_STATIC_METHOD">
+                <span class="usage-lang-tag">General</span>
+                <span class="usage-label">Static Methods</span>
+              </div>
+            
+              <div class="palette-usage-item" title="CSS.CSS.TAG_NAME">
+                <span class="usage-lang-tag">CSS</span>
+                <span class="usage-label">Tag Selectors</span>
+              </div>
+            
+              <div class="palette-usage-item" title="CSS.CSS.HASH">
+                <span class="usage-lang-tag">CSS</span>
+                <span class="usage-label">IDs</span>
+              </div>
+            
+              <div class="palette-usage-item" title="CSS.CSS.FUNCTION">
+                <span class="usage-lang-tag">CSS</span>
+                <span class="usage-label">Functions</span>
+              </div>
+            
+              <div class="palette-usage-item" title="HTML.HTML_TAG_NAME">
+                <span class="usage-lang-tag">HTML</span>
+                <span class="usage-label">Tag Names</span>
+              </div>
+            
+              <div class="palette-usage-item" title="Markdown.MARKDOWN_CODE_SPAN">
+                <span class="usage-lang-tag">Markdown</span>
+                <span class="usage-label">Inline Code</span>
+              </div>
+            
+              <div class="palette-usage-item" title="Markdown.MARKDOWN_BLOCK_QUOTE">
+                <span class="usage-lang-tag">Markdown</span>
+                <span class="usage-label">Block Quote</span>
+              </div>
+            
+              <div class="palette-usage-item" title="Markdown.MARKDOWN_LINK_TEXT">
+                <span class="usage-lang-tag">Markdown</span>
+                <span class="usage-label">Link Text</span>
+              </div>
+            
+              <div class="palette-usage-item" title="Bash.BASH.EXTERNAL_COMMAND">
+                <span class="usage-lang-tag">Bash</span>
+                <span class="usage-label">Commands</span>
+              </div>
+            
+              <div class="palette-usage-item" title="XML.XML_TAG_NAME">
+                <span class="usage-lang-tag">XML</span>
+                <span class="usage-label">Tag Names</span>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="palette-card">
         <div class="palette-swatch" style="background-color: #F8B4AB"></div>
         <div class="palette-info">
           <div class="palette-hex">#F8B4AB</div>
@@ -1760,93 +1916,6 @@
       </div>
     
       <div class="palette-card">
-        <div class="palette-swatch" style="background-color: #89B4F7"></div>
-        <div class="palette-info">
-          <div class="palette-hex">#89B4F7</div>
-          <div class="palette-usage-count">7 tokens</div>
-          <div class="palette-usage-list">
-            
-              <div class="palette-usage-item" title="General.DEFAULT_FUNCTION_DECLARATION">
-                <span class="usage-lang-tag">General</span>
-                <span class="usage-label">Function Declarations</span>
-              </div>
-            
-              <div class="palette-usage-item" title="General.DEFAULT_FUNCTION_CALL">
-                <span class="usage-lang-tag">General</span>
-                <span class="usage-label">Function Calls</span>
-              </div>
-            
-              <div class="palette-usage-item" title="CSS.CSS.TAG_NAME">
-                <span class="usage-lang-tag">CSS</span>
-                <span class="usage-label">Tag Selectors</span>
-              </div>
-            
-              <div class="palette-usage-item" title="CSS.CSS.HASH">
-                <span class="usage-lang-tag">CSS</span>
-                <span class="usage-label">IDs</span>
-              </div>
-            
-              <div class="palette-usage-item" title="HTML.HTML_TAG_NAME">
-                <span class="usage-lang-tag">HTML</span>
-                <span class="usage-label">Tag Names</span>
-              </div>
-            
-              <div class="palette-usage-item" title="Markdown.MARKDOWN_CODE_SPAN">
-                <span class="usage-lang-tag">Markdown</span>
-                <span class="usage-label">Inline Code</span>
-              </div>
-            
-              <div class="palette-usage-item" title="XML.XML_TAG_NAME">
-                <span class="usage-lang-tag">XML</span>
-                <span class="usage-label">Tag Names</span>
-              </div>
-            
-          </div>
-        </div>
-      </div>
-    
-      <div class="palette-card">
-        <div class="palette-swatch" style="background-color: #7B9CE7"></div>
-        <div class="palette-info">
-          <div class="palette-hex">#7B9CE7</div>
-          <div class="palette-usage-count">6 tokens</div>
-          <div class="palette-usage-list">
-            
-              <div class="palette-usage-item" title="General.DEFAULT_INSTANCE_METHOD">
-                <span class="usage-lang-tag">General</span>
-                <span class="usage-label">Instance Methods</span>
-              </div>
-            
-              <div class="palette-usage-item" title="General.DEFAULT_STATIC_METHOD">
-                <span class="usage-lang-tag">General</span>
-                <span class="usage-label">Static Methods</span>
-              </div>
-            
-              <div class="palette-usage-item" title="CSS.CSS.FUNCTION">
-                <span class="usage-lang-tag">CSS</span>
-                <span class="usage-label">Functions</span>
-              </div>
-            
-              <div class="palette-usage-item" title="Markdown.MARKDOWN_BLOCK_QUOTE">
-                <span class="usage-lang-tag">Markdown</span>
-                <span class="usage-label">Block Quote</span>
-              </div>
-            
-              <div class="palette-usage-item" title="Markdown.MARKDOWN_LINK_TEXT">
-                <span class="usage-lang-tag">Markdown</span>
-                <span class="usage-label">Link Text</span>
-              </div>
-            
-              <div class="palette-usage-item" title="Bash.BASH.EXTERNAL_COMMAND">
-                <span class="usage-lang-tag">Bash</span>
-                <span class="usage-label">Commands</span>
-              </div>
-            
-          </div>
-        </div>
-      </div>
-    
-      <div class="palette-card">
         <div class="palette-swatch" style="background-color: #80CBC4"></div>
         <div class="palette-info">
           <div class="palette-hex">#80CBC4</div>
@@ -1888,9 +1957,9 @@
       </div>
     
       <div class="palette-card">
-        <div class="palette-swatch" style="background-color: #BFA7FF"></div>
+        <div class="palette-swatch" style="background-color: #C4B3F4"></div>
         <div class="palette-info">
-          <div class="palette-hex">#BFA7FF</div>
+          <div class="palette-hex">#C4B3F4</div>
           <div class="palette-usage-count">5 tokens</div>
           <div class="palette-usage-list">
             
@@ -2027,6 +2096,32 @@
       </div>
     
       <div class="palette-card">
+        <div class="palette-swatch" style="background-color: #EAD2A4"></div>
+        <div class="palette-info">
+          <div class="palette-hex">#EAD2A4</div>
+          <div class="palette-usage-count">3 tokens</div>
+          <div class="palette-usage-list">
+            
+              <div class="palette-usage-item" title="General.DEFAULT_NUMBER">
+                <span class="usage-lang-tag">General</span>
+                <span class="usage-label">Numbers</span>
+              </div>
+            
+              <div class="palette-usage-item" title="TypeScript.TS.TYPE_PARAMETER">
+                <span class="usage-lang-tag">TypeScript</span>
+                <span class="usage-label">Type Parameters</span>
+              </div>
+            
+              <div class="palette-usage-item" title="SQL.SQL_NUMBER">
+                <span class="usage-lang-tag">SQL</span>
+                <span class="usage-label">SQL Numbers</span>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="palette-card">
         <div class="palette-swatch" style="background-color: #5FB8AA"></div>
         <div class="palette-info">
           <div class="palette-hex">#5FB8AA</div>
@@ -2046,27 +2141,6 @@
               <div class="palette-usage-item" title="C#.ENUM_CONST">
                 <span class="usage-lang-tag">C#</span>
                 <span class="usage-label">Enum Members</span>
-              </div>
-            
-          </div>
-        </div>
-      </div>
-    
-      <div class="palette-card">
-        <div class="palette-swatch" style="background-color: #F0E0C0"></div>
-        <div class="palette-info">
-          <div class="palette-hex">#F0E0C0</div>
-          <div class="palette-usage-count">2 tokens</div>
-          <div class="palette-usage-list">
-            
-              <div class="palette-usage-item" title="General.DEFAULT_NUMBER">
-                <span class="usage-lang-tag">General</span>
-                <span class="usage-label">Numbers</span>
-              </div>
-            
-              <div class="palette-usage-item" title="SQL.SQL_NUMBER">
-                <span class="usage-lang-tag">SQL</span>
-                <span class="usage-label">SQL Numbers</span>
               </div>
             
           </div>
@@ -2116,6 +2190,27 @@
       </div>
     
       <div class="palette-card">
+        <div class="palette-swatch" style="background-color: #F0B8A8"></div>
+        <div class="palette-info">
+          <div class="palette-hex">#F0B8A8</div>
+          <div class="palette-usage-count">2 tokens</div>
+          <div class="palette-usage-list">
+            
+              <div class="palette-usage-item" title="JavaScript.JS.THIS_SUPER">
+                <span class="usage-lang-tag">JavaScript</span>
+                <span class="usage-label">this/super</span>
+              </div>
+            
+              <div class="palette-usage-item" title="JavaScript.JS.NULL_UNDEFINED">
+                <span class="usage-lang-tag">JavaScript</span>
+                <span class="usage-label">null/undefined</span>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="palette-card">
         <div class="palette-swatch" style="background-color: #EEFFE3"></div>
         <div class="palette-info">
           <div class="palette-hex">#EEFFE3</div>
@@ -2132,63 +2227,47 @@
       </div>
     
       <div class="palette-card">
-        <div class="palette-swatch" style="background-color: #E8C5A0"></div>
+        <div class="palette-swatch" style="background-color: #6E8E9E"></div>
         <div class="palette-info">
-          <div class="palette-hex">#E8C5A0</div>
+          <div class="palette-hex">#6E8E9E</div>
+          <div class="palette-usage-count">1 tokens</div>
+          <div class="palette-usage-list">
+            
+              <div class="palette-usage-item" title="General.INLAY_DEFAULT">
+                <span class="usage-lang-tag">General</span>
+                <span class="usage-label">Inlay Hints</span>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="palette-card">
+        <div class="palette-swatch" style="background-color: #567585"></div>
+        <div class="palette-info">
+          <div class="palette-hex">#567585</div>
+          <div class="palette-usage-count">1 tokens</div>
+          <div class="palette-usage-list">
+            
+              <div class="palette-usage-item" title="General.INLAY_TEXT_WITHOUT_BACKGROUND">
+                <span class="usage-lang-tag">General</span>
+                <span class="usage-label">Inlay Hints (no bg)</span>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    
+      <div class="palette-card">
+        <div class="palette-swatch" style="background-color: #E9CCAF"></div>
+        <div class="palette-info">
+          <div class="palette-hex">#E9CCAF</div>
           <div class="palette-usage-count">1 tokens</div>
           <div class="palette-usage-list">
             
               <div class="palette-usage-item" title="CSS.CSS.CLASS_NAME">
                 <span class="usage-lang-tag">CSS</span>
                 <span class="usage-label">Class Names</span>
-              </div>
-            
-          </div>
-        </div>
-      </div>
-    
-      <div class="palette-card">
-        <div class="palette-swatch" style="background-color: #F0B8A8"></div>
-        <div class="palette-info">
-          <div class="palette-hex">#F0B8A8</div>
-          <div class="palette-usage-count">1 tokens</div>
-          <div class="palette-usage-list">
-            
-              <div class="palette-usage-item" title="JavaScript.JS.THIS_SUPER">
-                <span class="usage-lang-tag">JavaScript</span>
-                <span class="usage-label">this/super</span>
-              </div>
-            
-          </div>
-        </div>
-      </div>
-    
-      <div class="palette-card">
-        <div class="palette-swatch" style="background-color: #DCC9D5"></div>
-        <div class="palette-info">
-          <div class="palette-hex">#DCC9D5</div>
-          <div class="palette-usage-count">1 tokens</div>
-          <div class="palette-usage-list">
-            
-              <div class="palette-usage-item" title="JavaScript.JS.NULL_UNDEFINED">
-                <span class="usage-lang-tag">JavaScript</span>
-                <span class="usage-label">null/undefined</span>
-              </div>
-            
-          </div>
-        </div>
-      </div>
-    
-      <div class="palette-card">
-        <div class="palette-swatch" style="background-color: #FFD97D"></div>
-        <div class="palette-info">
-          <div class="palette-hex">#FFD97D</div>
-          <div class="palette-usage-count">1 tokens</div>
-          <div class="palette-usage-list">
-            
-              <div class="palette-usage-item" title="TypeScript.TS.TYPE_PARAMETER">
-                <span class="usage-lang-tag">TypeScript</span>
-                <span class="usage-label">Type Parameters</span>
               </div>
             
           </div>
@@ -2224,10 +2303,10 @@
 
   <script>
     // Theme data
-    const themeData = {"allColors":["#009688","#03EDF9","#12404B","#1A1F29","#1ABC9C","#1B2529","#1B262B","#1E272C","#1E2A30","#219598","#252B39","#263238","#264B33","#293F45","#2A3F44","#2C403D","#2E3C43","#303C41","#314549","#32424A","#3498DB","#353746","#354039","#36F9F6","#37474F","#39ADB5","#3B4950","#3B514D","#411F7E","#412D31","#41454B","#415967","#425B67","#43698D","#447152","#475F63","#4A4D50","#4B1515","#4D4520","#4D6168","#4F6269","#536C46","#536D78","#546E7A","#5D4E1F","#5FB8AA","#607D86","#607D8B","#63C0EE","#646877","#656E76","#65737E","#6DC2B8","#6EC4BC","#6FD9E8","#7B9CE7","#808080","#80CBC4","#89B4F7","#89DDF7","#8DD9E6","#908B25","#90D89F","#9373A5","#939FA5","#9B59B6","#A2A2A2","#A7DBD8","#A8D7D1","#AB7967","#AEAE80","#B03435","#B0BEC5","#B2CCD6","#B8C5D0","#BD92EA","#BFA7FF","#C14360","#C3D3DE","#C3E887","#C4B3A3","#C7C8F5","#D0B8E0","#D9E6E6","#DBDBDB","#DCC9D5","#E5E1C0","#E67E22","#E74C3C","#E8A8A8","#E8C5A0","#EEFFE3","#F0B8A8","#F0E0C0","#F36E3A","#F39C12","#F3F349","#F49810","#F77669","#F8B4AB","#F8F8F0","#FC9867","#FF355B","#FF7597","#FF9CAC","#FFCC00","#FFD97D","#FFEB95","#FFFBF7","#FFFFFF"],"languageConfigs":{"General":{"DEFAULT_KEYWORD":{"label":"Keywords","description":"Language keywords (if, for, class, etc.)","foreground":"#BFA7FF","fontStyle":"italic"},"DEFAULT_STRING":{"label":"Strings","description":"String literals","foreground":"#90D89F","fontStyle":""},"DEFAULT_NUMBER":{"label":"Numbers","description":"Numeric literals","foreground":"#F0E0C0","fontStyle":""},"DEFAULT_OPERATION_SIGN":{"label":"Operators","description":"Operators (+, -, *, etc.)","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_LINE_COMMENT":{"label":"Line Comments","description":"Single-line comments (//)","foreground":"#546E7A","fontStyle":"italic"},"DEFAULT_BLOCK_COMMENT":{"label":"Block Comments","description":"Multi-line comments (/* */)","foreground":"#546E7A","fontStyle":"italic"},"DEFAULT_DOC_COMMENT":{"label":"Doc Comments","description":"Documentation comments (///)","foreground":"#546E7A","fontStyle":"italic"},"DEFAULT_CLASS_NAME":{"label":"Class Names","description":"Class identifiers","foreground":"#6EC4BC","fontStyle":""},"DEFAULT_INTERFACE_NAME":{"label":"Interface Names","description":"Interface identifiers","foreground":"#5FB8AA","fontStyle":"italic"},"DEFAULT_FUNCTION_DECLARATION":{"label":"Function Declarations","description":"Function definitions","foreground":"#89B4F7","fontStyle":""},"DEFAULT_FUNCTION_CALL":{"label":"Function Calls","description":"Function invocations","foreground":"#89B4F7","fontStyle":""},"DEFAULT_LOCAL_VARIABLE":{"label":"Local Variables","description":"Local variable names","foreground":"#EEFFE3","fontStyle":""},"DEFAULT_PARAMETER":{"label":"Parameters","description":"Function parameters","foreground":"#A7DBD8","fontStyle":""},"DEFAULT_INSTANCE_FIELD":{"label":"Instance Fields","description":"Object properties","foreground":"#D9E6E6","fontStyle":""},"DEFAULT_STATIC_FIELD":{"label":"Static Fields","description":"Static properties","foreground":"#D9E6E6","fontStyle":"italic"},"DEFAULT_INSTANCE_METHOD":{"label":"Instance Methods","description":"Object methods","foreground":"#7B9CE7","fontStyle":""},"DEFAULT_STATIC_METHOD":{"label":"Static Methods","description":"Static methods","foreground":"#7B9CE7","fontStyle":"italic"},"DEFAULT_BRACES":{"label":"Braces","description":"Curly braces { }","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_BRACKETS":{"label":"Brackets","description":"Square brackets [ ]","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_PARENTHS":{"label":"Parentheses","description":"Round brackets ( )","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_COMMA":{"label":"Commas","description":"Comma separators","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_DOT":{"label":"Dots","description":"Dot accessor","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_SEMICOLON":{"label":"Semicolons","description":"Statement terminators","foreground":"#F8B4AB","fontStyle":""}},"CSS":{"CSS.TAG_NAME":{"label":"Tag Selectors","description":"div, span, etc.","foreground":"#89B4F7","fontStyle":""},"CSS.CLASS_NAME":{"label":"Class Names","description":".className","foreground":"#E8C5A0","fontStyle":"italic"},"CSS.HASH":{"label":"IDs","description":"#id","foreground":"#89B4F7","fontStyle":""},"CSS.PSEUDO":{"label":"Pseudo Classes/Elements","description":":hover, ::before","foreground":"#BFA7FF","fontStyle":"italic"},"CSS.PROPERTY_NAME":{"label":"Property Names","description":"color, padding, etc.","foreground":"#80CBC4","fontStyle":""},"CSS.PROPERTY_VALUE":{"label":"Property Values","description":"Property values","foreground":"#90D89F","fontStyle":""},"CSS.FUNCTION":{"label":"Functions","description":"calc(), rgb(), etc.","foreground":"#7B9CE7","fontStyle":""}},"HTML":{"HTML_TAG_NAME":{"label":"Tag Names","description":"<div>, <span>","foreground":"#89B4F7","fontStyle":""},"DEFAULT_ATTRIBUTE":{"label":"Attribute Names","description":"class, id, src","foreground":"#80CBC4","fontStyle":"italic"}},"JavaScript":{"JS.THIS_SUPER":{"label":"this/super","description":"Special keywords","foreground":"#F0B8A8","fontStyle":""},"JS.NULL_UNDEFINED":{"label":"null/undefined","description":"Null values","foreground":"#DCC9D5","fontStyle":"italic"},"JS.MODULE_KEYWORD":{"label":"Module Keywords","description":"import, export","foreground":"#F8B4AB","fontStyle":"italic"},"JS.REGEXP":{"label":"Regular Expressions","description":"RegExp literals","foreground":"#90D89F","fontStyle":""}},"TypeScript":{"TS.TYPE_PARAMETER":{"label":"Type Parameters","description":"Generic type params <T>","foreground":"#FFD97D","fontStyle":""}},"JSON":{"JSON.PROPERTY_KEY":{"label":"Property Keys","description":"Object keys","foreground":"#80CBC4","fontStyle":""},"JSON.KEYWORD":{"label":"Keywords","description":"true, false, null","foreground":"#BFA7FF","fontStyle":"italic"}},"YAML":{"YAML_SCALAR_KEY":{"label":"Keys","description":"YAML keys","foreground":"#6EC4BC","fontStyle":""},"YAML_SCALAR_VALUE":{"label":"Values","description":"YAML values","foreground":"#90D89F","fontStyle":""}},"Markdown":{"MARKDOWN_HEADER_LEVEL_1":{"label":"Headers","description":"# Headers","foreground":"#BFA7FF","fontStyle":""},"MARKDOWN_BOLD":{"label":"Bold Text","description":"**bold**","foreground":"#6EC4BC","fontStyle":"bold"},"MARKDOWN_ITALIC":{"label":"Italic Text","description":"*italic*","foreground":"#80CBC4","fontStyle":"italic"},"MARKDOWN_STRIKETHROUGH":{"label":"Strikethrough","description":"~~strike~~","foreground":"#A7DBD8","fontStyle":""},"MARKDOWN_CODE_SPAN":{"label":"Inline Code","description":"`code`","foreground":"#89B4F7","fontStyle":"italic"},"MARKDOWN_BLOCK_QUOTE":{"label":"Block Quote","description":"> quote","foreground":"#7B9CE7","fontStyle":"italic"},"MARKDOWN_LINK_TEXT":{"label":"Link Text","description":"[text](url)","foreground":"#7B9CE7","fontStyle":""},"MARKDOWN_HRULE":{"label":"Horizontal Rule","description":"---","foreground":"#546E7A","fontStyle":""},"MARKDOWN_LIST_MARKER":{"label":"List Marker","description":"- or 1.","foreground":"#6EC4BC","fontStyle":"italic"}},"Bash":{"BASH.EXTERNAL_COMMAND":{"label":"Commands","description":"Shell commands","foreground":"#7B9CE7","fontStyle":"italic"}},"XML":{"XML_TAG_NAME":{"label":"Tag Names","description":"<tag>","foreground":"#89B4F7","fontStyle":""}},"C#":{"ReSharper.NAMESPACE_IDENTIFIER":{"label":"Namespaces","description":"Namespace names","foreground":"#80CBC4","fontStyle":""},"ReSharper.STRUCT_IDENTIFIER":{"label":"Structs","description":"C# Struct names","foreground":"#80CBC4","fontStyle":""},"ReSharper.ENUM_IDENTIFIER":{"label":"Enums","description":"Enum types","foreground":"#5FB8AA","fontStyle":""},"ENUM_CONST":{"label":"Enum Members","description":"Enum member values","foreground":"#5FB8AA","fontStyle":""},"ReSharper.DELEGATE_IDENTIFIER":{"label":"Delegates","description":"Delegate types","foreground":"#D0B8E0","fontStyle":"bold"},"CSHARP_OPERATOR_SIGN":{"label":"C# Operators","description":"C# specific operators","foreground":"#F8B4AB","fontStyle":""}},"SQL":{"SQL_KEYWORD":{"label":"SQL Keywords","description":"SELECT, FROM, WHERE, etc.","foreground":"#BFA7FF","fontStyle":"italic"},"SQL_STRING":{"label":"SQL Strings","description":"'string'","foreground":"#90D89F","fontStyle":""},"SQL_NUMBER":{"label":"SQL Numbers","description":"123","foreground":"#F0E0C0","fontStyle":""},"SQL_COMMENT":{"label":"SQL Comments","description":"-- single line or /* multi-line */","foreground":"#546E7A","fontStyle":"italic"}}}};
+    const themeData = {"allColors":["#009688","#03EDF9","#12404B","#1A1F29","#1ABC9C","#1B2529","#1B262B","#1E272C","#1E2A30","#219598","#252B39","#263238","#264B33","#293F45","#2A3F44","#2C403D","#2E3C43","#303C41","#314549","#32424A","#3498DB","#353746","#354039","#36F9F6","#37474F","#3B4950","#3B514D","#411F7E","#412D31","#41454B","#415967","#425B67","#43698D","#447152","#475F63","#4A4D50","#4B1515","#4D4520","#4D6168","#4F6269","#536C46","#536D78","#546E7A","#567585","#5D4E1F","#5FB8AA","#607D86","#607D8B","#63C0EE","#646877","#656E76","#65737E","#6DC2B8","#6E8E9E","#6EC4BC","#808080","#80CBC4","#89B4F7","#89DDF7","#8AAABB","#8DD9E6","#908B25","#90D89F","#9373A5","#939FA5","#9B59B6","#A2A2A2","#A7DBD8","#A8D7D1","#AB7967","#AEAE80","#B03435","#B2CCD6","#B8C5D0","#BD92EA","#C14360","#C3D3DE","#C3E887","#C4B3A3","#C4B3F4","#C7C8F5","#D0B8E0","#D9E6E6","#DBDBDB","#E5E1C0","#E67E22","#E6B858","#E74C3C","#E8A8A8","#E9CCAF","#EAD2A4","#EEFFE3","#F0B8A8","#F0E0C0","#F36E3A","#F39C12","#F3F349","#F49810","#F77669","#F8B4AB","#F8F8F0","#FC9867","#FF355B","#FF7597","#FF9CAC","#FFCC00","#FFEB95","#FFFBF7","#FFFFFF"],"languageConfigs":{"General":{"DEFAULT_KEYWORD":{"label":"Keywords","description":"Language keywords (if, for, class, etc.)","foreground":"#C4B3F4","fontStyle":"italic"},"DEFAULT_STRING":{"label":"Strings","description":"String literals","foreground":"#90D89F","fontStyle":""},"DEFAULT_NUMBER":{"label":"Numbers","description":"Numeric literals","foreground":"#EAD2A4","fontStyle":""},"DEFAULT_OPERATION_SIGN":{"label":"Operators","description":"Operators (+, -, *, etc.)","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_LINE_COMMENT":{"label":"Line Comments","description":"Single-line comments (//)","foreground":"#546E7A","fontStyle":"italic"},"DEFAULT_BLOCK_COMMENT":{"label":"Block Comments","description":"Multi-line comments (/* */)","foreground":"#546E7A","fontStyle":"italic"},"DEFAULT_DOC_COMMENT":{"label":"Doc Comments","description":"Documentation comments (///)","foreground":"#546E7A","fontStyle":"italic"},"DEFAULT_CLASS_NAME":{"label":"Class Names","description":"Class identifiers","foreground":"#6EC4BC","fontStyle":""},"DEFAULT_INTERFACE_NAME":{"label":"Interface Names","description":"Interface identifiers","foreground":"#5FB8AA","fontStyle":"italic"},"DEFAULT_FUNCTION_DECLARATION":{"label":"Function Declarations","description":"Function definitions","foreground":"#89B4F7","fontStyle":""},"DEFAULT_FUNCTION_CALL":{"label":"Function Calls","description":"Function invocations","foreground":"#89B4F7","fontStyle":""},"DEFAULT_LOCAL_VARIABLE":{"label":"Local Variables","description":"Local variable names","foreground":"#EEFFE3","fontStyle":""},"DEFAULT_PARAMETER":{"label":"Parameters","description":"Function parameters","foreground":"#A7DBD8","fontStyle":""},"DEFAULT_INSTANCE_FIELD":{"label":"Instance Fields","description":"Object properties","foreground":"#D9E6E6","fontStyle":""},"DEFAULT_STATIC_FIELD":{"label":"Static Fields","description":"Static properties","foreground":"#D9E6E6","fontStyle":"italic"},"DEFAULT_INSTANCE_METHOD":{"label":"Instance Methods","description":"Object methods","foreground":"#89B4F7","fontStyle":""},"DEFAULT_STATIC_METHOD":{"label":"Static Methods","description":"Static methods","foreground":"#89B4F7","fontStyle":"italic"},"INLAY_DEFAULT":{"label":"Inlay Hints","description":"Inline type hints (e.g. var type annotations, LINQ return types)","foreground":"#6E8E9E","fontStyle":""},"INLAY_TEXT_WITHOUT_BACKGROUND":{"label":"Inlay Hints (no bg)","description":"Inline hints rendered without a background pill","foreground":"#567585","fontStyle":""},"DEFAULT_BRACES":{"label":"Braces","description":"Curly braces { }","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_BRACKETS":{"label":"Brackets","description":"Square brackets [ ]","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_PARENTHS":{"label":"Parentheses","description":"Round brackets ( )","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_COMMA":{"label":"Commas","description":"Comma separators","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_DOT":{"label":"Dots","description":"Dot accessor","foreground":"#F8B4AB","fontStyle":""},"DEFAULT_SEMICOLON":{"label":"Semicolons","description":"Statement terminators","foreground":"#F8B4AB","fontStyle":""}},"CSS":{"CSS.TAG_NAME":{"label":"Tag Selectors","description":"div, span, etc.","foreground":"#89B4F7","fontStyle":""},"CSS.CLASS_NAME":{"label":"Class Names","description":".className","foreground":"#E9CCAF","fontStyle":"italic"},"CSS.HASH":{"label":"IDs","description":"#id","foreground":"#89B4F7","fontStyle":""},"CSS.PSEUDO":{"label":"Pseudo Classes/Elements","description":":hover, ::before","foreground":"#C4B3F4","fontStyle":"italic"},"CSS.PROPERTY_NAME":{"label":"Property Names","description":"color, padding, etc.","foreground":"#80CBC4","fontStyle":""},"CSS.PROPERTY_VALUE":{"label":"Property Values","description":"Property values","foreground":"#90D89F","fontStyle":""},"CSS.FUNCTION":{"label":"Functions","description":"calc(), rgb(), etc.","foreground":"#89B4F7","fontStyle":""}},"HTML":{"HTML_TAG_NAME":{"label":"Tag Names","description":"<div>, <span>","foreground":"#89B4F7","fontStyle":""},"DEFAULT_ATTRIBUTE":{"label":"Attribute Names","description":"class, id, src","foreground":"#80CBC4","fontStyle":"italic"}},"JavaScript":{"JS.THIS_SUPER":{"label":"this/super","description":"Special keywords","foreground":"#F0B8A8","fontStyle":""},"JS.NULL_UNDEFINED":{"label":"null/undefined","description":"Null values","foreground":"#F0B8A8","fontStyle":"italic"},"JS.MODULE_KEYWORD":{"label":"Module Keywords","description":"import, export","foreground":"#F8B4AB","fontStyle":"italic"},"JS.REGEXP":{"label":"Regular Expressions","description":"RegExp literals","foreground":"#90D89F","fontStyle":""}},"TypeScript":{"TS.TYPE_PARAMETER":{"label":"Type Parameters","description":"Generic type params <T>","foreground":"#EAD2A4","fontStyle":""}},"JSON":{"JSON.PROPERTY_KEY":{"label":"Property Keys","description":"Object keys","foreground":"#80CBC4","fontStyle":""},"JSON.KEYWORD":{"label":"Keywords","description":"true, false, null","foreground":"#C4B3F4","fontStyle":"italic"}},"YAML":{"YAML_SCALAR_KEY":{"label":"Keys","description":"YAML keys","foreground":"#6EC4BC","fontStyle":""},"YAML_SCALAR_VALUE":{"label":"Values","description":"YAML values","foreground":"#90D89F","fontStyle":""}},"Markdown":{"MARKDOWN_HEADER_LEVEL_1":{"label":"Headers","description":"# Headers","foreground":"#C4B3F4","fontStyle":""},"MARKDOWN_BOLD":{"label":"Bold Text","description":"**bold**","foreground":"#6EC4BC","fontStyle":"bold"},"MARKDOWN_ITALIC":{"label":"Italic Text","description":"*italic*","foreground":"#80CBC4","fontStyle":"italic"},"MARKDOWN_STRIKETHROUGH":{"label":"Strikethrough","description":"~~strike~~","foreground":"#A7DBD8","fontStyle":""},"MARKDOWN_CODE_SPAN":{"label":"Inline Code","description":"`code`","foreground":"#89B4F7","fontStyle":"italic"},"MARKDOWN_BLOCK_QUOTE":{"label":"Block Quote","description":"> quote","foreground":"#89B4F7","fontStyle":"italic"},"MARKDOWN_LINK_TEXT":{"label":"Link Text","description":"[text](url)","foreground":"#89B4F7","fontStyle":""},"MARKDOWN_HRULE":{"label":"Horizontal Rule","description":"---","foreground":"#546E7A","fontStyle":""},"MARKDOWN_LIST_MARKER":{"label":"List Marker","description":"- or 1.","foreground":"#6EC4BC","fontStyle":"italic"}},"Bash":{"BASH.EXTERNAL_COMMAND":{"label":"Commands","description":"Shell commands","foreground":"#89B4F7","fontStyle":"italic"}},"XML":{"XML_TAG_NAME":{"label":"Tag Names","description":"<tag>","foreground":"#89B4F7","fontStyle":""}},"C#":{"ReSharper.NAMESPACE_IDENTIFIER":{"label":"Namespaces","description":"Namespace names","foreground":"#80CBC4","fontStyle":""},"ReSharper.STRUCT_IDENTIFIER":{"label":"Structs","description":"C# Struct names","foreground":"#80CBC4","fontStyle":""},"ReSharper.ENUM_IDENTIFIER":{"label":"Enums","description":"Enum types","foreground":"#5FB8AA","fontStyle":""},"ENUM_CONST":{"label":"Enum Members","description":"Enum member values","foreground":"#5FB8AA","fontStyle":""},"ReSharper.DELEGATE_IDENTIFIER":{"label":"Delegates","description":"Delegate types","foreground":"#D0B8E0","fontStyle":"bold"},"CSHARP_OPERATOR_SIGN":{"label":"C# Operators","description":"C# specific operators","foreground":"#F8B4AB","fontStyle":""}},"SQL":{"SQL_KEYWORD":{"label":"SQL Keywords","description":"SELECT, FROM, WHERE, etc.","foreground":"#C4B3F4","fontStyle":"italic"},"SQL_STRING":{"label":"SQL Strings","description":"'string'","foreground":"#90D89F","fontStyle":""},"SQL_NUMBER":{"label":"SQL Numbers","description":"123","foreground":"#EAD2A4","fontStyle":""},"SQL_COMMENT":{"label":"SQL Comments","description":"-- single line or /* multi-line */","foreground":"#546E7A","fontStyle":"italic"}}}};
 
     // Color usage map: which tokens use each color
-    const colorUsageMap = {"#BFA7FF":[{"lang":"General","key":"DEFAULT_KEYWORD","label":"Keywords","fullLabel":"Keywords"},{"lang":"CSS","key":"CSS.PSEUDO","label":"Pseudo Classes/Elements","fullLabel":"CSS: Pseudo Classes/Elements"},{"lang":"JSON","key":"JSON.KEYWORD","label":"Keywords","fullLabel":"JSON: Keywords"},{"lang":"Markdown","key":"MARKDOWN_HEADER_LEVEL_1","label":"Headers","fullLabel":"Markdown: Headers"},{"lang":"SQL","key":"SQL_KEYWORD","label":"SQL Keywords","fullLabel":"SQL: SQL Keywords"}],"#90D89F":[{"lang":"General","key":"DEFAULT_STRING","label":"Strings","fullLabel":"Strings"},{"lang":"CSS","key":"CSS.PROPERTY_VALUE","label":"Property Values","fullLabel":"CSS: Property Values"},{"lang":"JavaScript","key":"JS.REGEXP","label":"Regular Expressions","fullLabel":"JavaScript: Regular Expressions"},{"lang":"YAML","key":"YAML_SCALAR_VALUE","label":"Values","fullLabel":"YAML: Values"},{"lang":"SQL","key":"SQL_STRING","label":"SQL Strings","fullLabel":"SQL: SQL Strings"}],"#F0E0C0":[{"lang":"General","key":"DEFAULT_NUMBER","label":"Numbers","fullLabel":"Numbers"},{"lang":"SQL","key":"SQL_NUMBER","label":"SQL Numbers","fullLabel":"SQL: SQL Numbers"}],"#F8B4AB":[{"lang":"General","key":"DEFAULT_OPERATION_SIGN","label":"Operators","fullLabel":"Operators"},{"lang":"General","key":"DEFAULT_BRACES","label":"Braces","fullLabel":"Braces"},{"lang":"General","key":"DEFAULT_BRACKETS","label":"Brackets","fullLabel":"Brackets"},{"lang":"General","key":"DEFAULT_PARENTHS","label":"Parentheses","fullLabel":"Parentheses"},{"lang":"General","key":"DEFAULT_COMMA","label":"Commas","fullLabel":"Commas"},{"lang":"General","key":"DEFAULT_DOT","label":"Dots","fullLabel":"Dots"},{"lang":"General","key":"DEFAULT_SEMICOLON","label":"Semicolons","fullLabel":"Semicolons"},{"lang":"JavaScript","key":"JS.MODULE_KEYWORD","label":"Module Keywords","fullLabel":"JavaScript: Module Keywords"},{"lang":"C#","key":"CSHARP_OPERATOR_SIGN","label":"C# Operators","fullLabel":"C#: C# Operators"}],"#546E7A":[{"lang":"General","key":"DEFAULT_LINE_COMMENT","label":"Line Comments","fullLabel":"Line Comments"},{"lang":"General","key":"DEFAULT_BLOCK_COMMENT","label":"Block Comments","fullLabel":"Block Comments"},{"lang":"General","key":"DEFAULT_DOC_COMMENT","label":"Doc Comments","fullLabel":"Doc Comments"},{"lang":"Markdown","key":"MARKDOWN_HRULE","label":"Horizontal Rule","fullLabel":"Markdown: Horizontal Rule"},{"lang":"SQL","key":"SQL_COMMENT","label":"SQL Comments","fullLabel":"SQL: SQL Comments"}],"#6EC4BC":[{"lang":"General","key":"DEFAULT_CLASS_NAME","label":"Class Names","fullLabel":"Class Names"},{"lang":"YAML","key":"YAML_SCALAR_KEY","label":"Keys","fullLabel":"YAML: Keys"},{"lang":"Markdown","key":"MARKDOWN_BOLD","label":"Bold Text","fullLabel":"Markdown: Bold Text"},{"lang":"Markdown","key":"MARKDOWN_LIST_MARKER","label":"List Marker","fullLabel":"Markdown: List Marker"}],"#5FB8AA":[{"lang":"General","key":"DEFAULT_INTERFACE_NAME","label":"Interface Names","fullLabel":"Interface Names"},{"lang":"C#","key":"ReSharper.ENUM_IDENTIFIER","label":"Enums","fullLabel":"C#: Enums"},{"lang":"C#","key":"ENUM_CONST","label":"Enum Members","fullLabel":"C#: Enum Members"}],"#89B4F7":[{"lang":"General","key":"DEFAULT_FUNCTION_DECLARATION","label":"Function Declarations","fullLabel":"Function Declarations"},{"lang":"General","key":"DEFAULT_FUNCTION_CALL","label":"Function Calls","fullLabel":"Function Calls"},{"lang":"CSS","key":"CSS.TAG_NAME","label":"Tag Selectors","fullLabel":"CSS: Tag Selectors"},{"lang":"CSS","key":"CSS.HASH","label":"IDs","fullLabel":"CSS: IDs"},{"lang":"HTML","key":"HTML_TAG_NAME","label":"Tag Names","fullLabel":"HTML: Tag Names"},{"lang":"Markdown","key":"MARKDOWN_CODE_SPAN","label":"Inline Code","fullLabel":"Markdown: Inline Code"},{"lang":"XML","key":"XML_TAG_NAME","label":"Tag Names","fullLabel":"XML: Tag Names"}],"#EEFFE3":[{"lang":"General","key":"DEFAULT_LOCAL_VARIABLE","label":"Local Variables","fullLabel":"Local Variables"}],"#A7DBD8":[{"lang":"General","key":"DEFAULT_PARAMETER","label":"Parameters","fullLabel":"Parameters"},{"lang":"Markdown","key":"MARKDOWN_STRIKETHROUGH","label":"Strikethrough","fullLabel":"Markdown: Strikethrough"}],"#D9E6E6":[{"lang":"General","key":"DEFAULT_INSTANCE_FIELD","label":"Instance Fields","fullLabel":"Instance Fields"},{"lang":"General","key":"DEFAULT_STATIC_FIELD","label":"Static Fields","fullLabel":"Static Fields"}],"#7B9CE7":[{"lang":"General","key":"DEFAULT_INSTANCE_METHOD","label":"Instance Methods","fullLabel":"Instance Methods"},{"lang":"General","key":"DEFAULT_STATIC_METHOD","label":"Static Methods","fullLabel":"Static Methods"},{"lang":"CSS","key":"CSS.FUNCTION","label":"Functions","fullLabel":"CSS: Functions"},{"lang":"Markdown","key":"MARKDOWN_BLOCK_QUOTE","label":"Block Quote","fullLabel":"Markdown: Block Quote"},{"lang":"Markdown","key":"MARKDOWN_LINK_TEXT","label":"Link Text","fullLabel":"Markdown: Link Text"},{"lang":"Bash","key":"BASH.EXTERNAL_COMMAND","label":"Commands","fullLabel":"Bash: Commands"}],"#E8C5A0":[{"lang":"CSS","key":"CSS.CLASS_NAME","label":"Class Names","fullLabel":"CSS: Class Names"}],"#80CBC4":[{"lang":"CSS","key":"CSS.PROPERTY_NAME","label":"Property Names","fullLabel":"CSS: Property Names"},{"lang":"HTML","key":"DEFAULT_ATTRIBUTE","label":"Attribute Names","fullLabel":"HTML: Attribute Names"},{"lang":"JSON","key":"JSON.PROPERTY_KEY","label":"Property Keys","fullLabel":"JSON: Property Keys"},{"lang":"Markdown","key":"MARKDOWN_ITALIC","label":"Italic Text","fullLabel":"Markdown: Italic Text"},{"lang":"C#","key":"ReSharper.NAMESPACE_IDENTIFIER","label":"Namespaces","fullLabel":"C#: Namespaces"},{"lang":"C#","key":"ReSharper.STRUCT_IDENTIFIER","label":"Structs","fullLabel":"C#: Structs"}],"#F0B8A8":[{"lang":"JavaScript","key":"JS.THIS_SUPER","label":"this/super","fullLabel":"JavaScript: this/super"}],"#DCC9D5":[{"lang":"JavaScript","key":"JS.NULL_UNDEFINED","label":"null/undefined","fullLabel":"JavaScript: null/undefined"}],"#FFD97D":[{"lang":"TypeScript","key":"TS.TYPE_PARAMETER","label":"Type Parameters","fullLabel":"TypeScript: Type Parameters"}],"#D0B8E0":[{"lang":"C#","key":"ReSharper.DELEGATE_IDENTIFIER","label":"Delegates","fullLabel":"C#: Delegates"}]};
+    const colorUsageMap = {"#C4B3F4":[{"lang":"General","key":"DEFAULT_KEYWORD","label":"Keywords","fullLabel":"Keywords"},{"lang":"CSS","key":"CSS.PSEUDO","label":"Pseudo Classes/Elements","fullLabel":"CSS: Pseudo Classes/Elements"},{"lang":"JSON","key":"JSON.KEYWORD","label":"Keywords","fullLabel":"JSON: Keywords"},{"lang":"Markdown","key":"MARKDOWN_HEADER_LEVEL_1","label":"Headers","fullLabel":"Markdown: Headers"},{"lang":"SQL","key":"SQL_KEYWORD","label":"SQL Keywords","fullLabel":"SQL: SQL Keywords"}],"#90D89F":[{"lang":"General","key":"DEFAULT_STRING","label":"Strings","fullLabel":"Strings"},{"lang":"CSS","key":"CSS.PROPERTY_VALUE","label":"Property Values","fullLabel":"CSS: Property Values"},{"lang":"JavaScript","key":"JS.REGEXP","label":"Regular Expressions","fullLabel":"JavaScript: Regular Expressions"},{"lang":"YAML","key":"YAML_SCALAR_VALUE","label":"Values","fullLabel":"YAML: Values"},{"lang":"SQL","key":"SQL_STRING","label":"SQL Strings","fullLabel":"SQL: SQL Strings"}],"#EAD2A4":[{"lang":"General","key":"DEFAULT_NUMBER","label":"Numbers","fullLabel":"Numbers"},{"lang":"TypeScript","key":"TS.TYPE_PARAMETER","label":"Type Parameters","fullLabel":"TypeScript: Type Parameters"},{"lang":"SQL","key":"SQL_NUMBER","label":"SQL Numbers","fullLabel":"SQL: SQL Numbers"}],"#F8B4AB":[{"lang":"General","key":"DEFAULT_OPERATION_SIGN","label":"Operators","fullLabel":"Operators"},{"lang":"General","key":"DEFAULT_BRACES","label":"Braces","fullLabel":"Braces"},{"lang":"General","key":"DEFAULT_BRACKETS","label":"Brackets","fullLabel":"Brackets"},{"lang":"General","key":"DEFAULT_PARENTHS","label":"Parentheses","fullLabel":"Parentheses"},{"lang":"General","key":"DEFAULT_COMMA","label":"Commas","fullLabel":"Commas"},{"lang":"General","key":"DEFAULT_DOT","label":"Dots","fullLabel":"Dots"},{"lang":"General","key":"DEFAULT_SEMICOLON","label":"Semicolons","fullLabel":"Semicolons"},{"lang":"JavaScript","key":"JS.MODULE_KEYWORD","label":"Module Keywords","fullLabel":"JavaScript: Module Keywords"},{"lang":"C#","key":"CSHARP_OPERATOR_SIGN","label":"C# Operators","fullLabel":"C#: C# Operators"}],"#546E7A":[{"lang":"General","key":"DEFAULT_LINE_COMMENT","label":"Line Comments","fullLabel":"Line Comments"},{"lang":"General","key":"DEFAULT_BLOCK_COMMENT","label":"Block Comments","fullLabel":"Block Comments"},{"lang":"General","key":"DEFAULT_DOC_COMMENT","label":"Doc Comments","fullLabel":"Doc Comments"},{"lang":"Markdown","key":"MARKDOWN_HRULE","label":"Horizontal Rule","fullLabel":"Markdown: Horizontal Rule"},{"lang":"SQL","key":"SQL_COMMENT","label":"SQL Comments","fullLabel":"SQL: SQL Comments"}],"#6EC4BC":[{"lang":"General","key":"DEFAULT_CLASS_NAME","label":"Class Names","fullLabel":"Class Names"},{"lang":"YAML","key":"YAML_SCALAR_KEY","label":"Keys","fullLabel":"YAML: Keys"},{"lang":"Markdown","key":"MARKDOWN_BOLD","label":"Bold Text","fullLabel":"Markdown: Bold Text"},{"lang":"Markdown","key":"MARKDOWN_LIST_MARKER","label":"List Marker","fullLabel":"Markdown: List Marker"}],"#5FB8AA":[{"lang":"General","key":"DEFAULT_INTERFACE_NAME","label":"Interface Names","fullLabel":"Interface Names"},{"lang":"C#","key":"ReSharper.ENUM_IDENTIFIER","label":"Enums","fullLabel":"C#: Enums"},{"lang":"C#","key":"ENUM_CONST","label":"Enum Members","fullLabel":"C#: Enum Members"}],"#89B4F7":[{"lang":"General","key":"DEFAULT_FUNCTION_DECLARATION","label":"Function Declarations","fullLabel":"Function Declarations"},{"lang":"General","key":"DEFAULT_FUNCTION_CALL","label":"Function Calls","fullLabel":"Function Calls"},{"lang":"General","key":"DEFAULT_INSTANCE_METHOD","label":"Instance Methods","fullLabel":"Instance Methods"},{"lang":"General","key":"DEFAULT_STATIC_METHOD","label":"Static Methods","fullLabel":"Static Methods"},{"lang":"CSS","key":"CSS.TAG_NAME","label":"Tag Selectors","fullLabel":"CSS: Tag Selectors"},{"lang":"CSS","key":"CSS.HASH","label":"IDs","fullLabel":"CSS: IDs"},{"lang":"CSS","key":"CSS.FUNCTION","label":"Functions","fullLabel":"CSS: Functions"},{"lang":"HTML","key":"HTML_TAG_NAME","label":"Tag Names","fullLabel":"HTML: Tag Names"},{"lang":"Markdown","key":"MARKDOWN_CODE_SPAN","label":"Inline Code","fullLabel":"Markdown: Inline Code"},{"lang":"Markdown","key":"MARKDOWN_BLOCK_QUOTE","label":"Block Quote","fullLabel":"Markdown: Block Quote"},{"lang":"Markdown","key":"MARKDOWN_LINK_TEXT","label":"Link Text","fullLabel":"Markdown: Link Text"},{"lang":"Bash","key":"BASH.EXTERNAL_COMMAND","label":"Commands","fullLabel":"Bash: Commands"},{"lang":"XML","key":"XML_TAG_NAME","label":"Tag Names","fullLabel":"XML: Tag Names"}],"#EEFFE3":[{"lang":"General","key":"DEFAULT_LOCAL_VARIABLE","label":"Local Variables","fullLabel":"Local Variables"}],"#A7DBD8":[{"lang":"General","key":"DEFAULT_PARAMETER","label":"Parameters","fullLabel":"Parameters"},{"lang":"Markdown","key":"MARKDOWN_STRIKETHROUGH","label":"Strikethrough","fullLabel":"Markdown: Strikethrough"}],"#D9E6E6":[{"lang":"General","key":"DEFAULT_INSTANCE_FIELD","label":"Instance Fields","fullLabel":"Instance Fields"},{"lang":"General","key":"DEFAULT_STATIC_FIELD","label":"Static Fields","fullLabel":"Static Fields"}],"#6E8E9E":[{"lang":"General","key":"INLAY_DEFAULT","label":"Inlay Hints","fullLabel":"Inlay Hints"}],"#567585":[{"lang":"General","key":"INLAY_TEXT_WITHOUT_BACKGROUND","label":"Inlay Hints (no bg)","fullLabel":"Inlay Hints (no bg)"}],"#E9CCAF":[{"lang":"CSS","key":"CSS.CLASS_NAME","label":"Class Names","fullLabel":"CSS: Class Names"}],"#80CBC4":[{"lang":"CSS","key":"CSS.PROPERTY_NAME","label":"Property Names","fullLabel":"CSS: Property Names"},{"lang":"HTML","key":"DEFAULT_ATTRIBUTE","label":"Attribute Names","fullLabel":"HTML: Attribute Names"},{"lang":"JSON","key":"JSON.PROPERTY_KEY","label":"Property Keys","fullLabel":"JSON: Property Keys"},{"lang":"Markdown","key":"MARKDOWN_ITALIC","label":"Italic Text","fullLabel":"Markdown: Italic Text"},{"lang":"C#","key":"ReSharper.NAMESPACE_IDENTIFIER","label":"Namespaces","fullLabel":"C#: Namespaces"},{"lang":"C#","key":"ReSharper.STRUCT_IDENTIFIER","label":"Structs","fullLabel":"C#: Structs"}],"#F0B8A8":[{"lang":"JavaScript","key":"JS.THIS_SUPER","label":"this/super","fullLabel":"JavaScript: this/super"},{"lang":"JavaScript","key":"JS.NULL_UNDEFINED","label":"null/undefined","fullLabel":"JavaScript: null/undefined"}],"#D0B8E0":[{"lang":"C#","key":"ReSharper.DELEGATE_IDENTIFIER","label":"Delegates","fullLabel":"C#: Delegates"}]};
 
     // Map preview language IDs to config language keys
     const PREVIEW_TO_CONFIG_MAP = {

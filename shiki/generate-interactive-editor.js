@@ -69,6 +69,90 @@ async function generateEditor() {
       return `<span data-token="${tokenKey}" ${otherAttrs}style="${preStyle}color: var(--token-${tokenKey})${postStyle}"`;
     });
 
+    // Inject inlay hint demo block into C# preview
+    if (lang === 'csharp') {
+      const inlayDemoHtml = `
+      <div style="
+        margin: 0;
+        padding: 12px 24px 0;
+        font-size: 12px;
+        color: #546e7a;
+        font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+        border-bottom: 1px solid #37474f;
+        background: #263238;
+      ">
+        <span style="font-size: 11px; color: #37474f; text-transform: uppercase; letter-spacing: 1px;">Inlay Hint Preview</span>
+      </div>
+      <div style="
+        margin: 0;
+        padding: 12px 24px 16px;
+        font-size: 13px;
+        line-height: 2;
+        font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+        background: #263238;
+        border-bottom: 2px solid #37474f;
+      ">
+        <span style="color: var(--token-DEFAULT_KEYWORD)">var</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> slackUserIds</span>
+        <span class="inlay-hint-demo" data-token="INLAY_DEFAULT" style="
+          color: var(--token-INLAY_DEFAULT);
+          background: #1e272c60;
+          border-radius: 3px;
+          padding: 0 3px;
+          font-size: 0.85em;
+        "> :List&lt;int?&gt;</span>
+        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> recipients</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_FUNCTION_CALL)">Select</span>
+        <span style="color: var(--token-DEFAULT_PARENTHS)">(</span>
+        <span style="color: var(--token-DEFAULT_PARAMETER)">r</span>
+        <span class="inlay-hint-demo" data-token="INLAY_DEFAULT" style="
+          color: var(--token-INLAY_DEFAULT);
+          background: #1e272c60;
+          border-radius: 3px;
+          padding: 0 3px;
+          font-size: 0.85em;
+        "> :UserRecipient</span>
+        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =&gt;</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> r</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_INSTANCE_FIELD)">UserId</span>
+        <span style="color: var(--token-DEFAULT_PARENTHS)">)</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_FUNCTION_CALL)">ToList</span>
+        <span style="color: var(--token-DEFAULT_PARENTHS)">()</span>
+        <span style="color: var(--token-DEFAULT_SEMICOLON)">;</span>
+        <span style="color: var(--token-DEFAULT_LINE_COMMENT)"> // INLAY_DEFAULT — with background pill</span>
+        <br>
+        <span style="color: var(--token-DEFAULT_KEYWORD)">var</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> results</span>
+        <span class="inlay-hint-demo" data-token="INLAY_TEXT_WITHOUT_BACKGROUND" style="
+          color: var(--token-INLAY_TEXT_WITHOUT_BACKGROUND);
+          font-size: 0.85em;
+          padding: 0 2px;
+        "> :IQueryable&lt;Notification&gt;</span>
+        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> db</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_INSTANCE_FIELD)">Notifications</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_FUNCTION_CALL)">Where</span>
+        <span style="color: var(--token-DEFAULT_PARENTHS)">(</span>
+        <span style="color: var(--token-DEFAULT_PARAMETER)">x</span>
+        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =&gt;</span>
+        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> x</span>
+        <span style="color: var(--token-DEFAULT_DOT)">.</span>
+        <span style="color: var(--token-DEFAULT_INSTANCE_FIELD)">IsRead</span>
+        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> ==</span>
+        <span style="color: var(--token-DEFAULT_KEYWORD)"> false</span>
+        <span style="color: var(--token-DEFAULT_PARENTHS)">)</span>
+        <span style="color: var(--token-DEFAULT_SEMICOLON)">;</span>
+        <span style="color: var(--token-DEFAULT_LINE_COMMENT)"> // INLAY_TEXT_WITHOUT_BACKGROUND — no pill</span>
+      </div>`;
+      html = inlayDemoHtml + html;
+    }
+
     initialPreviews[lang] = html;
   }
 
