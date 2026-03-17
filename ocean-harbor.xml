@@ -941,9 +941,9 @@
     </option>
     <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="fffbf7" />
-        <option name="BACKGROUND" value="9688" />
-        <option name="ERROR_STRIPE_COLOR" value="9688" />
+        <option name="EFFECT_COLOR" value="3d6070" />
+        <option name="EFFECT_TYPE" value="0" />
+        <option name="ERROR_STRIPE_COLOR" value="3d6070" />
       </value>
     </option>
     <option name="IGNORE.BRACKET">
@@ -1996,7 +1996,8 @@
     </option>
     <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
-        <option name="BACKGROUND" value="4a4d50" />
+        <option name="EFFECT_COLOR" value="4a5f6a" />
+        <option name="EFFECT_TYPE" value="0" />
         <option name="ERROR_STRIPE_COLOR" value="4d6168" />
       </value>
     </option>
