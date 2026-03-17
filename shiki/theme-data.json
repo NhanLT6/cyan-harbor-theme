@@ -44,6 +44,7 @@
     "#536D78",
     "#546E7A",
     "#567585",
+    "#5CBCB3",
     "#5D4E1F",
     "#5FB8AA",
     "#607D86",
@@ -60,6 +61,7 @@
     "#89B4F7",
     "#89DDF7",
     "#8AAABB",
+    "#8DD0BE",
     "#8DD9E6",
     "#908B25",
     "#90D89F",
@@ -74,6 +76,7 @@
     "#B03435",
     "#B2CCD6",
     "#B8C5D0",
+    "#BCD8C2",
     "#BD92EA",
     "#C14360",
     "#C3D3DE",
@@ -84,13 +87,12 @@
     "#D0B8E0",
     "#D9E6E6",
     "#DBDBDB",
-    "#E5E1C0",
+    "#E3DE88",
     "#E67E22",
     "#E6B858",
     "#E74C3C",
     "#E8A8A8",
     "#E9CCAF",
-    "#EAD2A4",
     "#EEFFE3",
     "#F0B8A8",
     "#F0E0C0",
@@ -127,7 +129,7 @@
       "DEFAULT_NUMBER": {
         "label": "Numbers",
         "description": "Numeric literals",
-        "foreground": "#EAD2A4",
+        "foreground": "#E3DE88",
         "fontStyle": ""
       },
       "DEFAULT_OPERATION_SIGN": {
@@ -181,7 +183,7 @@
       "DEFAULT_LOCAL_VARIABLE": {
         "label": "Local Variables",
         "description": "Local variable names",
-        "foreground": "#EEFFE3",
+        "foreground": "#BCD8C2",
         "fontStyle": ""
       },
       "DEFAULT_PARAMETER": {
@@ -351,7 +353,7 @@
       "TS.TYPE_PARAMETER": {
         "label": "Type Parameters",
         "description": "Generic type params <T>",
-        "foreground": "#EAD2A4",
+        "foreground": "#E3DE88",
         "fontStyle": ""
       }
     },
@@ -471,13 +473,13 @@
       "ReSharper.ENUM_IDENTIFIER": {
         "label": "Enums",
         "description": "Enum types",
-        "foreground": "#5FB8AA",
+        "foreground": "#5CBCB3",
         "fontStyle": ""
       },
       "ENUM_CONST": {
         "label": "Enum Members",
         "description": "Enum member values",
-        "foreground": "#5FB8AA",
+        "foreground": "#5CBCB3",
         "fontStyle": ""
       },
       "ReSharper.DELEGATE_IDENTIFIER": {
@@ -509,7 +511,7 @@
       "SQL_NUMBER": {
         "label": "SQL Numbers",
         "description": "123",
-        "foreground": "#EAD2A4",
+        "foreground": "#E3DE88",
         "fontStyle": ""
       },
       "SQL_COMMENT": {
