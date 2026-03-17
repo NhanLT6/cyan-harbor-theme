@@ -46,8 +46,8 @@
     <option name="DIAGRAM_COARSE_GRID" value="546E7A" />
     <option name="DIAGRAM_DEFAULT_EDGE" value="b8c5d0" />
     <option name="DIAGRAM_FINE_GRID" value="37474F" />
-    <option name="DIAGRAM_GENERALIZATION_EDGE" value="EAD2A4" />
-    <option name="DIAGRAM_HOT_SPOTS" value="EAD2A4" />
+    <option name="DIAGRAM_GENERALIZATION_EDGE" value="E0DC90" />
+    <option name="DIAGRAM_HOT_SPOTS" value="E0DC90" />
     <option name="DIAGRAM_INNER_EDGE" value="89B4F7" />
     <option name="DIAGRAM_NODE_BACKGROUND" value="263238" />
     <option name="DIAGRAM_NODE_BORDER" value="37474F" />
@@ -175,7 +175,7 @@
     </option>
     <option name="ANGLE_BRACKETS_RAINBOW_COLOR0">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="ANGLE_BRACKETS_RAINBOW_COLOR1">
@@ -413,7 +413,7 @@
     </option>
     <option name="CONSOLE_YELLOW_OUTPUT">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="CONVENTIONAL_COMMIT_BREAKING_CHANGE">
@@ -461,7 +461,7 @@
     </option>
     <option name="CSS.IDENT">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="CSS.IMPORTANT">
@@ -586,7 +586,7 @@
     </option>
     <option name="DEFAULT_CONSTANT">
       <value>
-        <option name="FOREGROUND" value="e5e1c0" />
+        <option name="FOREGROUND" value="89B8CC" />
       </value>
     </option>
     <option name="DEFAULT_DOC_COMMENT">
@@ -690,7 +690,7 @@
     </option>
     <option name="DEFAULT_LOCAL_VARIABLE">
       <value>
-        <option name="FOREGROUND" value="eeffe3" />
+        <option name="FOREGROUND" value="DDB8B5" />
       </value>
     </option>
     <option name="DEFAULT_METADATA">
@@ -700,7 +700,7 @@
     </option>
     <option name="DEFAULT_NUMBER">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="DEFAULT_OPERATION_SIGN">
@@ -731,8 +731,8 @@
     </option>
     <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">
       <value>
-        <option name="FOREGROUND" value="eeffe3" />
-        <option name="EFFECT_COLOR" value="eeffe3" />
+        <option name="FOREGROUND" value="DDB8B5" />
+        <option name="EFFECT_COLOR" value="DDB8B5" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
@@ -827,7 +827,7 @@
     </option>
     <option name="ENUM_CONST">
       <value>
-        <option name="FOREGROUND" value="5FB8AA" />
+        <option name="FOREGROUND" value="5CBCB3" />
       </value>
     </option>
     <option name="ERRORS_ATTRIBUTES">
@@ -919,7 +919,7 @@
     </option>
     <option name="HTTP_REQUEST_PARAMETER_NAME">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="HTTP_REQUEST_PARAMETER_VALUE">
@@ -992,7 +992,7 @@
     </option>
     <option name="IMPLICIT_ANONYMOUS_CLASS_PARAMETER_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="INACTIVE_HYPERLINK_ATTRIBUTES">
@@ -1087,7 +1087,7 @@
     </option>
     <option name="JS.CONSOLE">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="JS.DEBUGGER_STMT">
@@ -1466,7 +1466,7 @@
     </option>
     <option name="MARKDOWN_LINK_LABEL">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="MARKDOWN_LINK_TEXT">
@@ -1559,7 +1559,7 @@
     </option>
     <option name="ROUND_BRACKETS_RAINBOW_COLOR0">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="ROUND_BRACKETS_RAINBOW_COLOR1">
@@ -1693,7 +1693,12 @@
     </option>
     <option name="ReSharper.ENUM_IDENTIFIER">
       <value>
-        <option name="FOREGROUND" value="5FB8AA" />
+        <option name="FOREGROUND" value="5CBCB3" />
+      </value>
+    </option>
+    <option name="ReSharper.ENUM_MEMBER_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="5CBCB3" />
       </value>
     </option>
     <option name="ReSharper.EVENT_IDENTIFIER">
@@ -1721,7 +1726,7 @@
     </option>
     <option name="ReSharper.MUTABLE_LOCAL_VARIABLE_IDENTIFIER">
       <value>
-        <option name="FOREGROUND" value="eeffe3" />
+        <option name="FOREGROUND" value="DDB8B5" />
       </value>
     </option>
     <option name="ReSharper.NAMESPACE_IDENTIFIER">
@@ -1813,7 +1818,7 @@
     </option>
     <option name="SQUARE_BRACKETS_RAINBOW_COLOR0">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="SQUARE_BRACKETS_RAINBOW_COLOR1">
@@ -1838,7 +1843,7 @@
     </option>
     <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR0">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR1">
@@ -1960,7 +1965,7 @@
     </option>
     <option name="TS.TYPE_PARAMETER">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="TYPEDEF">
@@ -2032,7 +2037,7 @@
     </option>
     <option name="XPATH.NUMBER">
       <value>
-        <option name="FOREGROUND" value="EAD2A4" />
+        <option name="FOREGROUND" value="E0DC90" />
       </value>
     </option>
     <option name="XPATH.STRING">

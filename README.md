@@ -6,33 +6,33 @@ A pastel dark theme for JetBrains IDEs. Oceanic blues, soft aqua, gentle rose ac
 
 ### Syntax Colors
 
-| Group | Colors | Usage |
-|-------|--------|-------|
-| **Purple** | `#C4B3F4` (keywords), `#D0B8E0` (delegates) | Keywords, control flow, special types |
-| **Blue** | `#89B4F7` | Functions, methods, HTML/XML tags — single shade, no variants |
-| **Teal** | `#80CBC4` (namespace) → `#6EC4BC` (class) → `#5FB8AA` (interface/enum) | Type hierarchy via lightness only |
-| **Green** | `#90D89F` | String literals, property values |
-| **Cyan** | `#A7DBD8` (parameters), `#D9E6E6` (fields) | Variables, parameters, field declarations |
-| **Gold** | `#EAD2A4` | Numeric literals, type parameters |
-| **Rose** | `#F8B4AB` (operators/brackets), `#F0B8A8` (this/super/null/undefined) | Operators, punctuation, semantically "important" tokens |
-| **Gray** | `#546E7A` (comments), `#65737E` (doc tags) | Comments, documentation |
-| **Accent** | `#E9CCAF` | CSS class names |
+| Group      | Colors                                                                 | Usage                                                         |
+|------------|------------------------------------------------------------------------|---------------------------------------------------------------|
+| **Purple** | `#C4B3F4` (keywords), `#D0B8E0` (delegates)                            | Keywords, control flow, special types                         |
+| **Blue**   | `#89B4F7`                                                              | Functions, methods, HTML/XML tags — single shade, no variants |
+| **Teal**   | `#80CBC4` (namespace) → `#6EC4BC` (class) → `#5FB8AA` (interface/enum) | Type hierarchy via lightness only                             |
+| **Green**  | `#90D89F`                                                              | String literals, property values                              |
+| **Cyan**   | `#A7DBD8` (parameters), `#D9E6E6` (fields)                             | Variables, parameters, field declarations                     |
+| **Gold**   | `#EAD2A4`                                                              | Numeric literals, type parameters                             |
+| **Rose**   | `#F8B4AB` (operators/brackets), `#F0B8A8` (this/super/null/undefined)  | Operators, punctuation, semantically "important" tokens       |
+| **Gray**   | `#546E7A` (comments), `#65737E` (doc tags)                             | Comments, documentation                                       |
+| **Accent** | `#E9CCAF`                                                              | CSS class names                                               |
 
 ### VCS Colors
 
-| Type | Color |
-|------|-------|
-| Added | `#90D89F` |
+| Type     | Color     |
+|----------|-----------|
+| Added    | `#90D89F` |
 | Modified | `#F0E0C0` |
-| Deleted | `#E8A8A8` |
+| Deleted  | `#E8A8A8` |
 
 ### UI Depth Colors
 
-| Role | Color | Used for |
-|------|-------|----------|
-| Deep ocean | `#1e272c` | Window chrome — `MainToolbar`, `NavBar`, `ToolWindow.Stripe` |
-| Island surface | `#263238` | All content panels — editor, tool windows, tab bars |
-| Subtle border | `#2e3c43` / `#37474f` | Internal separators within panels |
+| Role           | Color                 | Used for                                                     |
+|----------------|-----------------------|--------------------------------------------------------------|
+| Deep ocean     | `#1e272c`             | Window chrome — `MainToolbar`, `NavBar`, `ToolWindow.Stripe` |
+| Island surface | `#263238`             | All content panels — editor, tool windows, tab bars          |
+| Subtle border  | `#2e3c43` / `#37474f` | Internal separators within panels                            |
 
 ---
 
