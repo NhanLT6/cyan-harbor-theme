@@ -15,7 +15,7 @@
   </console-font>
   <option name="CONSOLE_LINE_SPACING" value="1.4" />
   <colors>
-    <option name="ADDED_LINES_COLOR" value="90d89f" />
+    <option name="ADDED_LINES_COLOR" value="75C486" />
     <option name="ANNOTATIONS_COLOR" value="FFFBF7" />
     <option name="ActionButton.hoverBackground" value="425B67C0" />
     <option name="ActionButton.iconTextForeground" value="607D86" />
@@ -41,7 +41,7 @@
     <option name="CARET_COLOR" value="FFCC00" />
     <option name="CARET_ROW_COLOR" value="1B2529" />
     <option name="CONSOLE_BACKGROUND_KEY" value="263238" />
-    <option name="DELETED_LINES_COLOR" value="E8A8A8" />
+    <option name="DELETED_LINES_COLOR" value="C88080" />
     <option name="DIAGRAM_ANNOTATION_EDGE" value="89b4f7" />
     <option name="DIAGRAM_COARSE_GRID" value="546E7A" />
     <option name="DIAGRAM_DEFAULT_EDGE" value="b8c5d0" />
@@ -96,10 +96,10 @@
     <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="607D86" />
     <option name="LOOKUP_COLOR" value="2a3f44" />
     <option name="METHOD_SEPARATORS_COLOR" value="2E3C43" />
-    <option name="MODIFIED_LINES_COLOR" value="F0E0C0" />
+    <option name="MODIFIED_LINES_COLOR" value="CDB790" />
     <option name="MODIFIED_TAB_ICON" value="009688" />
-    <option name="MT_FILESTATUS_ADDED" value="90d89f" />
-    <option name="MT_FILESTATUS_COPIED" value="90d89f" />
+    <option name="MT_FILESTATUS_ADDED" value="75C486" />
+    <option name="MT_FILESTATUS_COPIED" value="75C486" />
     <option name="MT_FILESTATUS_DELETED" value="808080" />
     <option name="MT_FILESTATUS_HIJACKED" value="e6b858" />
     <option name="MT_FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="808080" />
@@ -690,7 +690,7 @@
     </option>
     <option name="DEFAULT_LOCAL_VARIABLE">
       <value>
-        <option name="FOREGROUND" value="BCD8C2" />
+        <option name="FOREGROUND" value="B0D7B8" />
       </value>
     </option>
     <option name="DEFAULT_METADATA">
@@ -731,8 +731,8 @@
     </option>
     <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">
       <value>
-        <option name="FOREGROUND" value="BCD8C2" />
-        <option name="EFFECT_COLOR" value="BCD8C2" />
+        <option name="FOREGROUND" value="B0D7B8" />
+        <option name="EFFECT_COLOR" value="B0D7B8" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
@@ -827,7 +827,7 @@
     </option>
     <option name="ENUM_CONST">
       <value>
-        <option name="FOREGROUND" value="5CBCB3" />
+        <option name="FOREGROUND" value="46AAA0" />
       </value>
     </option>
     <option name="ERRORS_ATTRIBUTES">
@@ -941,9 +941,9 @@
     </option>
     <option name="IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
-        <option name="EFFECT_COLOR" value="3d6070" />
+        <option name="EFFECT_COLOR" value="3D8F87" />
         <option name="EFFECT_TYPE" value="0" />
-        <option name="ERROR_STRIPE_COLOR" value="3d6070" />
+        <option name="ERROR_STRIPE_COLOR" value="3D8F87" />
       </value>
     </option>
     <option name="IGNORE.BRACKET">
@@ -1693,12 +1693,12 @@
     </option>
     <option name="ReSharper.ENUM_IDENTIFIER">
       <value>
-        <option name="FOREGROUND" value="5CBCB3" />
+        <option name="FOREGROUND" value="46AAA0" />
       </value>
     </option>
-    <option name="ReSharper.ENUM_MEMBER_IDENTIFIER">
+    <option name="ReSharper.ENUM_MEMBER_IDENTIFIER" baseAttributes="ENUM_CONST">
       <value>
-        <option name="FOREGROUND" value="5CBCB3" />
+        <option name="FOREGROUND" value="46AAA0" />
       </value>
     </option>
     <option name="ReSharper.EVENT_IDENTIFIER">
@@ -1726,7 +1726,7 @@
     </option>
     <option name="ReSharper.MUTABLE_LOCAL_VARIABLE_IDENTIFIER">
       <value>
-        <option name="FOREGROUND" value="BCD8C2" />
+        <option name="FOREGROUND" value="B0D7B8" />
       </value>
     </option>
     <option name="ReSharper.NAMESPACE_IDENTIFIER">
@@ -1996,9 +1996,9 @@
     </option>
     <option name="WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES">
       <value>
-        <option name="EFFECT_COLOR" value="4a5f6a" />
+        <option name="EFFECT_COLOR" value="3F7D77" />
         <option name="EFFECT_TYPE" value="0" />
-        <option name="ERROR_STRIPE_COLOR" value="4d6168" />
+        <option name="ERROR_STRIPE_COLOR" value="3F7D77" />
       </value>
     </option>
     <option name="WRITE_SEARCH_RESULT_ATTRIBUTES">
