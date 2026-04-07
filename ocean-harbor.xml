@@ -289,7 +289,7 @@
     <option name="BREADCRUMBS_CURRENT">
       <value>
         <option name="FOREGROUND" value="ffffff" />
-        <option name="BACKGROUND" value="546e7a" />
+        <option name="BACKGROUND" value="5e7a87" />
       </value>
     </option>
     <option name="BREADCRUMBS_DEFAULT">
@@ -334,7 +334,7 @@
     </option>
     <option name="CODE_VISION_DEFAULT">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
       </value>
     </option>
     <option name="CODE_VISION_HOVERED">
@@ -364,7 +364,7 @@
     </option>
     <option name="CONSOLE_GRAY_OUTPUT">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
       </value>
     </option>
     <option name="CONSOLE_GREEN_OUTPUT">
@@ -555,7 +555,7 @@
     </option>
     <option name="DEFAULT_BLOCK_COMMENT">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -591,7 +591,7 @@
     </option>
     <option name="DEFAULT_DOC_COMMENT">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -610,7 +610,7 @@
     </option>
     <option name="DEFAULT_DOC_MARKUP">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
       </value>
     </option>
     <option name="DEFAULT_DOT">
@@ -684,7 +684,7 @@
     </option>
     <option name="DEFAULT_LINE_COMMENT">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -790,8 +790,8 @@
     </option>
     <option name="DEPRECATED_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
-        <option name="EFFECT_COLOR" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
+        <option name="EFFECT_COLOR" value="5e7a87" />
         <option name="EFFECT_TYPE" value="3" />
       </value>
     </option>
@@ -827,7 +827,7 @@
     </option>
     <option name="ENUM_CONST">
       <value>
-        <option name="FOREGROUND" value="46AAA0" />
+        <option name="FOREGROUND" value="5CBCB3" />
       </value>
     </option>
     <option name="ERRORS_ATTRIBUTES">
@@ -954,7 +954,7 @@
     </option>
     <option name="IGNORE.COMMENT">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
       </value>
     </option>
     <option name="IGNORE.HEADER">
@@ -976,7 +976,7 @@
     </option>
     <option name="IGNORE.SLASH">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
       </value>
     </option>
     <option name="IGNORE.SYNTAX">
@@ -1038,7 +1038,7 @@
     </option>
     <option name="INLAY_DEFAULT">
       <value>
-        <option name="FOREGROUND" value="6e8e9e" />
+        <option name="FOREGROUND" value="627c8c" />
         <option name="BACKGROUND" value="1e272c" />
       </value>
     </option>
@@ -1049,7 +1049,7 @@
     </option>
     <option name="INLINE_PARAMETER_HINT">
       <value>
-        <option name="FOREGROUND" value="6e8e9e" />
+        <option name="FOREGROUND" value="627c8c" />
         <option name="BACKGROUND" value="1e272c" />
       </value>
     </option>
@@ -1062,7 +1062,7 @@
     <option name="INLINE_PARAMETER_HINT_HIGHLIGHTED">
       <value>
         <option name="FOREGROUND" value="8aaabb" />
-        <option name="BACKGROUND" value="546e7a" />
+        <option name="BACKGROUND" value="5e7a87" />
       </value>
     </option>
     <option name="INLINE_PROMPT">
@@ -1218,7 +1218,7 @@
     </option>
     <option name="LIVE_TEMPLATE_INACTIVE_SEGMENT">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -1352,7 +1352,7 @@
     </option>
     <option name="MARKDOWN_BOLD_MARKER">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
         <option name="FONT_TYPE" value="1" />
       </value>
     </option>
@@ -1372,7 +1372,7 @@
     </option>
     <option name="MARKDOWN_CODE_SPAN_MARKER">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -1417,17 +1417,17 @@
     </option>
     <option name="MARKDOWN_HEADER_MARKER">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
       </value>
     </option>
     <option name="MARKDOWN_HRULE">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
       </value>
     </option>
     <option name="MARKDOWN_IMAGE">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
       </value>
     </option>
     <option name="MARKDOWN_INLINE_HTML">
@@ -1450,7 +1450,7 @@
     </option>
     <option name="MARKDOWN_ITALIC_MARKER">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -1497,7 +1497,7 @@
     </option>
     <option name="MARKED_FOR_REMOVAL_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
         <option name="EFFECT_COLOR" value="ff7597" />
         <option name="EFFECT_TYPE" value="3" />
       </value>
@@ -1601,7 +1601,7 @@
     </option>
     <option name="ReSharper.ASP_NET_COMMENT">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -1693,12 +1693,12 @@
     </option>
     <option name="ReSharper.ENUM_IDENTIFIER">
       <value>
-        <option name="FOREGROUND" value="46AAA0" />
+        <option name="FOREGROUND" value="5CBCB3" />
       </value>
     </option>
     <option name="ReSharper.ENUM_MEMBER_IDENTIFIER" baseAttributes="ENUM_CONST">
       <value>
-        <option name="FOREGROUND" value="46AAA0" />
+        <option name="FOREGROUND" value="5CBCB3" />
       </value>
     </option>
     <option name="ReSharper.EVENT_IDENTIFIER">
@@ -1908,7 +1908,7 @@
     </option>
     <option name="TAB_SELECTED_INACTIVE">
       <value>
-        <option name="FOREGROUND" value="546e7a" />
+        <option name="FOREGROUND" value="5e7a87" />
         <option name="BACKGROUND" value="263238" />
       </value>
     </option>
