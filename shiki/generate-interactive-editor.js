@@ -1,1443 +1,447 @@
+'use strict';
 /**
- * Generates interactive theme editor with live preview
+ * Generates a static theme preview HTML from theme-data.json.
+ * No shiki, no color pickers. Run after extract-theme-colors.js.
+ * Output: theme-editor.html — open directly in a browser.
  */
 
-const { createHighlighter } = require('shiki');
 const fs = require('fs');
-
-const cyanHarborTheme = require('./ocean-harbor-shiki-theme.json');
 const themeData = require('./theme-data.json');
-const comprehensiveSamples = require('./comprehensive-samples');
 
-// Use comprehensive code examples that showcase ALL tokens
-const codeExamples = comprehensiveSamples;
+function generatePreview() {
+  // ── CSS variables from theme data ────────────────────────────────────────
+  const cssVarLines = [];
+  const fontStyleRules = [];
 
-async function generateEditor() {
-  console.log('🚀 Generating interactive theme editor...\n');
-
-  const highlighter = await createHighlighter({
-    themes: [cyanHarborTheme],
-    langs: Object.keys(codeExamples)
-  });
-
-  const languages = Object.keys(codeExamples);
-  const languageLabels = {
-    csharp: 'C#', typescript: 'TypeScript', javascript: 'JavaScript',
-    html: 'HTML', css: 'CSS', json: 'JSON', yaml: 'YAML',
-    markdown: 'Markdown', bash: 'Bash', xml: 'XML', sql: 'SQL Server'
-  };
-
-  // Generate initial previews with CSS variables
-  const initialPreviews = {};
-  const colorMapping = new Map(); // Track which colors are used
-  const colorUsageMap = new Map(); // Track which tokens use each color
-
-  // Build color usage map
-  Object.entries(themeData.languageConfigs).forEach(([lang, configs]) => {
+  Object.values(themeData.languageConfigs).forEach(configs => {
     Object.entries(configs).forEach(([key, config]) => {
-      const color = config.foreground;
-      if (color) {
-        if (!colorUsageMap.has(color)) {
-          colorUsageMap.set(color, []);
-        }
-        colorUsageMap.get(color).push({
-          lang: lang,
-          key: key,
-          label: config.label,
-          fullLabel: lang === 'General' ? config.label : `${lang}: ${config.label}`
-        });
+      const k = key.replace(/\./g, '_');
+      if (config.foreground) cssVarLines.push(`  --token-${k}: ${config.foreground};`);
+      if (config.fontStyle) {
+        const b = config.fontStyle.includes('bold')   ? 'font-weight:bold;'   : '';
+        const i = config.fontStyle.includes('italic') ? 'font-style:italic;'  : '';
+        fontStyleRules.push(`[data-token="${k}"]{${b}${i}}`);
       }
     });
   });
 
-  console.log(`\n📊 Color usage analysis:`);
-  console.log(`   Total unique colors: ${colorUsageMap.size}`);
-  console.log(`   Colors used by multiple tokens: ${Array.from(colorUsageMap.values()).filter(tokens => tokens.length > 1).length}`);
+  const cssVars     = cssVarLines.join('\n');
+  const fontStyleCSS = fontStyleRules.join('\n');
 
-  for (const lang of languages) {
-    console.log(`Generating preview for ${lang}...`);
-    let html = highlighter.codeToHtml(codeExamples[lang], {
-      lang,
-      theme: 'Ocean Harbor'
-    });
+  // ── Token span helpers ───────────────────────────────────────────────────
+  const t  = (key, text) => `<span data-token="${key.replace(/\./g,'_')}" style="color:var(--token-${key.replace(/\./g,'_')})">${text}</span>`;
 
-    // Use per-token variables to decouple styling
-    // We add data-token attribute for font-style switching and live color updates
-    // Regex matches: style="... color: var(--token-KEY) ..." allowing other styles before/after
-    html = html.replace(/<span ([^>]*)style="([^"]*)\bcolor:\s*var\(--token-([^)]+)\)([^"]*)"/g, (match, otherAttrs, preStyle, tokenKey, postStyle) => {
-      // Reconstruct the span with the data-token attribute
-      return `<span data-token="${tokenKey}" ${otherAttrs}style="${preStyle}color: var(--token-${tokenKey})${postStyle}"`;
-    });
+  // General
+  const kw  = s => t('DEFAULT_KEYWORD', s);
+  const str = s => t('DEFAULT_STRING', s);
+  const num = s => t('DEFAULT_NUMBER', s);
+  const lc  = s => t('DEFAULT_LINE_COMMENT', s);
+  const bc  = s => t('DEFAULT_BLOCK_COMMENT', s);
+  const dc  = s => t('DEFAULT_DOC_COMMENT', s);
+  const cls = s => t('DEFAULT_CLASS_NAME', s);
+  const ifc = s => t('DEFAULT_INTERFACE_NAME', s);
+  const fn  = s => t('DEFAULT_FUNCTION_DECLARATION', s);
+  const fnc = s => t('DEFAULT_FUNCTION_CALL', s);
+  const lv  = s => t('DEFAULT_LOCAL_VARIABLE', s);
+  const prm = s => t('DEFAULT_PARAMETER', s);
+  const sf  = s => t('DEFAULT_STATIC_FIELD', s);
+  const inf = s => t('DEFAULT_INSTANCE_FIELD', s);
+  const sm  = s => t('DEFAULT_STATIC_METHOD', s);
+  const im  = s => t('DEFAULT_INSTANCE_METHOD', s);
+  const op  = s => t('DEFAULT_OPERATION_SIGN', s);
+  const br  = s => t('DEFAULT_BRACES', s);
+  const pa  = s => t('DEFAULT_PARENTHS', s);
+  const bk  = s => t('DEFAULT_BRACKETS', s);
+  const cm  = s => t('DEFAULT_COMMA', s);
+  const dt  = s => t('DEFAULT_DOT', s);
+  const sc  = s => t('DEFAULT_SEMICOLON', s);
+  // C# / ReSharper
+  const ns  = s => t('ReSharper_NAMESPACE_IDENTIFIER', s);
+  const en  = s => t('ReSharper_ENUM_IDENTIFIER', s);
+  const ec  = s => t('ENUM_CONST', s);
+  const del = s => t('ReSharper_DELEGATE_IDENTIFIER', s);
+  const stk = s => t('ReSharper_STRUCT_IDENTIFIER', s);
+  const cop = s => t('CSHARP_OPERATOR_SIGN', s);
+  // SQL
+  const sqk = s => t('SQL_KEYWORD', s);
+  const sqs = s => t('SQL_STRING', s);
+  const sqn = s => t('SQL_NUMBER', s);
+  const sqc = s => t('SQL_COMMENT', s);
+  // JavaScript extras
+  const jmk = s => t('JS_MODULE_KEYWORD', s);
+  const jnu = s => t('JS_NULL_UNDEFINED', s);
+  const jth = s => t('JS_THIS_SUPER', s);
+  const jre = s => t('JS_REGEXP', s);
 
-    // Inject inlay hint demo block into C# preview
-    if (lang === 'csharp') {
-      const inlayDemoHtml = `
-      <div style="
-        margin: 0;
-        padding: 12px 24px 0;
-        font-size: 12px;
-        color: #546e7a;
-        font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-        border-bottom: 1px solid #37474f;
-        background: #263238;
-      ">
-        <span style="font-size: 11px; color: #37474f; text-transform: uppercase; letter-spacing: 1px;">Inlay Hint Preview</span>
-      </div>
-      <div style="
-        margin: 0;
-        padding: 12px 24px 16px;
-        font-size: 13px;
-        line-height: 2;
-        font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-        background: #263238;
-        border-bottom: 2px solid #37474f;
-      ">
-        <span style="color: var(--token-DEFAULT_KEYWORD)">var</span>
-        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> slackUserIds</span>
-        <span class="inlay-hint-demo" data-token="INLAY_DEFAULT" style="
-          color: var(--token-INLAY_DEFAULT);
-          background: #1e272c60;
-          border-radius: 3px;
-          padding: 0 3px;
-          font-size: 0.85em;
-        "> :List&lt;int?&gt;</span>
-        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =</span>
-        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> recipients</span>
-        <span style="color: var(--token-DEFAULT_DOT)">.</span>
-        <span style="color: var(--token-DEFAULT_FUNCTION_CALL)">Select</span>
-        <span style="color: var(--token-DEFAULT_PARENTHS)">(</span>
-        <span style="color: var(--token-DEFAULT_PARAMETER)">r</span>
-        <span class="inlay-hint-demo" data-token="INLAY_DEFAULT" style="
-          color: var(--token-INLAY_DEFAULT);
-          background: #1e272c60;
-          border-radius: 3px;
-          padding: 0 3px;
-          font-size: 0.85em;
-        "> :UserRecipient</span>
-        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =&gt;</span>
-        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> r</span>
-        <span style="color: var(--token-DEFAULT_DOT)">.</span>
-        <span style="color: var(--token-DEFAULT_INSTANCE_FIELD)">UserId</span>
-        <span style="color: var(--token-DEFAULT_PARENTHS)">)</span>
-        <span style="color: var(--token-DEFAULT_DOT)">.</span>
-        <span style="color: var(--token-DEFAULT_FUNCTION_CALL)">ToList</span>
-        <span style="color: var(--token-DEFAULT_PARENTHS)">()</span>
-        <span style="color: var(--token-DEFAULT_SEMICOLON)">;</span>
-        <span style="color: var(--token-DEFAULT_LINE_COMMENT)"> // INLAY_DEFAULT — with background pill</span>
-        <br>
-        <span style="color: var(--token-DEFAULT_KEYWORD)">var</span>
-        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> results</span>
-        <span class="inlay-hint-demo" data-token="INLAY_TEXT_WITHOUT_BACKGROUND" style="
-          color: var(--token-INLAY_TEXT_WITHOUT_BACKGROUND);
-          font-size: 0.85em;
-          padding: 0 2px;
-        "> :IQueryable&lt;Notification&gt;</span>
-        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =</span>
-        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> db</span>
-        <span style="color: var(--token-DEFAULT_DOT)">.</span>
-        <span style="color: var(--token-DEFAULT_INSTANCE_FIELD)">Notifications</span>
-        <span style="color: var(--token-DEFAULT_DOT)">.</span>
-        <span style="color: var(--token-DEFAULT_FUNCTION_CALL)">Where</span>
-        <span style="color: var(--token-DEFAULT_PARENTHS)">(</span>
-        <span style="color: var(--token-DEFAULT_PARAMETER)">x</span>
-        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> =&gt;</span>
-        <span style="color: var(--token-DEFAULT_LOCAL_VARIABLE)"> x</span>
-        <span style="color: var(--token-DEFAULT_DOT)">.</span>
-        <span style="color: var(--token-DEFAULT_INSTANCE_FIELD)">IsRead</span>
-        <span style="color: var(--token-DEFAULT_OPERATION_SIGN)"> ==</span>
-        <span style="color: var(--token-DEFAULT_KEYWORD)"> false</span>
-        <span style="color: var(--token-DEFAULT_PARENTHS)">)</span>
-        <span style="color: var(--token-DEFAULT_SEMICOLON)">;</span>
-        <span style="color: var(--token-DEFAULT_LINE_COMMENT)"> // INLAY_TEXT_WITHOUT_BACKGROUND — no pill</span>
-      </div>`;
-      html = inlayDemoHtml + html;
-    }
+  // Inlay hints
+  const inlay  = s => `<span data-token="INLAY_DEFAULT" style="color:var(--token-INLAY_DEFAULT);background:#1e272c80;border-radius:3px;padding:0 4px;font-size:0.85em">${s}</span>`;
+  const inlayx = s => `<span data-token="INLAY_TEXT_WITHOUT_BACKGROUND" style="color:var(--token-INLAY_TEXT_WITHOUT_BACKGROUND);font-size:0.85em;padding:0 2px">${s}</span>`;
 
-    initialPreviews[lang] = html;
+  // Identifier-under-caret highlights
+  const cr = s => `<span class="caret-read">${s}</span>`;
+  const cw = s => `<span class="caret-write">${s}</span>`;
+
+  // ── Line builder ─────────────────────────────────────────────────────────
+  let n = 0;
+  function ln(git, content, cls = '') {
+    n++;
+    const gb = git
+      ? `<span class="gb gb-${git}"></span>`
+      : `<span class="gb"></span>`;
+    const extra = cls ? ` ${cls}` : '';
+    return `<div class="cl${extra}"><span class="lnum">${String(n).padStart(3)}</span>${gb}<span class="cd">${content}</span></div>`;
   }
+  function blank() { n++; return `<div class="cl"><span class="lnum">${String(n).padStart(3)}</span><span class="gb"></span><span class="cd"></span></div>`; }
 
-  // Generate Theme Palette Preview
-  console.log('Generating Theme Palette...');
-  let paletteHtml = `
-    <div class="palette-container">
-      <div class="palette-header">
-        <h2 class="palette-title">Theme Color Palette</h2>
-        <p class="palette-desc">A complete breakdown of every color used in the current theme. Hover to see exact token keys.</p>
-      </div>
-      <div class="palette-grid">
-  `;
+  // ── C# section ───────────────────────────────────────────────────────────
+  const csharpLines = [
+    ln('', `${dc('///')} ${dc('<summary>')}${dc('Payment service — Rider semantic tokens')}${dc('</summary>')}`),
+    ln('', `${kw('using')} System${sc(';')}`),
+    ln('', `${kw('using')} System${dt('.')}Collections${dt('.')}Generic${sc(';')}`),
+    blank(),
+    ln('', `${kw('namespace')} ${ns('PaymentService')}${dt('.')}${ns('Core')}`),
+    ln('', `${br('{')}`),
 
-  // Sort colors to make them look nice (by usage count or hex?)
-  const sortedColors = Array.from(colorUsageMap.keys()).sort((a, b) => {
-    return colorUsageMap.get(b).length - colorUsageMap.get(a).length;
-  });
+    ln('add', `    ${kw('public')} ${kw('enum')} ${en('PaymentStatus')}`),
+    ln('add', `    ${br('{')}`),
+    ln('add', `        ${ec('Pending')}${cm(',')}   ${lc('// default')}`),
+    ln('',    `        ${ec('Completed')}${cm(',')}`),
+    ln('',    `        ${ec('Failed')}`),
+    ln('',    `    ${br('}')}`),
+    blank(),
 
-  sortedColors.forEach(color => {
-    const usages = colorUsageMap.get(color);
-    paletteHtml += `
-      <div class="palette-card">
-        <div class="palette-swatch" style="background-color: ${color}"></div>
-        <div class="palette-info">
-          <div class="palette-hex">${color}</div>
-          <div class="palette-usage-count">${usages.length} tokens</div>
-          <div class="palette-usage-list">
-            ${usages.map(u => `
-              <div class="palette-usage-item" title="${u.lang}.${u.key}">
-                <span class="usage-lang-tag">${u.lang}</span>
-                <span class="usage-label">${u.label}</span>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      </div>
-    `;
-  });
-  paletteHtml += `</div></div>`;
+    ln('', `    ${kw('public')} ${kw('delegate')} ${kw('void')} ${del('PaymentHandler')}${pa('(')}${cls('PaymentEventArgs')} ${prm('e')}${pa(')')}${sc(';')}`),
+    blank(),
 
-  // Add palette to preview panes
-  initialPreviews.palette = paletteHtml;
-  // Generate list of all token variables for :root
-  const allTokens = [];
-  Object.values(themeData.languageConfigs).forEach(configs => {
-    Object.entries(configs).forEach(([key, config]) => {
-      const cssVar = `token-${key.replace(/\./g, '_')}`;
-      allTokens.push({ varName: cssVar, color: config.foreground });
-    });
-  });
+    ln('', `    ${bc('/* Interface contract */')}`),
+    ln('', `    ${kw('public')} ${kw('interface')} ${ifc('IProcessor')}`),
+    ln('', `    ${br('{')}`),
+    ln('', `        ${cls('Task')}<${kw('decimal')}> ${fn('Process')}${pa('(')}${kw('decimal')} ${prm('amount')}${cm(',')} ${kw('string')} ${prm('currency')}${pa(')')}${sc(';')}`),
+    ln('', `    ${br('}')}`),
+    blank(),
 
-  console.log(`\n📊 Generated ${allTokens.length} decoupled token variables`);
+    ln('mod', `    ${kw('public')} ${kw('class')} ${cls('PaymentProcessor')} ${cop(':')} ${ifc('IProcessor')}`),
+    ln('mod', `    ${br('{')}`),
+    ln('mod', `        ${kw('private')} ${kw('static')} ${kw('readonly')} ${kw('decimal')} ${sf('_rate')} ${op('=')} ${num('2.5m')}${sc(';')}`),
+    ln('',    `        ${kw('private')} ${kw('decimal')} ${inf('_commission')}${sc(';')}`),
+    blank(),
+    ln('', `        ${kw('public')} ${kw('static')} ${kw('bool')} ${sm('IsValid')}${pa('(')}${kw('decimal')} ${prm('amount')}${pa(')')}`),
+    ln('', `        ${br('{')}`),
+    ln('', `            ${kw('return')} ${prm('amount')} ${op('>')} ${num('0')}${sc(';')}`),
+    ln('', `        ${br('}')}`),
+    blank(),
+    ln('', `        ${kw('public')} ${kw('async')} ${cls('Task')}<${kw('decimal')}> ${im('Process')}${pa('(')}${kw('decimal')} ${prm('amount')}${cm(',')} ${kw('string')} ${prm('currency')}${pa(')')}`),
+    ln('', `        ${br('{')}`),
+    ln('', `            ${kw('var')} ${lv('result')}${inlay(' :decimal')} ${op('=')} ${num('0m')}${sc(';')}   ${lc('// local var + inlay hint (INLAY_DEFAULT)')}`),
+    ln('', `            ${kw('var')} ${lv('results')}${inlayx(' :IEnumerable&lt;Order&gt;')} ${op('=')} ${cls('Enumerable')}${dt('.')}${fnc('Empty')}<${cls('Order')}>()${sc(';')}   ${lc('// no-background inlay hint')}`),
+    ln('', `            ${kw('var')} ${lv('status')} ${op('=')} ${en('PaymentStatus')}${dt('.')}${ec('Pending')}${sc(';')}`),
+    ln('', `            ${kw('var')} ${lv('fees')} ${op('=')} ${kw('new')}${bk('[')}${bk(']')} ${br('{')} ${num('10')}${cm(',')} ${num('20')}${cm(',')} ${num('30')} ${br('}')}${sc(';')}`),
+    blank(),
+    ln('', `            ${kw('if')} ${pa('(')}${prm('amount')} ${op('>')} ${num('0')}${pa(')')}`),
+    ln('', `            ${br('{')}`),
+    ln('', `                ${lv('result')} ${op('=')} ${prm('amount')} ${op('*')} ${sf('_rate')}${sc(';')}`),
+    ln('', `                ${inf('_commission')} ${op('=')} ${lv('result')} ${op('*')} ${num('0.01m')}${sc(';')}`),
+    ln('', `            ${br('}')}`),
+    ln('', `            ${kw('return')} ${lv('result')}${sc(';')}`),
+    ln('', `        ${br('}')}`),
+    ln('', `    ${br('}')}`),
+    ln('', `${br('}')}`),
+  ].join('\n');
 
-  // Create CSS variables for all tokens
-  const cssVariables = allTokens
-    .map(t => `  --${t.varName}: ${t.color};`)
-    .join('\n');
+  // ── SQL section ──────────────────────────────────────────────────────────
+  n = 0;
+  const sqlLines = [
+    ln('', `${sqc('-- Line comment')}`),
+    ln('', `${sqc('/* Block comment */')}`),
+    blank(),
+    ln('add', `${sqk('SELECT')}   u${dt('.')}Id${cm(',')} u${dt('.')}Username${cm(',')} ${sqk('COUNT')}${pa('(')}o${dt('.')}Id${pa(')')} ${sqk('AS')} OrderCount`),
+    ln('add', `${sqk('FROM')}     Users u`),
+    ln('',    `${sqk('INNER JOIN')} Orders o ${sqk('ON')} u${dt('.')}Id ${op('=')} o${dt('.')}UserId`),
+    ln('mod', `${sqk('WHERE')}    u${dt('.')}IsActive ${op('=')} ${sqn('1')}`),
+    ln('mod', `  ${sqk('AND')}    u${dt('.')}Name ${sqk('LIKE')} ${sqs("'%admin%'")}`),
+    ln('',    `${sqk('ORDER BY')} u${dt('.')}CreatedAt ${sqk('DESC')}${sc(';')}`),
+    blank(),
+    ln('', `${sqk('DECLARE')} @amount ${sqk('DECIMAL')} ${op('=')} ${sqn('99.99')}${sc(';')}`),
+    ln('', `${sqk('INSERT INTO')} Orders ${pa('(')}UserId${cm(',')} Amount${pa(')')} ${sqk('VALUES')} ${pa('(')}@userId${cm(',')} @amount${pa(')')}${sc(';')}`),
+  ].join('\n');
 
+  // ── JavaScript section ───────────────────────────────────────────────────
+  n = 0;
+  const jsLines = [
+    ln('', `${lc('// Line comment')}`),
+    ln('', `${bc('/* Block comment */')}`),
+    ln('', `${jmk('import')} ${br('{')} ${cls('EventEmitter')} ${br('}')} ${jmk('from')} ${str("'events'")}${sc(';')}`),
+    blank(),
+    ln('add', `${jmk('export')} ${jmk('default')} ${kw('class')} ${cls('Controller')} ${kw('extends')} ${cls('EventEmitter')} ${br('{')}`),
+    ln('add', `    ${kw('static')} ${sf('BASE')} ${op('=')} ${str("'https://api.example.com'")}${sc(';')}`),
+    ln('',    `    ${inf('#privateField')} ${op('=')} ${num('42')}${sc(';')}`),
+    ln('',    `    ${inf('isLoading')} ${op('=')} ${kw('false')}${sc(';')}`),
+    blank(),
+    ln('', `    ${fn('constructor')}${pa('(')}${prm('apiKey')}${pa(')')} ${br('{')}`),
+    ln('', `        ${kw('super')}${pa('(')}${pa(')')}${sc(';')}`),
+    ln('', `        ${jth('this')}${dt('.')}${inf('apiKey')} ${op('=')} ${prm('apiKey')}${sc(';')}`),
+    ln('', `    ${br('}')}`),
+    blank(),
+    ln('mod', `    ${kw('async')} ${im('load')}${pa('(')}${prm('userId')}${pa(')')} ${br('{')}`),
+    ln('mod', `        ${kw('const')} ${lv('url')} ${op('=')} ${str('`${Controller.BASE}/${userId}`')}${sc(';')}`),
+    ln('',    `        ${kw('let')}   ${lv('data')} ${op('=')} ${jnu('null')}${sc(';')}`),
+    ln('',    `        ${kw('const')} ${lv('re')}   ${op('=')} ${jre('/^\\\\w+$/')}${sc(';')}`),
+    ln('',    `        ${kw('return')} ${jth('this')}${dt('.')}${inf('isLoading')} ${op('?')} ${jnu('undefined')} ${op(':')} ${lv('data')}${sc(';')}`),
+    ln('',    `    ${br('}')}`),
+    ln('',    `${br('}')}`),
+  ].join('\n');
+
+  // ── IDE Chrome demo section ───────────────────────────────────────────────
+  const chromeSection = `
+<div class="chrome-grid">
+
+  <div class="chrome-item">
+    <div class="chrome-label">Selection background</div>
+    <div class="chrome-demo code-font">
+      <div class="cl"><span class="lnum">  1</span><span class="gb"></span><span class="cd">${lv('result')} ${op('=')} ${prm('amount')} ${op('*')} ${sf('_rate')}${sc(';')}</span></div>
+      <div class="cl sel"><span class="lnum">  2</span><span class="gb"></span><span class="cd">${inf('_commission')} ${op('=')} ${lv('result')} ${op('*')} ${num('0.01m')}${sc(';')}</span></div>
+      <div class="cl"><span class="lnum">  3</span><span class="gb"></span><span class="cd">${kw('return')} ${lv('result')}${sc(';')}</span></div>
+    </div>
+  </div>
+
+  <div class="chrome-item">
+    <div class="chrome-label">Caret row</div>
+    <div class="chrome-demo code-font">
+      <div class="cl"><span class="lnum">  1</span><span class="gb"></span><span class="cd">${lv('result')} ${op('=')} ${prm('amount')} ${op('*')} ${sf('_rate')}${sc(';')}</span></div>
+      <div class="cl car"><span class="lnum">  2</span><span class="gb"></span><span class="cd">${kw('return')} ${lv('result')}${sc(';')}   <span style="color:#37474f;font-size:0.85em">← caret here</span></span></div>
+      <div class="cl"><span class="lnum">  3</span><span class="gb"></span><span class="cd">${br('}')}</span></div>
+    </div>
+  </div>
+
+  <div class="chrome-item">
+    <div class="chrome-label">Identifier under caret — read</div>
+    <div class="chrome-demo code-font">
+      <div class="cl"><span class="lnum">  1</span><span class="gb"></span><span class="cd">${kw('var')} ${cr(lv('result'))} ${op('=')} ${num('0m')}${sc(';')}</span></div>
+      <div class="cl"><span class="lnum">  2</span><span class="gb"></span><span class="cd">${kw('return')} ${cr(lv('result'))}${sc(';')}</span></div>
+    </div>
+  </div>
+
+  <div class="chrome-item">
+    <div class="chrome-label">Identifier under caret — write</div>
+    <div class="chrome-demo code-font">
+      <div class="cl"><span class="lnum">  1</span><span class="gb"></span><span class="cd">${cw(lv('result'))} ${op('=')} ${prm('amount')} ${op('*')} ${sf('_rate')}${sc(';')}</span></div>
+      <div class="cl"><span class="lnum">  2</span><span class="gb"></span><span class="cd">${kw('return')} ${lv('result')}${sc(';')}</span></div>
+    </div>
+  </div>
+
+  <div class="chrome-item">
+    <div class="chrome-label">Inlay hint — with background (INLAY_DEFAULT)</div>
+    <div class="chrome-demo code-font">
+      <div class="cl"><span class="lnum">  1</span><span class="gb"></span><span class="cd">${kw('var')} ${lv('slackUserIds')}${inlay(' :List&lt;int?&gt;')} ${op('=')} ${lv('recipients')}${dt('.')}${fnc('Select')}${pa('(')}${prm('r')} ${cop('=>')} ${prm('r')}${dt('.')}${inf('UserId')}${pa(')')}${dt('.')}${fnc('ToList')}${pa('(')}${pa(')')}${sc(';')}</span></div>
+    </div>
+  </div>
+
+  <div class="chrome-item">
+    <div class="chrome-label">Inlay hint — no background (INLAY_TEXT_WITHOUT_BACKGROUND)</div>
+    <div class="chrome-demo code-font">
+      <div class="cl"><span class="lnum">  1</span><span class="gb"></span><span class="cd">${kw('var')} ${lv('results')}${inlayx(' :IQueryable&lt;Notification&gt;')} ${op('=')} ${lv('db')}${dt('.')}${inf('Notifications')}${dt('.')}${fnc('Where')}${pa('(')}${prm('x')} ${cop('=>')} ${prm('x')}${dt('.')}${inf('IsRead')} ${op('==')} ${kw('false')}${pa(')')}${sc(';')}</span></div>
+    </div>
+  </div>
+
+  <div class="chrome-item">
+    <div class="chrome-label">Git gutter indicators</div>
+    <div class="chrome-demo code-font">
+      <div class="cl"><span class="lnum">  1</span><span class="gb gb-add"></span><span class="cd">${kw('public')} ${kw('async')} ${cls('Task')}&lt;${kw('decimal')}&gt; ${im('Process')}${pa('(')}...${pa(')')} ${lc('// added line')}</span></div>
+      <div class="cl"><span class="lnum">  2</span><span class="gb gb-mod"></span><span class="cd">${lv('result')} ${op('=')} ${prm('amount')} ${op('*')} ${sf('_rate')}${sc(';')} ${lc('// modified line')}</span></div>
+      <div class="cl"><span class="lnum">  3</span><span class="gb gb-del"></span><span class="cd">${kw('return')} ${lv('result')}${sc(';')} ${lc('// deleted (indicator above)')}</span></div>
+    </div>
+  </div>
+
+</div>
+`;
+
+  // ── HTML template ─────────────────────────────────────────────────────────
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ocean Harbor - Interactive Theme Editor</title>
-
-  <!-- Pickr CSS -->
-  <link rel="stylesheet" href="./node_modules/@simonwep/pickr/dist/themes/monolith.min.css">
-
+  <title>Ocean Harbor — Theme Preview</title>
   <style>
-    /* Theme color CSS variables for live updates */
     :root {
-${cssVariables}
+${cssVars}
     }
+    ${fontStyleCSS}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #1a1f24;
-      color: #e0e0e0;
+      color: #b8c5d0;
       height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
 
-    /* Header - Reduced height */
     .header {
       background: linear-gradient(135deg, #009688, #00695c);
-      padding: 12px 24px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 48px;
-    }
-
-    .header h1 {
+      padding: 10px 24px;
       color: white;
-      font-size: 1.2em;
       font-weight: 600;
+      font-size: 1.1em;
+      flex-shrink: 0;
+      border-bottom: 1px solid #00695c;
     }
-
-    .header-actions {
-      display: flex;
-      gap: 12px;
-    }
-
-    .btn {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      padding: 6px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-primary {
-      background: white;
-      color: #009688;
-    }
-
-    .btn-primary:hover {
-      background: #f0f0f0;
-    }
-
-    /* Main Layout */
-    .main-container {
-      display: grid;
-      grid-template-columns: 350px 1fr;
-      flex: 1;
-      overflow: hidden;
-    }
-
-    /* Config Panel */
-    .config-panel {
-      background: #2e3c43;
-      border-right: 1px solid #37474f;
-      overflow-y: auto;
-      padding: 20px;
-    }
-
-    .lang-selector {
-      margin-bottom: 20px;
-    }
-
-    .lang-selector label {
-      display: block;
+    .header span {
+      font-weight: 400;
+      opacity: 0.7;
       font-size: 0.85em;
-      color: #80cbc4;
-      margin-bottom: 8px;
-      font-weight: 500;
+      margin-left: 12px;
     }
 
-    .lang-selector select {
-      width: 100%;
+    /* Editor view */
+    .editor-view {
+      flex: 1;
+      overflow-y: auto;
       background: #263238;
-      color: #d9e6e6;
-      border: 1px solid #009688;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.9em;
-      cursor: pointer;
     }
 
-    .config-section {
-      margin-bottom: 25px;
-    }
-
-    .config-section h3 {
-      font-size: 0.9em;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .section-label {
+      background: #1e272c;
       color: #009688;
-      margin-bottom: 16px;
+      padding: 6px 20px;
+      font-size: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 600;
+      border-top: 1px solid #37474f;
       border-bottom: 1px solid #37474f;
-      padding-bottom: 8px;
+      margin-top: 8px;
+    }
+    .section-label:first-child { margin-top: 0; }
+
+    .code-block { padding: 8px 0; }
+
+    /* Code line layout */
+    .code-font {
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.65;
     }
 
-    /* Collapsible Section */
-    .config-section-collapsible {
-      margin-bottom: 24px;
-    }
-
-    .config-section-collapsible summary {
-      padding: 10px 14px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #009688;
-      background: #1e272c;
-      border: 1px solid #37474f;
-      border-radius: 6px;
-      user-select: none;
-      list-style: none;
+    .cl {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.85em;
+      align-items: stretch;
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .cl:hover { background: rgba(255,255,255,0.02); }
+    .cl.sel   { background: #314549; }
+    .cl.car   { background: #1B2529; }
+
+    .lnum {
+      color: #37474f;
+      min-width: 44px;
+      text-align: right;
+      padding-right: 12px;
+      user-select: none;
+      font-size: 11px;
+      line-height: inherit;
+      flex-shrink: 0;
+    }
+
+    .gb {
+      width: 3px;
+      flex-shrink: 0;
+      margin-right: 14px;
+      align-self: stretch;
+    }
+    .gb-add { background: #75C486; }
+    .gb-mod { background: #CDB790; }
+    .gb-del { background: #C88080; }
+
+    .cd {
+      flex: 1;
+      white-space: pre;
+      padding-right: 32px;
+    }
+
+    /* Identifier-under-caret highlights */
+    .caret-read  { outline: 1px solid #3D8F87; border-radius: 1px; }
+    .caret-write { outline: 1px solid #3F7D77; border-radius: 1px; }
+
+    /* IDE Chrome section */
+    .chrome-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
+      gap: 1px;
+      background: #37474f;
+      border-top: 1px solid #37474f;
+    }
+
+    .chrome-item {
+      background: #263238;
+      padding: 16px 20px;
+    }
+
+    .chrome-label {
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 1px;
-    }
-
-    .config-section-collapsible summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .config-section-collapsible summary::after {
-      content: '▼';
-      font-size: 0.8em;
-      transition: transform 0.2s;
-    }
-
-    .config-section-collapsible[open] summary::after {
-      transform: rotate(180deg);
-    }
-
-    .config-section-collapsible[open] summary {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-
-    .collapsible-content {
-      padding: 16px 0;
-      border: 1px solid #37474f;
-      border-top: none;
-      border-bottom-left-radius: 6px;
-      border-bottom-right-radius: 6px;
-      background: rgba(30, 39, 44, 0.5);
-      margin-top: -1px;
-    }
-
-    .config-item {
-      margin-bottom: 16px;
-      background: #263238;
-      padding: 12px;
-      border-radius: 6px;
-      border: 1px solid #37474f;
-    }
-
-    .config-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .config-item-label {
-      font-size: 0.85em;
-      color: #b8c5d0;
-      font-weight: 500;
-    }
-
-    .config-item-desc {
-      font-size: 0.75em;
-      color: #607d8b;
-      margin-bottom: 8px;
-    }
-
-    .keyboard-hint {
-      font-size: 0.7em;
       color: #546e7a;
-      font-style: italic;
-      margin-top: 12px;
-      padding: 8px;
-      background: rgba(0, 150, 136, 0.05);
-      border-left: 2px solid #009688;
-      border-radius: 3px;
-    }
-
-    .config-controls {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .color-preview {
-      width: 32px;
-      height: 32px;
-      border-radius: 4px;
-      border: 2px solid #37474f;
-      cursor: pointer;
-      transition: border-color 0.2s;
-    }
-
-    .color-preview:hover {
-      border-color: #009688;
-    }
-
-    .font-style-toggle {
-      display: flex;
-      gap: 4px;
-    }
-
-    .font-style-btn {
-      background: #1e272c;
-      border: 1px solid #37474f;
-      color: #80cbc4;
-      padding: 4px 8px;
-      border-radius: 3px;
-      cursor: pointer;
-      font-size: 0.75em;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .font-style-btn.active {
-      background: #009688;
-      color: white;
-      border-color: #009688;
-    }
-
-    /* Preview Panel */
-    .preview-panel {
-      display: flex;
-      flex-direction: column;
-      background: #263238;
-      overflow: hidden;
-    }
-
-    .preview-tabs {
-      display: flex;
-      gap: 4px;
-      padding: 8px 12px;
-      border-bottom: 2px solid #37474f;
-      background: #1e272c;
-      flex-wrap: wrap;
-    }
-
-    .preview-tab {
-      background: transparent;
-      border: none;
-      color: #80cbc4;
-      padding: 6px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
-    }
-
-    .preview-tab:hover {
-      background: rgba(0, 150, 136, 0.1);
-      color: #009688;
-    }
-
-    .preview-tab.active {
-      color: #009688;
-      border-bottom-color: #009688;
-    }
-
-    .preview-content {
-      flex: 1;
-      overflow: auto;
-    }
-
-    .preview-content pre {
-      margin: 0 !important;
-      padding: 24px !important;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .preview-content code {
-      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-    }
-
-    /* Pickr Customization */
-    .pcr-app {
-      background: #263238 !important;
-      border: 1px solid #009688 !important;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-    }
-
-    .pcr-app .pcr-interaction .pcr-result {
-      background: #1e272c !important;
-      color: #b8c5d0 !important;
-      border: 1px solid #37474f !important;
-    }
-
-    .pcr-app .pcr-interaction input {
-      background: #1e272c !important;
-      color: #b8c5d0 !important;
-      border-color: #37474f !important;
-    }
-
-    .pcr-app .pcr-swatches {
-      max-height: 200px;
-      overflow-y: auto;
-    }
-
-    .pcr-app .pcr-swatches > button {
-      margin: 2px;
-      transition: transform 0.1s, box-shadow 0.1s;
-    }
-
-    .pcr-app .pcr-swatches > button:focus {
-      outline: 2px solid #009688 !important;
-      outline-offset: 2px;
-      transform: scale(1.1);
-      box-shadow: 0 0 8px rgba(0, 150, 136, 0.5);
-    }
-
-    /* Color info panel */
-    .color-info-panel {
-      background: #1e272c;
-      padding: 12px;
-      margin: 8px 0;
-      border-radius: 4px;
-      border: 1px solid #37474f;
-      font-size: 0.8em;
-    }
-
-    .color-info-panel h4 {
-      color: #80cbc4;
-      font-size: 0.9em;
-      margin-bottom: 6px;
       font-weight: 600;
+      margin-bottom: 10px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
-    .color-info-panel .current-color {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-      padding: 6px;
+    .chrome-demo {
       background: #263238;
-      border-radius: 3px;
-    }
-
-    .color-info-panel .current-color .color-box {
-      width: 20px;
-      height: 20px;
-      border-radius: 3px;
       border: 1px solid #37474f;
-    }
-
-    .color-info-panel .current-color .color-hex {
-      font-family: 'Consolas', monospace;
-      color: #b8c5d0;
-      font-weight: 500;
-    }
-
-    .color-info-panel .usage-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      max-height: 150px;
-      overflow-y: auto;
-    }
-
-    .color-info-panel .usage-list li {
-      padding: 4px 6px;
-      margin: 2px 0;
-      background: rgba(0, 150, 136, 0.05);
-      border-left: 2px solid #009688;
-      border-radius: 2px;
-      color: #b8c5d0;
-      font-size: 0.9em;
-    }
-
-    .color-info-panel .usage-list li.current {
-      background: rgba(0, 150, 136, 0.15);
-      font-weight: 600;
-    }
-
-    .color-info-panel .no-usage {
-      color: #607d8b;
-      font-style: italic;
-      padding: 4px;
-    }
-
-    /* Swatch tooltips */
-    .pcr-app .pcr-swatches > button {
-      position: relative;
-    }
-
-    .pcr-app .pcr-swatches > button:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: calc(100% + 8px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1e272c;
-      color: #b8c5d0;
-      padding: 6px 10px;
       border-radius: 4px;
-      font-size: 11px;
-      white-space: nowrap;
-      pointer-events: none;
-      z-index: 1000;
-      border: 1px solid #009688;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      max-width: 300px;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      padding: 6px 0;
     }
-
-    .pcr-app .pcr-swatches > button:hover::before {
-      content: '';
-      position: absolute;
-      bottom: calc(100% + 2px);
-      left: 50%;
-      transform: translateX(-50%);
-      border: 6px solid transparent;
-      border-top-color: #009688;
-      pointer-events: none;
-      z-index: 1001;
-    }
+    .chrome-demo .cl { font-size: 12.5px; }
+    .chrome-demo .lnum { min-width: 36px; font-size: 10.5px; }
 
     /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #1e272c;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #009688;
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #00796b;
-    }
-
-    /* Export Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-content {
-      background: #2e3c43;
-      border: 1px solid #009688;
-      border-radius: 8px;
-      padding: 24px;
-      max-width: 600px;
-      width: 90%;
-      max-height: 80vh;
-      overflow: auto;
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .modal-header h2 {
-      color: #009688;
-      font-size: 1.2em;
-    }
-
-    .modal-close {
-      background: none;
-      border: none;
-      color: #80cbc4;
-      font-size: 24px;
-      cursor: pointer;
-      padding: 0;
-      width: 32px;
-      height: 32px;
-    }
-
-    .modal-body textarea {
-      width: 100%;
-      min-height: 300px;
-      background: #263238;
-      color: #b8c5d0;
-      border: 1px solid #37474f;
-      border-radius: 4px;
-      padding: 12px;
-      font-family: 'Consolas', monospace;
-      font-size: 12px;
-      resize: vertical;
-    }
-
-    .modal-footer {
-      margin-top: 16px;
-      display: flex;
-      gap: 8px;
-      justify-content: flex-end;
-    }
-
-    /* Palette Tab Styles */
-    .palette-container {
-      padding: 30px;
-      color: #b8c5d0;
-    }
-
-    .palette-header {
-      margin-bottom: 30px;
-      border-bottom: 1px solid #37474f;
-      padding-bottom: 15px;
-    }
-
-    .palette-title {
-      color: #009688;
-      font-size: 1.5em;
-      margin-bottom: 8px;
-    }
-
-    .palette-desc {
-      color: #607d8b;
-      font-size: 0.9em;
-    }
-
-    .palette-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .palette-card {
-      background: #1e272c;
-      border: 1px solid #37474f;
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .palette-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-      border-color: #009688;
-    }
-
-    .palette-swatch {
-      height: 100px;
-      width: 100%;
-      border-bottom: 1px solid #37474f;
-    }
-
-    .palette-info {
-      padding: 15px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .palette-hex {
-      font-family: 'Consolas', monospace;
-      font-weight: bold;
-      font-size: 1.1em;
-      color: #ffffff;
-      margin-bottom: 4px;
-    }
-
-    .palette-usage-count {
-      font-size: 0.8em;
-      color: #009688;
-      margin-bottom: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .palette-usage-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      max-height: 150px;
-      overflow-y: auto;
-    }
-
-    .palette-usage-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85em;
-      background: rgba(0,0,0,0.2);
-      padding: 4px 8px;
-      border-radius: 4px;
-    }
-
-    .usage-lang-tag {
-      background: #2e3c43;
-      color: #80cbc4;
-      font-size: 0.75em;
-      padding: 1px 4px;
-      border-radius: 2px;
-      font-weight: bold;
-      min-width: 70px;
-      text-align: center;
-    }
-
-    .usage-label {
-      color: #b8c5d0;
-    }
-
-    @media (max-width: 1024px) {
-      .main-container {
-        grid-template-columns: 1fr;
-      }
-
-      .config-panel {
-        border-right: none;
-        border-bottom: 1px solid #37474f;
-        max-height: 400px;
-      }
-    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #1e272c; }
+    ::-webkit-scrollbar-thumb { background: #37474f; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #009688; }
   </style>
 </head>
 <body>
   <div class="header">
-    <h1>🌊 Ocean Harbor - Theme Editor</h1>
-    <div class="header-actions">
-      <button class="btn" onclick="resetTheme()">Reset</button>
-      <button class="btn btn-primary" onclick="saveToXml()">Save to XML</button>
-    </div>
+    Ocean Harbor — Theme Preview
+    <span>Edit colors in ocean-harbor.xml, then run <code>npm run editor</code> to regenerate</span>
   </div>
 
-  <div class="main-container">
-    <div class="config-panel">
-      <div class="lang-selector">
-        <label>Select Language:</label>
-        <select id="languageSelect" onchange="switchLanguage()">
-          ${Object.keys(themeData.languageConfigs).filter(lang => lang !== 'General').map(lang =>
-    `<option value="${lang}">${languageLabels[lang] || lang}</option>`
-  ).join('')}
-        </select>
-      </div>
+  <div class="editor-view">
 
+    <div class="section-label">C# — Rider / ReSharper semantic tokens</div>
+    <div class="code-block">
+${csharpLines}
+    </div>
 
-      <div id="configList"></div>
+    <div class="section-label">SQL</div>
+    <div class="code-block">
+${sqlLines}
     </div>
-    <div class="preview-panel">
-      <div class="preview-tabs">
-        ${languages.map((lang, idx) => `
-          <button id="tab-${lang}" class="preview-tab ${idx === 0 ? 'active' : ''}" onclick="switchPreview('${lang}')">
-            ${languageLabels[lang]}
-          </button>
-        `).join('')}
-        <button id="tab-palette" class="preview-tab" onclick="switchPreview('palette')">🎨 Palette</button>
-      </div>
-      <div class="preview-content" id="previewContent">
-        ${Object.entries(initialPreviews).map(([lang, html], idx) => `
-          <div id="preview-${lang}" class="preview-pane" style="display: ${idx === 0 ? 'block' : 'none'}">
-            ${html}
-          </div>
-        `).join('')}
-      </div>
+
+    <div class="section-label">JavaScript</div>
+    <div class="code-block">
+${jsLines}
     </div>
-  </div>
+
+    <div class="section-label">IDE Chrome — selection, caret, inlay hints, git gutter</div>
+    ${chromeSection}
 
   </div>
-
-  <!-- Pickr JS -->
-  <script src="./node_modules/@simonwep/pickr/dist/pickr.min.js"></script>
-
-  <script>
-    // Theme data
-    const themeData = ${JSON.stringify(themeData)};
-
-    // Color usage map: which tokens use each color
-    const colorUsageMap = ${JSON.stringify(Object.fromEntries(colorUsageMap))};
-
-    // Map preview language IDs to config language keys
-    const PREVIEW_TO_CONFIG_MAP = {
-      'csharp': 'C#',
-      'sql': 'SQL',
-      'typescript': 'TypeScript',
-      'javascript': 'JavaScript',
-      'html': 'HTML',
-      'css': 'CSS',
-      'json': 'JSON',
-      'yaml': 'YAML',
-      'markdown': 'Markdown',
-      'bash': 'Bash',
-      'xml': 'XML'
-    };
-
-    // Current theme state
-    const currentTheme = JSON.parse(JSON.stringify(themeData.languageConfigs));
-    const pickrInstances = {};
-    let currentLanguage = 'C#';
-    let currentPreview = '${languages[0]}';
-
-    // Create mapping from token keys to their ORIGINAL colors (never changes)
-    const tokenOriginalColorMap = new Map();
-    Object.entries(themeData.languageConfigs).forEach(([lang, configs]) => {
-      Object.entries(configs).forEach(([key, config]) => {
-        const fullKey = \`\${lang}.\${key}\`;
-        tokenOriginalColorMap.set(fullKey, config.foreground);
-      });
-    });
-
-    // Initialize
-    renderConfigList();
-
-    function switchLanguage() {
-      const select = document.getElementById('languageSelect');
-      currentLanguage = select.value;
-      
-      // Update preview tab to match selected config language
-      const previewLang = Object.keys(PREVIEW_TO_CONFIG_MAP).find(k => PREVIEW_TO_CONFIG_MAP[k] === currentLanguage);
-      if (previewLang) {
-        switchPreview(previewLang, false);
-      }
-      
-      renderConfigList();
-    }
-
-    function getColorNameFromUsage(color) {
-      const usage = colorUsageMap[color] || [];
-      if (usage.length === 0) return 'Unused';
-      if (usage.length === 1) return usage[0].label;
-      return \`\${usage[0].label} +\${usage.length - 1}\`;
-    }
-
-    function renderConfigList() {
-      const container = document.getElementById('configList');
-      const generalConfigs = currentTheme['General'] || {};
-      const specificConfigs = currentTheme[currentLanguage] || {};
-
-      if (Object.keys(generalConfigs).length === 0 && Object.keys(specificConfigs).length === 0) {
-        container.innerHTML = '<p style="color: #607d8b; font-size: 0.85em;">No configurations available.</p>';
-        return;
-      }
-
-      let htmlContent = '';
-
-      // Render General Tokens Section (Collapsible)
-      if (Object.keys(generalConfigs).length > 0) {
-        htmlContent += '<details class="config-section-collapsible">';
-        htmlContent += '<summary>Global Tokens</summary>';
-        htmlContent += '<div class="collapsible-content">';
-        htmlContent += renderTokenList(generalConfigs, 'General');
-        htmlContent += '</div></details>';
-      }
-
-      // Render Language Specific Section
-      if (Object.keys(specificConfigs).length > 0) {
-        htmlContent += \`<div class="config-section"><h3>\${currentLanguage} Tokens</h3>\`;
-        htmlContent += renderTokenList(specificConfigs, currentLanguage);
-        htmlContent += '</div>';
-      }
-
-      container.innerHTML = htmlContent;
-
-      // Initialize color pickers for both sets
-      Object.entries(generalConfigs).forEach(([key, config]) => initColorPicker(key, config, 'General'));
-      Object.entries(specificConfigs).forEach(([key, config]) => initColorPicker(key, config, currentLanguage));
-    }
-
-    function renderTokenList(configs, sectionLang) {
-      return Object.entries(configs).map(([key, config]) => {
-        const id = \`\${sectionLang}_\${key}\`.replace(/\\./g, '_');
-        const currentColor = config.foreground;
-        const colorUsage = colorUsageMap[currentColor] || [];
-
-        return \`
-          <div class="config-item">
-            <div class="config-item-header">
-              <span class="config-item-label">\${config.label}</span>
-            </div>
-            <div class="config-item-desc">\${config.description}</div>
-
-            <div class="color-info-panel">
-              <h4>Current Color</h4>
-              <div class="current-color">
-                <div class="color-box" style="background-color: \${currentColor}"></div>
-                <span class="color-hex">\${currentColor}</span>
-              </div>
-              <h4>Also used by:</h4>
-              \${colorUsage.length > 0 ? \`
-                <ul class="usage-list">
-                  \${colorUsage.map(u => \`
-                    <li class="\${u.lang === sectionLang && u.key === key ? 'current' : ''}">\${u.fullLabel}</li>
-                  \`).join('')}
-                </ul>
-              \` : \`
-                <div class="no-usage">No other tokens use this color</div>
-              \`}
-            </div>
-
-            <div class="config-controls">
-              <div class="color-preview" id="color-\${id}" style="background-color: \${currentColor}" title="Click to change color"></div>
-              <div class="font-style-toggle">
-                <button class="font-style-btn \${config.fontStyle?.includes('bold') ? 'active' : ''}"
-                        onclick="toggleFontStyle('\${key}', 'bold', '\${sectionLang}')">B</button>
-                <button class="font-style-btn \${config.fontStyle?.includes('italic') ? 'active' : ''}"
-                        onclick="toggleFontStyle('\${key}', 'italic', '\${sectionLang}')" style="font-style: italic;">I</button>
-              </div>
-            </div>
-          </div>
-        \`;
-      }).join('');
-    }
-
-    function initColorPicker(key, config, sectionLang) {
-      const id = \`\${sectionLang}_\${key}\`.replace(/\\./g, '_');
-      const el = document.getElementById(\`color-\${id}\`);
-      if (!el) return;
-
-      const pickrKey = \`\${sectionLang}_\${key}\`;
-      // Destroy existing instance
-      if (pickrInstances[pickrKey]) {
-        pickrInstances[pickrKey].destroyAndRemove();
-      }
-
-      const pickr = Pickr.create({
-        el: el,
-        theme: 'monolith',
-        default: config.foreground,
-        swatches: themeData.allColors,
-        components: {
-          preview: true,
-          opacity: false,
-          hue: true,
-          interaction: {
-            hex: true,
-            input: true,
-            save: true,
-            cancel: true
-          }
-        }
-      });
-
-      pickrInstances[pickrKey] = pickr;
-
-      const fullKey = \`\${sectionLang}.\${key}\`;
-      const originalColor = tokenOriginalColorMap.get(fullKey);
-
-      // Update preview immediately when color changes (swatch click, hex input, hue change)
-      pickr.on('change', (color) => {
-        // Use toHEXA().toString() to be safe, then ensure we have a hash
-        let hex = color.toHEXA().toString();
-        if (!hex.startsWith('#')) hex = '#' + hex;
-        
-        // Convert to 6-digit hex if it's 8-digit (remove alpha) for consistency
-        if (hex.length === 9) hex = hex.substring(0, 7);
-
-        // Update current theme data
-        currentTheme[sectionLang][key].foreground = hex;
-
-        // Update CSS variable (Decoupled)
-        const tokenKeySanitized = key.replace(/\./g, '_');
-        const cssVarName = '--token-' + tokenKeySanitized;
-        document.documentElement.style.setProperty(cssVarName, hex);
-
-        // Safety fallback: Update all spans matching this token across ALL tabs
-        const allSpans = document.querySelectorAll('[data-token="' + tokenKeySanitized + '"]');
-        allSpans.forEach(span => {
-          span.style.color = hex;
-        });
-
-        // Update preview box in sidebar
-        el.style.backgroundColor = hex;
-        
-        // Update labels in sidebar
-        const itemEl = el.closest('.config-item');
-        if (itemEl) {
-          const hexLabel = itemEl.querySelector('.color-hex');
-          const boxLabel = itemEl.querySelector('.color-box');
-          if (hexLabel) hexLabel.innerText = hex.toUpperCase();
-          if (boxLabel) boxLabel.style.backgroundColor = hex;
-        }
-        
-        console.log('Live sync: ' + tokenKeySanitized + ' -> ' + hex);
-      });
-
-      // Save button confirms the color choice and closes picker
-      pickr.on('save', (color) => {
-        const hex = color.toHEXA().toString();
-
-        // Update theme data permanently
-        currentTheme[sectionLang][key].foreground = hex;
-
-        console.log(\`✅ Saved \${key}: \${originalColor} → \${hex}\`);
-
-        // Re-render config list to update color info panel
-        pickr.hide();
-        renderConfigList();
-      });
-
-      // If user cancels (closes without saving), revert to previous color
-      pickr.on('cancel', () => {
-        const currentColor = currentTheme[sectionLang][key].foreground;
-
-        // Revert CSS variable to the saved color
-        const tokenKeySanitized = key.replace(/\./g, '_');
-        const cssVarName = '--token-' + tokenKeySanitized;
-        document.documentElement.style.setProperty(cssVarName, currentColor);
-
-        // Safety fallback
-        const spans = document.querySelectorAll('[data-token="' + tokenKeySanitized + '"]');
-        spans.forEach(span => {
-          span.style.color = currentColor;
-        });
-
-        // Revert preview box
-        el.style.backgroundColor = currentColor;
-
-        // Re-render to ensure color info is current
-        renderConfigList();
-      });
-
-      // Add keyboard navigation for swatches and tooltips
-      pickr.on('show', () => {
-        const pickerRoot = pickr.getRoot();
-        const swatchesContainer = pickerRoot.app.querySelector('.pcr-swatches');
-
-        if (swatchesContainer) {
-          let currentSwatchIndex = -1;
-          const swatchButtons = Array.from(swatchesContainer.querySelectorAll('button'));
-
-          // Add tooltips to swatches showing which tokens use each color
-          swatchButtons.forEach(button => {
-            // Pickr sets background-color for swatches
-            const colorStyle = button.style.backgroundColor || button.style.color;
-            if (colorStyle) {
-              // Convert rgb/rgba to hex
-              let hexColor = colorStyle;
-              if (colorStyle.startsWith('rgb')) {
-                const rgb = colorStyle.match(/\\d+/g);
-                if (rgb && rgb.length >= 3) {
-                  hexColor = '#' + rgb.slice(0, 3).map(x => {
-                    const hex = parseInt(x).toString(16);
-                    return hex.length === 1 ? '0' + hex : hex;
-                  }).join('').toUpperCase();
-                }
-              } else if (colorStyle.startsWith('#')) {
-                hexColor = colorStyle.toUpperCase();
-              }
-
-              const usage = colorUsageMap[hexColor] || [];
-              if (usage.length > 0) {
-                const colorName = getColorNameFromUsage(hexColor);
-                const tooltip = usage.length === 1
-                  ? \`\${hexColor} - \${usage[0].fullLabel}\`
-                  : \`\${hexColor} - \${colorName} (\${usage.length} tokens)\`;
-                button.setAttribute('data-tooltip', tooltip);
-              } else {
-                button.setAttribute('data-tooltip', hexColor);
-              }
-            }
-          });
-
-          const keyHandler = (e) => {
-            if (!swatchButtons.length) return;
-
-            // Arrow key navigation
-            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-              e.preventDefault();
-              currentSwatchIndex = (currentSwatchIndex + 1) % swatchButtons.length;
-              swatchButtons[currentSwatchIndex].focus();
-              swatchButtons[currentSwatchIndex].click();
-            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-              e.preventDefault();
-              currentSwatchIndex = currentSwatchIndex <= 0 ? swatchButtons.length - 1 : currentSwatchIndex - 1;
-              swatchButtons[currentSwatchIndex].focus();
-              swatchButtons[currentSwatchIndex].click();
-            } else if (e.key === 'Enter') {
-              e.preventDefault();
-              pickr.applyColor();
-              pickr.hide();
-            } else if (e.key === 'Escape') {
-              e.preventDefault();
-              // Trigger cancel event
-              pickr._emit('cancel');
-              pickr.hide();
-            }
-          };
-
-          // Attach keyboard listener to picker
-          pickerRoot.app.addEventListener('keydown', keyHandler);
-
-          // Store handler for cleanup
-          pickr._keyHandler = keyHandler;
-          pickr._pickerRoot = pickerRoot;
-        }
-      });
-
-      // Cleanup keyboard listener when picker closes
-      pickr.on('hide', () => {
-        if (pickr._keyHandler && pickr._pickerRoot) {
-          pickr._pickerRoot.app.removeEventListener('keydown', pickr._keyHandler);
-        }
-      });
-
-      // Store instance by both keys to ensure reliable cleanup/access
-      pickrInstances[pickrKey] = pickr;
-      pickrInstances[key] = pickr;
-    }
-
-    function toggleFontStyle(key, style, sectionLang) {
-      const config = currentTheme[sectionLang][key];
-      const currentStyles = (config.fontStyle || '').split(' ').filter(Boolean);
-      const fullKey = \`\${currentLanguage}.\${key}\`;
-
-      // Get the ORIGINAL color (used in HTML data-color attribute)
-      const originalColor = tokenOriginalColorMap.get(fullKey);
-
-      if (currentStyles.includes(style)) {
-        config.fontStyle = currentStyles.filter(s => s !== style).join(' ');
-      } else {
-        currentStyles.push(style);
-        config.fontStyle = currentStyles.join(' ');
-      }
-
-      if (key) {
-        const tokenKeySanitized = key.replace(/\./g, '_');
-        const spans = document.querySelectorAll('[data-token="' + tokenKeySanitized + '"]');
-
-        spans.forEach(span => {
-          // Update font-weight
-          if (config.fontStyle.includes('bold')) {
-            span.style.fontWeight = 'bold';
-          } else {
-            span.style.fontWeight = 'normal';
-          }
-
-          // Update font-style
-          if (config.fontStyle.includes('italic')) {
-            span.style.fontStyle = 'italic';
-          } else {
-            span.style.fontStyle = 'normal';
-          }
-        });
-      }
-
-      renderConfigList();
-      console.log(\`✍️ Updated font style for \${key}: \${config.fontStyle || 'normal'}\`);
-    }
-
-    function switchPreview(lang, syncDropdown = true) {
-      document.querySelectorAll('.preview-tab').forEach(tab => tab.classList.remove('active'));
-      const activeTab = document.getElementById('tab-' + lang);
-      if (activeTab) activeTab.classList.add('active');
-
-      document.querySelectorAll('.preview-pane').forEach(pane => pane.style.display = 'none');
-      document.getElementById('preview-' + lang).style.display = 'block';
-
-      currentPreview = lang;
-
-      if (syncDropdown) {
-        const configLang = PREVIEW_TO_CONFIG_MAP[lang];
-        if (configLang) {
-          const select = document.getElementById('languageSelect');
-          if (select.value !== configLang) {
-            select.value = configLang;
-            currentLanguage = configLang;
-            renderConfigList();
-          }
-        }
-      }
-    }
-
-    function updatePreview() {
-      // Update CSS variables for live theme preview
-      Object.entries(currentTheme).forEach(([lang, configs]) => {
-        Object.entries(configs).forEach(([key, config]) => {
-          const color = config.foreground;
-          if (color) {
-            const tokenKeySanitized = key.replace(/\./g, '_');
-            const cssVarName = '--token-' + tokenKeySanitized;
-            document.documentElement.style.setProperty(cssVarName, color);
-
-            // Sync elements
-            const spans = document.querySelectorAll('[data-token="' + tokenKeySanitized + '"]');
-            spans.forEach(span => {
-              span.style.color = color;
-            });
-          }
-        });
-      });
-      console.log('✅ Preview updated with new theme colors');
-    }
-
-    function resetTheme() {
-      if (!confirm('Reset all changes to default theme?')) return;
-
-      // Reset theme data
-      Object.keys(currentTheme).forEach(lang => {
-        currentTheme[lang] = JSON.parse(JSON.stringify(themeData.languageConfigs[lang]));
-      });
-
-      // Reset all CSS variables to original colors
-      Object.entries(themeData.languageConfigs).forEach(([lang, configs]) => {
-        Object.entries(configs).forEach(([key, config]) => {
-          if (config.foreground) {
-            const tokenKeySanitized = key.replace(/\./g, '_');
-            const cssVarName = '--token-' + tokenKeySanitized;
-            document.documentElement.style.setProperty(cssVarName, config.foreground);
-
-            // Sync elements
-            const spans = document.querySelectorAll('[data-token="' + tokenKeySanitized + '"]');
-            spans.forEach(span => {
-              span.style.color = config.foreground;
-            });
-          }
-        });
-      });
-
-      // Reset all font styles to defaults
-      Object.entries(themeData.languageConfigs).forEach(([lang, configs]) => {
-        Object.entries(configs).forEach(([key, config]) => {
-          const tokenKeySanitized = key.replace(/\./g, '_');
-          const spans = document.querySelectorAll('[data-token="' + tokenKeySanitized + '"]');
-
-          spans.forEach(span => {
-            const isBold = config.fontStyle?.includes('bold');
-            const isItalic = config.fontStyle?.includes('italic');
-
-            span.style.fontWeight = isBold ? 'bold' : 'normal';
-            span.style.fontStyle = isItalic ? 'italic' : 'normal';
-          });
-        });
-      });
-
-      renderConfigList();
-      console.log('🔄 Theme reset to defaults');
-    }
-
-    async function saveToXml() {
-      const btn = document.querySelector('.btn-primary');
-      const originalText = btn.innerText;
-      
-      try {
-        btn.innerText = 'Saving...';
-        btn.disabled = true;
-
-        const response = await fetch('/save', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(currentTheme)
-        });
-
-        const result = await response.json();
-        
-        if (result.success) {
-          alert('✅ Theme saved successfully to ocean-harbor.xml!');
-          // Optionally trigger a re-conversion of Shiki if needed, 
-          // but we usually need to restart the editor for that since it's a Node process.
-        } else {
-          alert('❌ Error saving theme: ' + result.error);
-        }
-      } catch (err) {
-        alert('❌ Server not running. Please start the editor using "npm run editor" and keep the terminal open.');
-        console.error(err);
-      } finally {
-        btn.innerText = originalText;
-        btn.disabled = false;
-      }
-    }
-  </script>
 </body>
 </html>`;
 
   fs.writeFileSync('./theme-editor.html', html);
-  console.log('\n✅ Interactive theme editor generated!');
-  console.log('📄 Output: theme-editor.html');
-  console.log('🌐 Open it in your browser to edit the theme!');
+  console.log('Theme preview generated: theme-editor.html');
+  console.log('Open it directly in a browser.');
 }
 
-generateEditor().catch(error => {
-  console.error('❌ Error:', error.message);
-  process.exit(1);
-});
+generatePreview();

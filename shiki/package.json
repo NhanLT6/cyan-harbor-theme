@@ -1,21 +1,15 @@
 {
-  "name": "ocean-harbor-shiki-demo",
+  "name": "ocean-harbor-preview",
   "version": "1.0.0",
-  "description": "Ocean Harbor theme for Shiki syntax highlighter",
-  "main": "shiki-demo.js",
+  "description": "Ocean Harbor theme preview generator",
   "scripts": {
-    "editor": "node extract-theme-colors.js && node convert-to-shiki.js && node generate-interactive-editor.js && node editor-server.js"
+    "editor": "node extract-theme-colors.js && node generate-interactive-editor.js"
   },
   "keywords": [
     "theme",
-    "syntax-highlighting",
-    "shiki",
-    "intellij"
+    "intellij",
+    "rider"
   ],
   "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "shiki": "^1.23.1",
-    "@simonwep/pickr": "^1.9.1"
-  }
+  "license": "MIT"
 }
