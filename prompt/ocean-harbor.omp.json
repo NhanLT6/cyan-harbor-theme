@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "transient_prompt": {
+    "background": "transparent",
+    "foreground": "#546E7A",
+    "template": "╰❯ "
+  },
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "background": "transparent",
+          "foreground": "transparent",
+          "template": "<#354f5c>_</><#6EC4BC><#354f5c>_</><#6EC4BC></><#486878>_</>󰻈 </><#486878>_</><#3f5d6c>_</><#3d5968>_</><#486878>_</><#3f5d6c>_</><#354f5c>_</><#2e4452>_</><#486878>_</><#3d5968>_</><#354f5c>_</><#486878>_</><#3d5968>_</><#2e4452>_</><#354f5c>_</><#3d5968>_</><#354f5c>_</><#3d5968>_</><#2e4452>_</><#3d5968>_</><#354f5c>_</>"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "path",
+          "style": "plain",
+          "background": "transparent",
+          "foreground": "#A7DBD8",
+          "options": {
+            "style": "agnoster_short",
+            "folder_separator_icon": "/",
+            "folder_separator_template": "<#65737E>/</>",
+            "folder_icon": "…",
+            "max_depth": 4,
+            "gitdir_format": "<#A7DBD8>%s</>",
+            "folder_format": "<#546E7A>%s</>"
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "background": "transparent",
+          "foreground": "#89B4F7",
+          "template": "{{ if and (ne .Env.TERMINAL_EMULATOR \"JetBrains-JediTerm\") (ne .Env.TERM_PROGRAM \"vscode\") }} <#65737E>·</> <#89B4F7>󰘬 </>{{ if gt (len .HEAD) 20 }}{{ trunc 20 .HEAD }}…{{ else }}{{ .HEAD }}{{ end }}{{ end }}",
+          "options": {
+            "fetch_status": false,
+            "fetch_upstream_icon": false,
+            "branch_icon": ""
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "status",
+          "style": "plain",
+          "background": "transparent",
+          "foreground": "#6EC4BC",
+          "template": "{{ if gt .Code 0 }}<#ff7597>󰅚 {{ .Code }}</>{{ else }}╰❯{{ end }}",
+          "options": {
+            "always_enabled": true
+          }
+        }
+      ]
+    }
+  ]
+}
