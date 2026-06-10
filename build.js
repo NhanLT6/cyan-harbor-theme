@@ -10,30 +10,8 @@ if (!fs.existsSync(releasesDir)) {
   fs.mkdirSync(releasesDir, { recursive: true });
 }
 
-// Detect current version from existing JAR files and increment
-function nextVersion() {
-  const PATCH_MAX = 10;
-  const MINOR_MAX = 10;
-  const files = fs.readdirSync(releasesDir);
-  const versions = files
-    .map(f => f.match(/^ocean-harbor-(\d+)\.(\d+)\.(\d+)\.jar$/))
-    .filter(Boolean)
-    .map(([, major, minor, patch]) => [+major, +minor, +patch]);
-
-  if (versions.length === 0) return '1.0.0';
-
-  // Sort descending, pick largest
-  versions.sort((a, b) => b[0] - a[0] || b[1] - a[1] || b[2] - a[2]);
-  let [major, minor, patch] = versions[0];
-
-  patch += 1;
-  if (patch >= PATCH_MAX) { patch = 0; minor += 1; }
-  if (minor >= MINOR_MAX) { minor = 0; major += 1; }
-
-  return `${major}.${minor}.${patch}`;
-}
-
-const version = nextVersion();
+// Version comes from package.json — bump it there, then run build
+const version = require('./package.json').version;
 
 // Define output file
 const outputFilename = `ocean-harbor-${version}.jar`;

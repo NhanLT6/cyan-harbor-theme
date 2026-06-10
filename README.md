@@ -8,23 +8,24 @@ A pastel dark theme for JetBrains IDEs. Oceanic blues, soft aqua, gentle rose ac
 
 | Group      | Colors                                                                 | Usage                                                         |
 |------------|------------------------------------------------------------------------|---------------------------------------------------------------|
-| **Purple** | `#C4B3F4` (keywords), `#D0B8E0` (delegates)                            | Keywords, control flow, special types                         |
+| **Purple** | `#BAA1F3` (keywords), `#D0B8E0` (delegates)                            | Keywords, control flow, special types                         |
 | **Blue**   | `#89B4F7`                                                              | Functions, methods, HTML/XML tags — single shade, no variants |
-| **Teal**   | `#80CBC4` (namespace) → `#6EC4BC` (class) → `#5FB8AA` (interface/enum) | Type hierarchy via lightness only                             |
-| **Green**  | `#90D89F`                                                              | String literals, property values                              |
-| **Cyan**   | `#A7DBD8` (parameters), `#D9E6E6` (fields)                             | Variables, parameters, field declarations                     |
-| **Gold**   | `#EAD2A4`                                                              | Numeric literals, type parameters                             |
-| **Rose**   | `#F8B4AB` (operators/brackets), `#F0B8A8` (this/super/null/undefined)  | Operators, punctuation, semantically "important" tokens       |
+| **Teal**   | `#80CBC4` (namespace) → `#6EC4BC` (class) → `#5FB8AA` (interface/enum) | Type hierarchy via lightness only; class references included  |
+| **Green**  | `#9FE69B`                                                              | String literals and string-like values — green is strings-only |
+| **Cyan**   | `#A7DBD8` (parameters), `#D9E6E6` (fields)                             | Parameters, field declarations                                |
+| **Identifier** | `#C3D3DE`                                                          | Local/global variables — no own color, inherit default identifier |
+| **Yellow** | `#E8DFA8`                                                              | Numeric literals, type parameters                             |
+| **Rose**   | `#F8A295` (operators/brackets), `#F0A48F` (this/super/null/undefined)  | Operators, punctuation, semantically "important" tokens       |
 | **Gray**   | `#546E7A` (comments), `#65737E` (doc tags)                             | Comments, documentation                                       |
 | **Accent** | `#E9CCAF`                                                              | CSS class names                                               |
 
 ### VCS Colors
 
-| Type     | Color     |
-|----------|-----------|
-| Added    | `#90D89F` |
-| Modified | `#F0E0C0` |
-| Deleted  | `#E8A8A8` |
+| Type     | File status | Gutter marker |
+|----------|-------------|---------------|
+| Added    | `#C3E887`   | `#75C486`     |
+| Modified | `#80CBC4`   | `#CDB790`     |
+| Deleted  | `#F77669`   | `#C88080`     |
 
 ### UI Depth Colors
 
@@ -42,7 +43,8 @@ A pastel dark theme for JetBrains IDEs. Oceanic blues, soft aqua, gentle rose ac
 
 - **Type hierarchy:** Teal stays at hue 174°, sat 42%. Lightness steps down: namespace 65% → class 60% → interface 55%.
 - **Unified blue:** Functions, methods, and HTML/XML tags all use `#89B4F7`. No second blue shade.
-- **Important group:** `this`, `super`, `!important`, `null`, `undefined` share `#F0B8A8` (warm peach) — semantically "watch out" tokens grouped by color.
+- **Important group:** `this`, `super`, `!important`, `null`, `undefined` share `#F0A48F` (warm peach) — semantically "watch out" tokens grouped by color.
+- **Green is strings-only:** local variables, globals, mutable locals, and class references carry no green — variables inherit the default identifier `#C3D3DE`, class references are teal. Strings own the green channel.
 - **Palette bounds:** Accent sat ≤ 87%, warm tones at 78-82% lightness. Keeps no single color from dominating.
 - **Cross-language consistency:** CSS/HTML/XML tag selectors all resolve to blue `#89B4F7`.
 
