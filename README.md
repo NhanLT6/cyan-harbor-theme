@@ -9,7 +9,8 @@ A pastel dark theme for JetBrains IDEs. Oceanic blues, soft aqua, gentle rose ac
 | Group      | Colors                                                                 | Usage                                                         |
 |------------|------------------------------------------------------------------------|---------------------------------------------------------------|
 | **Purple** | `#BAA1F3` (keywords), `#D0B8E0` (delegates)                            | Keywords, control flow, special types                         |
-| **Blue**   | `#89B4F7`                                                              | Functions, methods, HTML/XML tags — single shade, no variants |
+| **Blue**   | `#89B4F7`                                                              | HTML/XML/markup tag names, CSS functions — single shade, no variants |
+| **Rose-gold** | `#E9BCAB`                                                          | Code functions & methods (C#/JS/TS + server langs) — the warm anchor |
 | **Teal**   | `#80CBC4` (namespace) → `#6EC4BC` (class) → `#5FB8AA` (interface/enum) | Type hierarchy via lightness only; class references included  |
 | **Green**  | `#9FE69B`                                                              | String literals and string-like values — green is strings-only |
 | **Cyan**   | `#A7DBD8` (parameters), `#D9E6E6` (fields)                             | Parameters, field declarations                                |
@@ -42,7 +43,8 @@ A pastel dark theme for JetBrains IDEs. Oceanic blues, soft aqua, gentle rose ac
 ### Syntax
 
 - **Type hierarchy:** Teal stays at hue 174°, sat 42%. Lightness steps down: namespace 65% → class 60% → interface 55%.
-- **Unified blue:** Functions, methods, and HTML/XML tags all use `#89B4F7`. No second blue shade.
+- **Warm anchor:** Code functions & methods (C#/JS/TS + other server langs, incl. C# extension methods / LINQ) use rose-gold `#E9BCAB` — a gentle warm beat through cool code. CSS functions stay blue.
+- **Blue = tags:** HTML/XML/markup tag names use `#89B4F7`. No second blue shade.
 - **Important group:** `this`, `super`, `!important`, `null`, `undefined` share `#F0A48F` (warm peach) — semantically "watch out" tokens grouped by color.
 - **Green is strings-only:** local variables, globals, mutable locals, and class references carry no green — variables inherit the default identifier `#C3D3DE`, class references are teal. Strings own the green channel.
 - **Palette bounds:** Accent sat ≤ 87%, warm tones at 78-82% lightness. Keeps no single color from dominating.
