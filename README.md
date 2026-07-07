@@ -71,13 +71,14 @@ Output: `releases/ocean-harbor-{version}.jar`
 
 To update version: edit the `version` field in `package.json`, then run `npm run build`.
 
-### Interactive Theme Editor
+### Preview
+
 ```bash
-cd shiki/
-npm install
-npm run editor       # Open theme-editor.html in browser
+cd preview/
+npm run editor       # regenerate preview/theme-editor.html
 ```
 
-Edit 51 token types across 11 languages with live preview.
+Open `preview/theme-editor.html` in a browser — a static syntax preview of 51
+token types across 11 languages. No dependencies, no server.
 
 See [BUILD.md](./BUILD.md) for details.

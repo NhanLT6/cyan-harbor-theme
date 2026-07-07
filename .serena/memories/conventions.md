@@ -4,7 +4,7 @@
 - `ocean-harbor.xml` is the **only** place to edit syntax/semantic token colors.
 - `ocean-harbor.theme.json` owns UI chrome keys only.
 - Always grep the hex value before changing — colors are shared across tokens.
-- After editing XML, run `cd shiki && npm run editor` to regenerate `theme-editor.html`.
+- After editing XML, run `cd preview && npm run editor` to regenerate `theme-editor.html`.
 
 ## Palette bounds
 - Sat ≤ 87%, lightness 55–83% for syntax tokens
@@ -17,8 +17,8 @@
 - List changed tokens and the direction of change (e.g. "nudge toward more colorful")
 
 ## Preview / tooling
-- `shiki/theme-editor.html` is **generated** — never edit it directly
-- `shiki/theme-data.json` is generated from XML — never edit directly
+- `preview/theme-editor.html` is **generated** — never edit it directly
+- `preview/theme-data.json` is generated from XML — never edit directly
 - The preview uses hand-crafted HTML spans (not shiki) so token colors match Rider exactly
 - No color picker / save-to-XML feature — edit the XML directly
 

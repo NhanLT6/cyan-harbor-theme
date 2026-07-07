@@ -12,12 +12,11 @@
 ```
 ocean-harbor.xml                    ← source theme (edit colors here)
 ocean-harbor.theme.json             ← UI chrome colors (JetBrains theme keys)
-shiki/
+preview/
   extract-theme-colors.js          ← XML → theme-data.json
-  convert-to-shiki.js              ← XML → shiki theme JSON
-  generate-interactive-editor.js   ← builds theme-editor.html
-  editor-server.js                 ← serves editor + saves back to XML
-  theme-editor.html                ← interactive editor UI (generated)
+  generate-interactive-editor.js   ← theme-data.json → theme-editor.html
+  theme-data.json                  ← extracted color data (generated)
+  theme-editor.html                ← static multi-language preview (generated)
 releases/
   ocean-harbor-{version}.jar        ← built theme JAR
 ```
@@ -25,25 +24,24 @@ releases/
 **Data flow:**
 ```
 ocean-harbor.xml
-  → extract-theme-colors.js  → theme-data.json
-  → convert-to-shiki.js      → ocean-harbor-shiki-theme.json
-  → generate-interactive-editor.js → theme-editor.html
-  → editor-server.js         → saves edits back to XML
+  → extract-theme-colors.js        → theme-data.json
+  → generate-interactive-editor.js → theme-editor.html   (open in a browser)
 ```
 
 ---
 
 ## How to Build & Edit
 
-**Prerequisites:** Node 18+, npm 9+
+**Prerequisites:** Node 18+ (no npm dependencies — the preview pipeline uses only Node built-ins)
 
-**Interactive editor (primary workflow):**
+**Regenerate the preview:**
 ```bash
-cd shiki/
-npm install    # first time only
-npm run editor # extract → convert → build → start server
+cd preview/
+npm run editor # extract-theme-colors.js → generate-interactive-editor.js
 ```
-Tweak colors in the browser, click "Save to XML". Done.
+Outputs `preview/theme-editor.html` — a static, multi-language syntax preview.
+Open it in a browser. No server, no third-party highlighter, no color pickers; colors are edited in
+the XML (see below), not in the browser.
 
 **Build JAR for release:**
 ```bash

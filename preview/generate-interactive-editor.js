@@ -1,7 +1,7 @@
 'use strict';
 /**
  * Generates a static theme preview HTML from theme-data.json.
- * No shiki, no color pickers. Run after extract-theme-colors.js.
+ * No syntax-highlighter lib, no color pickers. Run after extract-theme-colors.js.
  * Output: theme-editor.html — open directly in a browser.
  */
 

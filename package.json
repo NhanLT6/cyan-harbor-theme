@@ -4,7 +4,7 @@
   "description": "Ocean Harbor - Pastel dark theme for JetBrains IDEs",
   "license": "MIT",
   "scripts": {
-    "editor": "cd shiki && npm run editor",
+    "editor": "cd preview && npm run editor",
     "build": "node build.js",
     "build:jar": "npm run build"
   },

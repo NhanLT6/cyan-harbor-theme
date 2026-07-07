@@ -141,13 +141,10 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 
 
-# Shiki / Node.js
-shiki/node_modules/
+# Node.js
+preview/node_modules/
 node_modules/
 package-lock.json
 
-# Deprecated preview files (preview now integrated into editor)
+# Deprecated preview files
 theme-preview-old.html
-shiki/theme-preview.html
-shiki/generate-theme-preview.js
-shiki/shiki-preview.html

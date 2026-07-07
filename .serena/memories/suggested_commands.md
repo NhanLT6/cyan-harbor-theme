@@ -1,13 +1,13 @@
 # Suggested Commands
 
-All tooling lives in `shiki/`. Run from that directory unless noted.
+All tooling lives in `preview/`. Run from that directory unless noted.
 
 ## Primary workflow — preview theme
 ```
-cd shiki/
+cd preview/
 npm run editor     # extract colors from XML → generate theme-editor.html
 ```
-Then open `shiki/theme-editor.html` directly in a browser to see the preview.
+Then open `preview/theme-editor.html` directly in a browser to see the preview.
 No `npm install` needed — there are no dependencies.
 
 ## Build JAR for release

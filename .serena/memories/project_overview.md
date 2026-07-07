@@ -8,10 +8,10 @@
 ## Key files
 - `ocean-harbor.xml` — syntax highlight colors (~2000 lines of XML)
 - `ocean-harbor.theme.json` — UI chrome colors
-- `shiki/extract-theme-colors.js` — XML → `shiki/theme-data.json`
-- `shiki/generate-interactive-editor.js` — `theme-data.json` → `shiki/theme-editor.html` (static preview)
-- `shiki/theme-editor.html` — generated preview, open directly in browser (never edit)
-- `shiki/theme-data.json` — generated color data, never edit
+- `preview/extract-theme-colors.js` — XML → `preview/theme-data.json`
+- `preview/generate-interactive-editor.js` — `theme-data.json` → `preview/theme-editor.html` (static preview)
+- `preview/theme-editor.html` — generated preview, open directly in browser (never edit)
+- `preview/theme-data.json` — generated color data, never edit
 - `releases/` — built `.jar` files
 - `package.json` (root) — version number for releases
 
