@@ -72,6 +72,12 @@ function generatePreview() {
   const jnu = s => t('JS_NULL_UNDEFINED', s);
   const jth = s => t('JS_THIS_SUPER', s);
   const jre = s => t('JS_REGEXP', s);
+  // TypeScript
+  const anyT = s => t('TS_ANY', s);
+  // Mutation = underline (EFFECT_TYPE 1), base color kept — see semantic spine
+  const und = 'text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px';
+  const mut  = s => `<span data-token="DEFAULT_LOCAL_VARIABLE" style="color:var(--token-DEFAULT_LOCAL_VARIABLE);${und}">${s}</span>`;
+  const mutp = s => `<span data-token="DEFAULT_PARAMETER" style="color:var(--token-DEFAULT_PARAMETER);${und}">${s}</span>`;
 
   // Inlay hints
   const inlay  = s => `<span data-token="INLAY_DEFAULT" style="color:var(--token-INLAY_DEFAULT);background:#1e272c80;border-radius:3px;padding:0 4px;font-size:0.85em">${s}</span>`;
@@ -189,6 +195,22 @@ function generatePreview() {
     ln('',    `        ${kw('return')} ${jth('this')}${dt('.')}${inf('isLoading')} ${op('?')} ${jnu('undefined')} ${op(':')} ${lv('data')}${sc(';')}`),
     ln('',    `    ${br('}')}`),
     ln('',    `${br('}')}`),
+  ].join('\n');
+
+  // ── TypeScript section — semantic spine demo ─────────────────────────────
+  n = 0;
+  const tsLines = [
+    ln('', `${lc('// Semantic spine: param = warm cream (boundary), any/null = peach (hazard), underline = mutation')}`),
+    ln('', `${jmk('export')} ${kw('function')} ${fn('parseConfig')}${pa('(')}${prm('raw')}${op(':')} ${anyT('any')}${cm(',')} ${prm('fallback')}${op(':')} ${kw('string')}${pa(')')} ${br('{')}`),
+    ln('mod', `    ${kw('let')} ${mut('region')} ${op('=')} ${prm('raw')}${dt('.')}${inf('region')} ${op('??')} ${prm('fallback')}${sc(';')}   ${lc('// region reassigned below → underline')}`),
+    ln('',    `    ${mut('region')} ${op('=')} ${mut('region')}${dt('.')}${fnc('trim')}${pa('(')}${pa(')')}${dt('.')}${fnc('toLowerCase')}${pa('(')}${pa(')')}${sc(';')}`),
+    ln('',    `    ${kw('if')} ${pa('(')}${mut('region')} ${op('==')} ${jnu('null')}${pa(')')} ${kw('return')} ${prm('fallback')}${sc(';')}`),
+    ln('',    `    ${kw('return')} ${br('{')} ${inf('region')}${cm(',')} ${prm('raw')}${dt('.')}${inf('limit')} ${br('}')}${sc(';')}`),
+    ln('',    `${br('}')}`),
+    blank(),
+    ln('', `${lc('// C# — mutable local reassigned in a loop → underline')}`),
+    ln('', `${kw('var')} ${mut('retries')} ${op('=')} ${num('0')}${sc(';')}`),
+    ln('', `${kw('while')} ${pa('(')}${mut('retries')} ${op('&lt;')} ${prm('max')}${pa(')')} ${mut('retries')}${op('++')}${sc(';')}`),
   ].join('\n');
 
   // ── IDE Chrome demo section ───────────────────────────────────────────────
@@ -430,6 +452,11 @@ ${sqlLines}
     <div class="section-label">JavaScript</div>
     <div class="code-block">
 ${jsLines}
+    </div>
+
+    <div class="section-label">TypeScript &amp; C# — semantic spine (param cream · any/null peach · mutation underline)</div>
+    <div class="code-block">
+${tsLines}
     </div>
 
     <div class="section-label">IDE Chrome — selection, caret, inlay hints, git gutter</div>

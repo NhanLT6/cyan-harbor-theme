@@ -80,7 +80,11 @@ The theme uses a two-tier depth model — see `README.md` for the full philosoph
 - `ocean-harbor.xml` is the single source of truth for syntax colors. `ocean-harbor.theme.json` owns UI chrome. Everything else is generated.
 - When changing a color in the XML, grep the hex first — colors are shared across tokens. Update all occurrences.
 - Respect palette bounds when picking new colors: sat ≤ 87%, lightness 55-83% for syntax tokens. Follow the teal hierarchy pattern (same hue + sat, vary lightness) for related token groups.
+- **Semantic spine** (governs every color choice): warm = motion/action/caution, cool = structure/rest/data; within warm, redder = bites harder; danger rides on hue, never saturation. Full rationale + buildability constraints in `docs/superpowers/specs/2026-07-07-semantic-color-philosophy.md`. Two channels: hue = role/trust (recolor), underline = mutation (`EFFECT_TYPE 1`).
 - Warm anchor: code functions & methods are rose-gold `#E9BCAB` (7 tokens — the `DEFAULT_*` function/method tokens, `JS.INSTANCE_MEMBER_FUNCTION`, `JS.GLOBAL_FUNCTION`, `ReSharper.EXTENSION_METHOD_IDENTIFIER`). Blue `#89B4F7` is markup tags + CSS functions only. When touching function color, grep `E9BCAB` and update all 7.
+- Params = warm cream `#E6D8C0` (boundary data). 3 tokens: `DEFAULT_PARAMETER`, `JS.PARAMETER`, `DEFAULT_REASSIGNED_PARAMETER` (FG + EFFECT_COLOR). Params no longer use cyan `A7DBD8` — grep `E6D8C0` to find them; leftover `A7DBD8` is rainbow brackets / annotations / format-strings, not params.
+- Mutation = underline, not recolor: `DEFAULT_REASSIGNED_LOCAL_VARIABLE`, `DEFAULT_REASSIGNED_PARAMETER`, `ReSharper.MUTABLE_LOCAL_VARIABLE_IDENTIFIER` carry `EFFECT_TYPE 1` in their own base color.
+- `TS.ANY` is a type hazard → peach `#F0A48F` (runtime hazards band, with `this`/`super`/`null`/`undefined`).
 - UI depth: chrome keys must stay darker than `#263238`. When in doubt, use `#1e272c` for chrome and `#263238` for content.
 - Commit messages: 1-2 sentences, focus on "why" not "what".
 - The live editor uses CSS variables (`var(--theme-color-HEX)`) so color updates in the preview are instant — no regeneration needed.

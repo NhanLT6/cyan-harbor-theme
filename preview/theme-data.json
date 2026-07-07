@@ -38,6 +38,7 @@
     "#447152",
     "#475F63",
     "#4B1515",
+    "#4B6468",
     "#4D4520",
     "#4D6168",
     "#4F6269",
@@ -47,15 +48,16 @@
     "#567585",
     "#5CBCB3",
     "#5D4E1F",
+    "#5E7A87",
     "#5FB8AA",
     "#607D86",
     "#607D8B",
+    "#627C8C",
     "#63C0EE",
     "#646877",
     "#656E76",
     "#65737E",
     "#6DC2B8",
-    "#6E8E9E",
     "#6EC4BC",
     "#75C486",
     "#808080",
@@ -66,44 +68,44 @@
     "#8DD0BE",
     "#8DD9E6",
     "#908B25",
-    "#90D89F",
     "#9373A5",
     "#939FA5",
     "#9B59B6",
+    "#9FE69B",
     "#A2A2A2",
     "#A7DBD8",
     "#A8D7D1",
     "#AB7967",
     "#AEAE80",
     "#B03435",
-    "#B0D7B8",
     "#B2CCD6",
     "#B8C5D0",
+    "#BAA1F3",
     "#BD92EA",
     "#C14360",
     "#C3D3DE",
     "#C3E887",
     "#C4B3A3",
-    "#C4B3F4",
     "#C7C8F5",
     "#C88080",
     "#CDB790",
     "#D0B8E0",
     "#D9E6E6",
     "#DBDBDB",
-    "#E3DE88",
     "#E67E22",
     "#E6B858",
+    "#E6D8C0",
     "#E74C3C",
+    "#E8DFA8",
+    "#E9BCAB",
     "#E9CCAF",
-    "#EEFFE3",
-    "#F0B8A8",
+    "#F0A48F",
     "#F36E3A",
     "#F39C12",
     "#F3F349",
     "#F49810",
     "#F77669",
-    "#F8B4AB",
+    "#F8A295",
     "#F8F8F0",
     "#FC9867",
     "#FF355B",
@@ -119,43 +121,43 @@
       "DEFAULT_KEYWORD": {
         "label": "Keywords",
         "description": "Language keywords (if, for, class, etc.)",
-        "foreground": "#C4B3F4",
+        "foreground": "#BAA1F3",
         "fontStyle": "italic"
       },
       "DEFAULT_STRING": {
         "label": "Strings",
         "description": "String literals",
-        "foreground": "#90D89F",
+        "foreground": "#9FE69B",
         "fontStyle": ""
       },
       "DEFAULT_NUMBER": {
         "label": "Numbers",
         "description": "Numeric literals",
-        "foreground": "#E3DE88",
+        "foreground": "#E8DFA8",
         "fontStyle": ""
       },
       "DEFAULT_OPERATION_SIGN": {
         "label": "Operators",
         "description": "Operators (+, -, *, etc.)",
-        "foreground": "#F8B4AB",
+        "foreground": "#F8A295",
         "fontStyle": ""
       },
       "DEFAULT_LINE_COMMENT": {
         "label": "Line Comments",
         "description": "Single-line comments (//)",
-        "foreground": "#546E7A",
+        "foreground": "#5E7A87",
         "fontStyle": "italic"
       },
       "DEFAULT_BLOCK_COMMENT": {
         "label": "Block Comments",
         "description": "Multi-line comments (/* */)",
-        "foreground": "#546E7A",
+        "foreground": "#5E7A87",
         "fontStyle": "italic"
       },
       "DEFAULT_DOC_COMMENT": {
         "label": "Doc Comments",
         "description": "Documentation comments (///)",
-        "foreground": "#546E7A",
+        "foreground": "#5E7A87",
         "fontStyle": "italic"
       },
       "DEFAULT_CLASS_NAME": {
@@ -173,25 +175,19 @@
       "DEFAULT_FUNCTION_DECLARATION": {
         "label": "Function Declarations",
         "description": "Function definitions",
-        "foreground": "#89B4F7",
+        "foreground": "#E9BCAB",
         "fontStyle": ""
       },
       "DEFAULT_FUNCTION_CALL": {
         "label": "Function Calls",
         "description": "Function invocations",
-        "foreground": "#89B4F7",
-        "fontStyle": ""
-      },
-      "DEFAULT_LOCAL_VARIABLE": {
-        "label": "Local Variables",
-        "description": "Local variable names",
-        "foreground": "#B0D7B8",
+        "foreground": "#E9BCAB",
         "fontStyle": ""
       },
       "DEFAULT_PARAMETER": {
         "label": "Parameters",
         "description": "Function parameters",
-        "foreground": "#A7DBD8",
+        "foreground": "#E6D8C0",
         "fontStyle": ""
       },
       "DEFAULT_INSTANCE_FIELD": {
@@ -209,19 +205,19 @@
       "DEFAULT_INSTANCE_METHOD": {
         "label": "Instance Methods",
         "description": "Object methods",
-        "foreground": "#89B4F7",
+        "foreground": "#E9BCAB",
         "fontStyle": ""
       },
       "DEFAULT_STATIC_METHOD": {
         "label": "Static Methods",
         "description": "Static methods",
-        "foreground": "#89B4F7",
+        "foreground": "#E9BCAB",
         "fontStyle": "italic"
       },
       "INLAY_DEFAULT": {
         "label": "Inlay Hints",
         "description": "Inline type hints (e.g. var type annotations, LINQ return types)",
-        "foreground": "#6E8E9E",
+        "foreground": "#627C8C",
         "fontStyle": ""
       },
       "INLAY_TEXT_WITHOUT_BACKGROUND": {
@@ -233,37 +229,37 @@
       "DEFAULT_BRACES": {
         "label": "Braces",
         "description": "Curly braces { }",
-        "foreground": "#F8B4AB",
+        "foreground": "#F8A295",
         "fontStyle": ""
       },
       "DEFAULT_BRACKETS": {
         "label": "Brackets",
         "description": "Square brackets [ ]",
-        "foreground": "#F8B4AB",
+        "foreground": "#F8A295",
         "fontStyle": ""
       },
       "DEFAULT_PARENTHS": {
         "label": "Parentheses",
         "description": "Round brackets ( )",
-        "foreground": "#F8B4AB",
+        "foreground": "#F8A295",
         "fontStyle": ""
       },
       "DEFAULT_COMMA": {
         "label": "Commas",
         "description": "Comma separators",
-        "foreground": "#F8B4AB",
+        "foreground": "#F8A295",
         "fontStyle": ""
       },
       "DEFAULT_DOT": {
         "label": "Dots",
         "description": "Dot accessor",
-        "foreground": "#F8B4AB",
+        "foreground": "#F8A295",
         "fontStyle": ""
       },
       "DEFAULT_SEMICOLON": {
         "label": "Semicolons",
         "description": "Statement terminators",
-        "foreground": "#F8B4AB",
+        "foreground": "#F8A295",
         "fontStyle": ""
       }
     },
@@ -289,7 +285,7 @@
       "CSS.PSEUDO": {
         "label": "Pseudo Classes/Elements",
         "description": ":hover, ::before",
-        "foreground": "#C4B3F4",
+        "foreground": "#BAA1F3",
         "fontStyle": "italic"
       },
       "CSS.PROPERTY_NAME": {
@@ -301,7 +297,7 @@
       "CSS.PROPERTY_VALUE": {
         "label": "Property Values",
         "description": "Property values",
-        "foreground": "#90D89F",
+        "foreground": "#9FE69B",
         "fontStyle": ""
       },
       "CSS.FUNCTION": {
@@ -329,25 +325,25 @@
       "JS.THIS_SUPER": {
         "label": "this/super",
         "description": "Special keywords",
-        "foreground": "#F0B8A8",
+        "foreground": "#F0A48F",
         "fontStyle": ""
       },
       "JS.NULL_UNDEFINED": {
         "label": "null/undefined",
         "description": "Null values",
-        "foreground": "#F0B8A8",
+        "foreground": "#F0A48F",
         "fontStyle": "italic"
       },
       "JS.MODULE_KEYWORD": {
         "label": "Module Keywords",
         "description": "import, export",
-        "foreground": "#F8B4AB",
+        "foreground": "#F8A295",
         "fontStyle": "italic"
       },
       "JS.REGEXP": {
         "label": "Regular Expressions",
         "description": "RegExp literals",
-        "foreground": "#90D89F",
+        "foreground": "#9FE69B",
         "fontStyle": ""
       }
     },
@@ -355,7 +351,13 @@
       "TS.TYPE_PARAMETER": {
         "label": "Type Parameters",
         "description": "Generic type params <T>",
-        "foreground": "#E3DE88",
+        "foreground": "#E8DFA8",
+        "fontStyle": ""
+      },
+      "TS.ANY": {
+        "label": "any",
+        "description": "Type safety abandoned — runtime hazard",
+        "foreground": "#F0A48F",
         "fontStyle": ""
       }
     },
@@ -369,7 +371,7 @@
       "JSON.KEYWORD": {
         "label": "Keywords",
         "description": "true, false, null",
-        "foreground": "#C4B3F4",
+        "foreground": "#BAA1F3",
         "fontStyle": "italic"
       }
     },
@@ -383,7 +385,7 @@
       "YAML_SCALAR_VALUE": {
         "label": "Values",
         "description": "YAML values",
-        "foreground": "#90D89F",
+        "foreground": "#9FE69B",
         "fontStyle": ""
       }
     },
@@ -391,7 +393,7 @@
       "MARKDOWN_HEADER_LEVEL_1": {
         "label": "Headers",
         "description": "# Headers",
-        "foreground": "#C4B3F4",
+        "foreground": "#BAA1F3",
         "fontStyle": ""
       },
       "MARKDOWN_BOLD": {
@@ -433,7 +435,7 @@
       "MARKDOWN_HRULE": {
         "label": "Horizontal Rule",
         "description": "---",
-        "foreground": "#546E7A",
+        "foreground": "#5E7A87",
         "fontStyle": ""
       },
       "MARKDOWN_LIST_MARKER": {
@@ -493,7 +495,7 @@
       "CSHARP_OPERATOR_SIGN": {
         "label": "C# Operators",
         "description": "C# specific operators",
-        "foreground": "#F8B4AB",
+        "foreground": "#F8A295",
         "fontStyle": ""
       }
     },
@@ -501,25 +503,25 @@
       "SQL_KEYWORD": {
         "label": "SQL Keywords",
         "description": "SELECT, FROM, WHERE, etc.",
-        "foreground": "#C4B3F4",
+        "foreground": "#BAA1F3",
         "fontStyle": "italic"
       },
       "SQL_STRING": {
         "label": "SQL Strings",
         "description": "'string'",
-        "foreground": "#90D89F",
+        "foreground": "#9FE69B",
         "fontStyle": ""
       },
       "SQL_NUMBER": {
         "label": "SQL Numbers",
         "description": "123",
-        "foreground": "#E3DE88",
+        "foreground": "#E8DFA8",
         "fontStyle": ""
       },
       "SQL_COMMENT": {
         "label": "SQL Comments",
         "description": "-- single line or /* multi-line */",
-        "foreground": "#546E7A",
+        "foreground": "#5E7A87",
         "fontStyle": "italic"
       }
     }

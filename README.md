@@ -11,12 +11,13 @@ A pastel dark theme for JetBrains IDEs. Oceanic blues, soft aqua, gentle rose ac
 | **Purple** | `#BAA1F3` (keywords), `#D0B8E0` (delegates)                            | Keywords, control flow, special types                         |
 | **Blue**   | `#89B4F7`                                                              | HTML/XML/markup tag names, CSS functions — single shade, no variants |
 | **Rose-gold** | `#E9BCAB`                                                          | Code functions & methods (C#/JS/TS + server langs) — the warm anchor |
+| **Warm cream** | `#E6D8C0`                                                         | Parameters — external boundary data, "handle it" (the warm boundary) |
 | **Teal**   | `#80CBC4` (namespace) → `#6EC4BC` (class) → `#5FB8AA` (interface/enum) | Type hierarchy via lightness only; class references included  |
 | **Green**  | `#9FE69B`                                                              | String literals and string-like values — green is strings-only |
-| **Cyan**   | `#A7DBD8` (parameters), `#D9E6E6` (fields)                             | Parameters, field declarations                                |
+| **Cyan**   | `#D9E6E6` (fields)                                                     | Field declarations — internal state you own (cool, stable). `#A7DBD8` now used only by rainbow brackets / format-string items |
 | **Identifier** | `#C3D3DE`                                                          | Local/global variables — no own color, inherit default identifier |
 | **Yellow** | `#E8DFA8`                                                              | Numeric literals, type parameters                             |
-| **Rose**   | `#F8A295` (operators/brackets), `#F0A48F` (this/super/null/undefined)  | Operators, punctuation, semantically "important" tokens       |
+| **Rose**   | `#F8A295` (operators/brackets), `#F0A48F` (runtime hazards)            | Operators, punctuation; peach = runtime hazards band (`this`/`super`/`null`/`undefined`, `TS.any`) |
 | **Gray**   | `#546E7A` (comments), `#65737E` (doc tags)                             | Comments, documentation                                       |
 | **Accent** | `#E9CCAF`                                                              | CSS class names                                               |
 
@@ -40,12 +41,24 @@ A pastel dark theme for JetBrains IDEs. Oceanic blues, soft aqua, gentle rose ac
 
 ## 📐 Design Rules
 
+### The semantic spine
+
+Color carries meaning, not decoration. One temperature axis governs every choice:
+
+> **Warm = motion, action, caution. Cool = structure, rest, data.**
+
+Cool half = *nouns* (what things are): types, stable data you own, literal content — safe to skim. Warm half = *verbs & hazards* (what things do / where it moves / what needs care). Within warm, **redder bites harder**; danger rides on a small red-shift, never on saturation — meaning stays calm. See `docs/superpowers/specs/2026-07-07-semantic-color-philosophy.md`.
+
+Two orthogonal signal channels: **hue** encodes role/trust (recolor); **underline** encodes mutation (`EFFECT_TYPE 1`, base color kept). They stack — a reassigned param reads warm *and* underlined.
+
 ### Syntax
 
 - **Type hierarchy:** Teal stays at hue 174°, sat 42%. Lightness steps down: namespace 65% → class 60% → interface 55%.
-- **Warm anchor:** Code functions & methods (C#/JS/TS + other server langs, incl. C# extension methods / LINQ) use rose-gold `#E9BCAB` — a gentle warm beat through cool code. CSS functions stay blue.
+- **Warm anchor (action):** Code functions & methods (C#/JS/TS + other server langs, incl. C# extension methods / LINQ) use rose-gold `#E9BCAB` — warm = where behavior happens. CSS functions stay blue.
+- **Params = boundary:** Parameters use warm cream `#E6D8C0` — external data crossing into your code, "handle it." One flat shade (Rider can't distinguish trusted from untrusted params, so no before/after-validation split).
+- **Mutation = underline:** Reassigned locals, reassigned params, and C# mutable locals get an underline (`EFFECT_TYPE 1`), not a recolor — matches the C# convention and adds no new hue. A reassigned param stacks cream + underline.
 - **Blue = tags:** HTML/XML/markup tag names use `#89B4F7`. No second blue shade.
-- **Important group:** `this`, `super`, `!important`, `null`, `undefined` share `#F0A48F` (warm peach) — semantically "watch out" tokens grouped by color.
+- **Runtime hazards band:** `this`, `super`, `null`, `undefined`, `!important`, and `TS.any` share peach `#F0A48F` — the reddest warm, "watch out" tokens grouped by color.
 - **Green is strings-only:** local variables, globals, mutable locals, and class references carry no green — variables inherit the default identifier `#C3D3DE`, class references are teal. Strings own the green channel.
 - **Palette bounds:** Accent sat ≤ 87%, warm tones at 78-82% lightness. Keeps no single color from dominating.
 - **Cross-language consistency:** CSS/HTML/XML tag selectors all resolve to blue `#89B4F7`.

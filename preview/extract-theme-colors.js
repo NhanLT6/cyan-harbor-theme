@@ -168,7 +168,8 @@ jsTokens.forEach(token => {
 
 // TypeScript specific
 const tsTokens = [
-  { key: 'TS.TYPE_PARAMETER', label: 'Type Parameters', desc: 'Generic type params <T>' }
+  { key: 'TS.TYPE_PARAMETER', label: 'Type Parameters', desc: 'Generic type params <T>' },
+  { key: 'TS.ANY', label: 'any', desc: 'Type safety abandoned — runtime hazard' }
 ];
 
 tsTokens.forEach(token => {
