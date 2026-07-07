@@ -625,12 +625,12 @@
     </option>
     <option name="DEFAULT_FUNCTION_CALL">
       <value>
-        <option name="FOREGROUND" value="89b4f7" />
+        <option name="FOREGROUND" value="E9BCAB" />
       </value>
     </option>
     <option name="DEFAULT_FUNCTION_DECLARATION">
       <value>
-        <option name="FOREGROUND" value="89b4f7" />
+        <option name="FOREGROUND" value="E9BCAB" />
       </value>
     </option>
     <option name="DEFAULT_GLOBAL_VARIABLE" baseAttributes="DEFAULT_IDENTIFIER" />
@@ -652,7 +652,7 @@
     </option>
     <option name="DEFAULT_INSTANCE_METHOD">
       <value>
-        <option name="FOREGROUND" value="89B4F7" />
+        <option name="FOREGROUND" value="E9BCAB" />
       </value>
     </option>
     <option name="DEFAULT_INTERFACE_NAME">
@@ -747,7 +747,7 @@
     </option>
     <option name="DEFAULT_STATIC_METHOD">
       <value>
-        <option name="FOREGROUND" value="89B4F7" />
+        <option name="FOREGROUND" value="E9BCAB" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -1088,7 +1088,7 @@
     </option>
     <option name="JS.GLOBAL_FUNCTION">
       <value>
-        <option name="FOREGROUND" value="5FB8AA" />
+        <option name="FOREGROUND" value="E9BCAB" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -1105,7 +1105,7 @@
     </option>
     <option name="JS.INSTANCE_MEMBER_FUNCTION">
       <value>
-        <option name="FOREGROUND" value="89B4F7" />
+        <option name="FOREGROUND" value="E9BCAB" />
       </value>
     </option>
     <option name="JS.INSTANCE_MEMBER_VARIABLE">
@@ -1696,7 +1696,7 @@
     </option>
     <option name="ReSharper.EXTENSION_METHOD_IDENTIFIER">
       <value>
-        <option name="FOREGROUND" value="89B4F7" />
+        <option name="FOREGROUND" value="E9BCAB" />
       </value>
     </option>
     <option name="ReSharper.FORMAT_STRING_ITEM">
