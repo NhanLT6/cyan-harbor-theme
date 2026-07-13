@@ -70,6 +70,7 @@
     "#908B25",
     "#9373A5",
     "#939FA5",
+    "#93CDA1",
     "#9B59B6",
     "#9FE69B",
     "#A2A2A2",
@@ -93,7 +94,6 @@
     "#D9E6E6",
     "#DBDBDB",
     "#E1B28E",
-    "#E4D9C6",
     "#E67E22",
     "#E6B858",
     "#E74C3C",
@@ -127,7 +127,7 @@
       "DEFAULT_STRING": {
         "label": "Strings",
         "description": "String literals",
-        "foreground": "#9FE69B",
+        "foreground": "#E1B28E",
         "fontStyle": ""
       },
       "DEFAULT_NUMBER": {
@@ -175,19 +175,19 @@
       "DEFAULT_FUNCTION_DECLARATION": {
         "label": "Function Declarations",
         "description": "Function definitions",
-        "foreground": "#E1B28E",
+        "foreground": "#93CDA1",
         "fontStyle": ""
       },
       "DEFAULT_FUNCTION_CALL": {
         "label": "Function Calls",
         "description": "Function invocations",
-        "foreground": "#E1B28E",
+        "foreground": "#93CDA1",
         "fontStyle": ""
       },
       "DEFAULT_PARAMETER": {
         "label": "Parameters",
         "description": "Function parameters",
-        "foreground": "#E4D9C6",
+        "foreground": "#A7DBD8",
         "fontStyle": ""
       },
       "DEFAULT_INSTANCE_FIELD": {
@@ -205,13 +205,13 @@
       "DEFAULT_INSTANCE_METHOD": {
         "label": "Instance Methods",
         "description": "Object methods",
-        "foreground": "#E1B28E",
+        "foreground": "#93CDA1",
         "fontStyle": ""
       },
       "DEFAULT_STATIC_METHOD": {
         "label": "Static Methods",
         "description": "Static methods",
-        "foreground": "#E1B28E",
+        "foreground": "#93CDA1",
         "fontStyle": "italic"
       },
       "INLAY_DEFAULT": {
@@ -297,7 +297,7 @@
       "CSS.PROPERTY_VALUE": {
         "label": "Property Values",
         "description": "Property values",
-        "foreground": "#9FE69B",
+        "foreground": "#E1B28E",
         "fontStyle": ""
       },
       "CSS.FUNCTION": {
@@ -343,7 +343,7 @@
       "JS.REGEXP": {
         "label": "Regular Expressions",
         "description": "RegExp literals",
-        "foreground": "#9FE69B",
+        "foreground": "#E1B28E",
         "fontStyle": ""
       }
     },
@@ -385,7 +385,7 @@
       "YAML_SCALAR_VALUE": {
         "label": "Values",
         "description": "YAML values",
-        "foreground": "#9FE69B",
+        "foreground": "#E1B28E",
         "fontStyle": ""
       }
     },
@@ -509,7 +509,7 @@
       "SQL_STRING": {
         "label": "SQL Strings",
         "description": "'string'",
-        "foreground": "#9FE69B",
+        "foreground": "#E1B28E",
         "fontStyle": ""
       },
       "SQL_NUMBER": {
