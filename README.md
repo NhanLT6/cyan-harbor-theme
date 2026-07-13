@@ -10,7 +10,7 @@ A pastel dark theme for JetBrains IDEs. Oceanic blues, kelp green, soft aqua —
 |------------|------------------------------------------------------------------------|---------------------------------------------------------------|
 | **Purple** | `#BAA1F3` (keywords), `#D0B8E0` (delegates)                            | Keywords, control flow, special types                         |
 | **Blue**   | `#89B4F7`                                                              | HTML/XML/markup tag names, CSS functions — single shade, no variants |
-| **Kelp green** | `#93CDA1`                                                         | Code functions & methods (C#/JS/TS + server langs) — the living green layer |
+| **Kelp green** | `#7FDD9A`                                                         | Code functions & methods (C#/JS/TS + server langs) — the living green layer |
 | **Terracotta** | `#E1B28E`                                                         | String literals & literal values — warm surface content (took the color functions vacated) |
 | **Aqua**   | `#A7DBD8`                                                              | Parameters — boundary data you own; also rainbow-bracket COLOR4 / format-string items |
 | **Teal**   | `#80CBC4` (namespace) → `#6EC4BC` (class) → `#5FB8AA` (interface/enum) | Type hierarchy via lightness only; class references included  |
@@ -55,7 +55,7 @@ Two orthogonal signal channels: **hue** encodes role / depth band (recolor); **u
 ### Syntax
 
 - **Type hierarchy:** Teal stays at hue 174°, sat 42%. Lightness steps down: namespace 65% → class 60% → interface 55%.
-- **Living green layer (functions):** Code functions & methods (C#/JS/TS + other server langs, incl. C# extension methods / LINQ) use kelp green `#93CDA1` — the code that acts. Hue ~140°, calmer than the string green so it doesn't shout on every call, sitting between the vivid greens and the teal types. CSS functions stay blue.
+- **Living green layer (functions):** Code functions & methods (C#/JS/TS + other server langs, incl. C# extension methods / LINQ) use kelp green `#7FDD9A` — the code that acts. Hue ~137°, sat ~58% — saturated enough to hold against the purple keywords and terracotta strings, still clear of the teal types. CSS functions stay blue.
 - **Params = cool boundary data:** Parameters use aqua `#A7DBD8` — data you own, sunk cool alongside fields and locals. One flat shade (Rider can't distinguish trusted from untrusted params, so no before/after-validation split). Shares the aqua with rainbow-bracket COLOR4 / format-string items, contextually distinct.
 - **Mutation = underline:** Reassigned locals, reassigned params, and C# mutable locals get an underline (`EFFECT_TYPE 1`), not a recolor — matches the C# convention and adds no new hue. A reassigned param stacks cream + underline.
 - **Blue = tags:** HTML/XML/markup tag names use `#89B4F7`. No second blue shade.

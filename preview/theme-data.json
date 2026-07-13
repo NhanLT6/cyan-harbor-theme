@@ -60,6 +60,7 @@
     "#6DC2B8",
     "#6EC4BC",
     "#75C486",
+    "#7FDD9A",
     "#808080",
     "#80CBC4",
     "#89B4F7",
@@ -70,7 +71,6 @@
     "#908B25",
     "#9373A5",
     "#939FA5",
-    "#93CDA1",
     "#9B59B6",
     "#9FE69B",
     "#A2A2A2",
@@ -175,13 +175,13 @@
       "DEFAULT_FUNCTION_DECLARATION": {
         "label": "Function Declarations",
         "description": "Function definitions",
-        "foreground": "#93CDA1",
+        "foreground": "#7FDD9A",
         "fontStyle": ""
       },
       "DEFAULT_FUNCTION_CALL": {
         "label": "Function Calls",
         "description": "Function invocations",
-        "foreground": "#93CDA1",
+        "foreground": "#7FDD9A",
         "fontStyle": ""
       },
       "DEFAULT_PARAMETER": {
@@ -205,13 +205,13 @@
       "DEFAULT_INSTANCE_METHOD": {
         "label": "Instance Methods",
         "description": "Object methods",
-        "foreground": "#93CDA1",
+        "foreground": "#7FDD9A",
         "fontStyle": ""
       },
       "DEFAULT_STATIC_METHOD": {
         "label": "Static Methods",
         "description": "Static methods",
-        "foreground": "#93CDA1",
+        "foreground": "#7FDD9A",
         "fontStyle": "italic"
       },
       "INLAY_DEFAULT": {
