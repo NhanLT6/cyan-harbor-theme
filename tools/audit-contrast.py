@@ -56,7 +56,7 @@ def is_hex(v: str) -> bool:
 # ── Theme constants ───────────────────────────────────────────────────────────
 
 # These must match ocean-harbor.xml so updates stay reflected.
-EDITOR_BG = "263238"  # island surface — editor / gutter / file tree background
+EDITOR_BG = "25333B"  # island surface — editor / gutter / file tree background
 EDITOR_FG = "b8c5d0"  # plain text (TEXT foreground)
 
 NORMAL = 4.5  # WCAG AA — body / code text

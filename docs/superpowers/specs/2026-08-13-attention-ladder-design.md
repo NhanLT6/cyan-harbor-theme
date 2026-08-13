@@ -76,11 +76,24 @@ This definition was chosen over two alternatives:
 
 The `#D9E6E6` group splits along the tier-2 boundary rather than moving as a block:
 
-- **Instance** fields dim to `#B9CBD4` (tier 4).
+- **Instance** fields dim to `#CDDEDE` (tier 4).
 - **Shared/static** fields keep `#D9E6E6` and gain bold (tier 2).
 
 No token is both dimmed and bolded. The resulting read: your own instance state settles
 into the background, shared state stands up.
+
+**Dim magnitude — retuned after first build.** The tier-4 drop was originally ~10pp of
+lightness (fields `#D9E6E6`→`#B9CBD4`, locals `#C3D3DE`→`#A9BBC7`). In the IDE this read
+as *unused code*, not as hierarchy — JetBrains greys out unreachable and unused symbols,
+so a large dim collides with an existing, stronger convention.
+
+The diagnostic: plain editor text (`TEXT` foreground) is `#B8C5D0` at **L 76.9%**. The
+first-pass locals landed at **L 72.2%** — *below* the default text colour. Any token
+dimmer than ordinary body text reads as deactivated, whatever the intent.
+
+**Rule: nothing in tier 4 may fall below the plain-text foreground.** The dim is now a
+4pp step — fields `#CDDEDE` (L 83.6%), locals `#B6C9D7` (L 77.8%, sitting just above body
+text). White becomes grey; grey does not become dead.
 
 ---
 
@@ -105,11 +118,24 @@ and scaling saturation by the same 1.199 factor the island moves:
 |---|---|---|
 | `CARET_ROW_COLOR` | `#1B2529` | `#1A242A` |
 | `SELECTION_BACKGROUND` | `#314549` | `#2F414B` |
-| `LINE_NUMBERS_COLOR` | `#4B6468` | `#485E6B` |
+| `LINE_NUMBERS_COLOR` | `#4B6468` | `#4C6472` |
 | `LINE_NUMBER_ON_CARET_ROW_COLOR` | `#607D86` | `#5C798A` |
 | `INDENT_GUIDE`, `VISUAL_INDENT_GUIDE` | `#37474F` | `#354751` |
 | `Borders.color` (theme.json) | `#2E3C43` | `#2C3C45` |
 | `Borders.ContrastBorderColor` (theme.json) | `#37474F` | `#354751` |
+
+Two of these were adjusted after the fact, when the contrast audit caught regressions
+the pure derivation formula introduced:
+
+- `LINE_NUMBERS_COLOR` first derived to `#485E6B`, which measured **1.91:1** against
+  gutter background — below the 2.0 floor, and worse than the `2.08:1` it had before.
+  The derivation over-darkened it. Corrected to `#4C6472` (2.09:1), restoring parity.
+- `TAB_SELECTED_INACTIVE` foreground `#607d8b` was passing at exactly `3.010:1` and the
+  ground shift alone dropped it to `2.974:1`. Nudged to `#62808F` (3.10:1). The
+  foreground itself was not part of the original design; the ground shift made it fail.
+
+Lesson worth keeping: a lightness-holding hue/saturation derivation does not preserve
+WCAG ratios. Derive, then audit, then correct.
 
 Scope: 23 `263238` occurrences in `ocean-harbor.xml` (editor `TEXT` background,
 `GUTTER_BACKGROUND`, console, terminal, scrollbar tracks, diagram nodes, hint
@@ -155,13 +181,13 @@ code repeats them). They are the one entry worth dropping if tier 2 reads too de
 
 | Token | From | To |
 |---|---|---|
-| `DEFAULT_INSTANCE_FIELD` | `d9e6e6` | `B9CBD4` |
-| `JS.INSTANCE_MEMBER_VARIABLE` | `d9e6e6` | `B9CBD4` |
-| `DEFAULT_IDENTIFIER` | `c3d3de` | `A9BBC7` |
-| `DEFAULT_LABEL` | `c3d3de` | `A9BBC7` |
-| `DEFAULT_REASSIGNED_LOCAL_VARIABLE` (`EFFECT_COLOR`) | `C3D3DE` | `A9BBC7` |
-| `ReSharper.MUTABLE_LOCAL_VARIABLE_IDENTIFIER` (FG + `EFFECT_COLOR`) | `C3D3DE` | `A9BBC7` |
-| `Scala Mutable Collection` | `c3d3de` | `A9BBC7` |
+| `DEFAULT_INSTANCE_FIELD` | `d9e6e6` | `CDDEDE` |
+| `JS.INSTANCE_MEMBER_VARIABLE` | `d9e6e6` | `CDDEDE` |
+| `DEFAULT_IDENTIFIER` | `c3d3de` | `B6C9D7` |
+| `DEFAULT_LABEL` | `c3d3de` | `B6C9D7` |
+| `DEFAULT_REASSIGNED_LOCAL_VARIABLE` (`EFFECT_COLOR`) | `C3D3DE` | `B6C9D7` |
+| `ReSharper.MUTABLE_LOCAL_VARIABLE_IDENTIFIER` (FG + `EFFECT_COLOR`) | `C3D3DE` | `B6C9D7` |
+| `Scala Mutable Collection` | `c3d3de` | `B6C9D7` |
 
 `DEFAULT_LOCAL_VARIABLE`, `JS.LOCAL_VARIABLE` and `XPATH.XPATH_VARIABLE` inherit
 `DEFAULT_IDENTIFIER` via `baseAttributes` and follow automatically.

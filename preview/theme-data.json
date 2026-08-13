@@ -4,6 +4,7 @@
     "#03EDF9",
     "#12404B",
     "#1A1F29",
+    "#1A242A",
     "#1ABC9C",
     "#1B2529",
     "#1B262B",
@@ -11,18 +12,20 @@
     "#1E2A30",
     "#219598",
     "#252B39",
-    "#263238",
+    "#25333B",
     "#264B33",
     "#293F45",
     "#2A3F44",
     "#2C403D",
     "#2E3C43",
+    "#2F414B",
     "#303C41",
     "#314549",
     "#32424A",
     "#3498DB",
     "#353746",
     "#354039",
+    "#354751",
     "#36F9F6",
     "#37474F",
     "#3B4950",
@@ -38,7 +41,7 @@
     "#447152",
     "#475F63",
     "#4B1515",
-    "#4B6468",
+    "#4C6472",
     "#4D4520",
     "#4D6168",
     "#4F6269",
@@ -46,6 +49,7 @@
     "#536D78",
     "#546E7A",
     "#567585",
+    "#5C798A",
     "#5CBCB3",
     "#5D4E1F",
     "#5E7A87",
@@ -53,6 +57,7 @@
     "#607D86",
     "#607D8B",
     "#627C8C",
+    "#62808F",
     "#63C0EE",
     "#646877",
     "#656E76",
@@ -80,16 +85,17 @@
     "#AEAE80",
     "#B03435",
     "#B2CCD6",
+    "#B6C9D7",
     "#B8C5D0",
     "#BAA1F3",
     "#BD92EA",
     "#C14360",
-    "#C3D3DE",
     "#C3E887",
     "#C4B3A3",
     "#C7C8F5",
     "#C88080",
     "#CDB790",
+    "#CDDEDE",
     "#D0B8E0",
     "#D9E6E6",
     "#DBDBDB",
@@ -193,14 +199,14 @@
       "DEFAULT_INSTANCE_FIELD": {
         "label": "Instance Fields",
         "description": "Object properties",
-        "foreground": "#D9E6E6",
+        "foreground": "#CDDEDE",
         "fontStyle": ""
       },
       "DEFAULT_STATIC_FIELD": {
         "label": "Static Fields",
         "description": "Static properties",
         "foreground": "#D9E6E6",
-        "fontStyle": "italic"
+        "fontStyle": "bold italic"
       },
       "DEFAULT_INSTANCE_METHOD": {
         "label": "Instance Methods",
@@ -212,7 +218,7 @@
         "label": "Static Methods",
         "description": "Static methods",
         "foreground": "#9FC3FF",
-        "fontStyle": "italic"
+        "fontStyle": "bold italic"
       },
       "INLAY_DEFAULT": {
         "label": "Inlay Hints",
@@ -484,7 +490,7 @@
         "label": "Enum Members",
         "description": "Enum member values",
         "foreground": "#5CBCB3",
-        "fontStyle": ""
+        "fontStyle": "bold"
       },
       "ReSharper.DELEGATE_IDENTIFIER": {
         "label": "Delegates",

@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.nhan.ocean-harbor</id>
   <name>Ocean Harbor</name>
-  <version>1.1.0</version>
+  <version>1.2.1</version>
   <vendor email="letrongnhan1306@gmail.com">Nhan Le</vendor>
 
   <description><![CDATA[
@@ -18,6 +18,8 @@
 
   <change-notes><![CDATA[
     <ul>
+      <li>v1.2.1: Softened the tier-4 dim — the first pass dropped instance fields and locals below the plain-text foreground, which read as IDE "unused symbol" greying rather than hierarchy</li>
+      <li>v1.2: Attention ladder — cooler island ground, weight added as a third signal channel (bold marks indirection and shared state), instance fields and locals dimmed so structure reads above body text, stray struct underline removed</li>
       <li>v1.1: Accent refresh — richer keywords/operators, warmer strings, neutral yellow numbers, green reserved for strings (variables inherit identifier color), WCAG contrast audit</li>
       <li>v1.0: Initial release</li>
     </ul>
