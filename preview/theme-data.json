@@ -8,6 +8,7 @@
     "#1ABC9C",
     "#1B2529",
     "#1B262B",
+    "#1B3538",
     "#1E272C",
     "#1E2A30",
     "#219598",
@@ -16,6 +17,7 @@
     "#264B33",
     "#293F45",
     "#2A3F44",
+    "#2A4F52",
     "#2C403D",
     "#2E3C43",
     "#2F414B",
@@ -100,7 +102,6 @@
     "#D9E6E6",
     "#DBDBDB",
     "#E67E22",
-    "#E6A9B4",
     "#E6B858",
     "#E74C3C",
     "#E8DFA8",
@@ -133,7 +134,7 @@
       "DEFAULT_STRING": {
         "label": "Strings",
         "description": "String literals",
-        "foreground": "#E6A9B4",
+        "foreground": "#9FE69B",
         "fontStyle": ""
       },
       "DEFAULT_NUMBER": {
@@ -303,7 +304,7 @@
       "CSS.PROPERTY_VALUE": {
         "label": "Property Values",
         "description": "Property values",
-        "foreground": "#E6A9B4",
+        "foreground": "#9FE69B",
         "fontStyle": ""
       },
       "CSS.FUNCTION": {
@@ -349,7 +350,7 @@
       "JS.REGEXP": {
         "label": "Regular Expressions",
         "description": "RegExp literals",
-        "foreground": "#E6A9B4",
+        "foreground": "#9FE69B",
         "fontStyle": ""
       }
     },
@@ -391,7 +392,7 @@
       "YAML_SCALAR_VALUE": {
         "label": "Values",
         "description": "YAML values",
-        "foreground": "#E6A9B4",
+        "foreground": "#9FE69B",
         "fontStyle": ""
       }
     },
@@ -515,7 +516,7 @@
       "SQL_STRING": {
         "label": "SQL Strings",
         "description": "'string'",
-        "foreground": "#E6A9B4",
+        "foreground": "#9FE69B",
         "fontStyle": ""
       },
       "SQL_NUMBER": {

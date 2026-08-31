@@ -52,7 +52,6 @@ Git branch is automatically hidden inside **Rider** and **VS Code** terminals �
 
 - 3-line layout: ocean surface → info line → connector
 - Ocean surface: flat reflection pattern using `_` in 6 water tones, sail boat `󰻈` near left edge
-- Shell icon: `󰨊` PowerShell · `󱆃` Bash/Zsh · `󱐋` Fish · `󰖳` Cmd · `󰬦` Nushell · `󰣛` other
 - Path: git root folder bright, subdirs dim
 - Branch name truncated to 20 chars
 - `╰❯` turns to `󰅚` with exit code on failure

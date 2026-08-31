@@ -161,8 +161,8 @@
     <option name="VCS_ANNOTATIONS_COLOR_1" value="546E7A" />
     <option name="VCS_ANNOTATIONS_COLOR_2" value="2E3C43" />
     <option name="VCS_ANNOTATIONS_COLOR_3" value="37474F" />
-    <option name="VCS_ANNOTATIONS_COLOR_4" value="6EC4BC" />
-    <option name="VCS_ANNOTATIONS_COLOR_5" value="6ec4bc" />
+    <option name="VCS_ANNOTATIONS_COLOR_4" value="2A4F52" />
+    <option name="VCS_ANNOTATIONS_COLOR_5" value="1B3538" />
     <option name="VISUAL_INDENT_GUIDE" value="354751" />
     <option name="WHITESPACES" value="65737E" />
     <option name="WHITESPACES_MODIFIED_LINES_COLOR" value="546E7A" />
@@ -171,31 +171,6 @@
     <option name="ABSTRACT_CLASS_NAME_ATTRIBUTES">
       <value>
         <option name="FOREGROUND" value="6ec4bc" />
-      </value>
-    </option>
-    <option name="ANGLE_BRACKETS_RAINBOW_COLOR0">
-      <value>
-        <option name="FOREGROUND" value="E8DFA8" />
-      </value>
-    </option>
-    <option name="ANGLE_BRACKETS_RAINBOW_COLOR1">
-      <value>
-        <option name="FOREGROUND" value="9FE69B" />
-      </value>
-    </option>
-    <option name="ANGLE_BRACKETS_RAINBOW_COLOR2">
-      <value>
-        <option name="FOREGROUND" value="F8A295" />
-      </value>
-    </option>
-    <option name="ANGLE_BRACKETS_RAINBOW_COLOR3">
-      <value>
-        <option name="FOREGROUND" value="89b4f7" />
-      </value>
-    </option>
-    <option name="ANGLE_BRACKETS_RAINBOW_COLOR4">
-      <value>
-        <option name="FOREGROUND" value="A7DBD8" />
       </value>
     </option>
     <option name="ANNOTATION_ATTRIBUTE_NAME_ATTRIBUTES">
@@ -477,7 +452,7 @@
     </option>
     <option name="CSS.PROPERTY_VALUE">
       <value>
-        <option name="FOREGROUND" value="E6A9B4" />
+        <option name="FOREGROUND" value="9FE69B" />
       </value>
     </option>
     <option name="CSS.PSEUDO">
@@ -753,7 +728,7 @@
     </option>
     <option name="DEFAULT_STRING">
       <value>
-        <option name="FOREGROUND" value="E6A9B4" />
+        <option name="FOREGROUND" value="9FE69B" />
       </value>
     </option>
     <option name="DEFAULT_TAG">
@@ -855,7 +830,7 @@
     </option>
     <option name="GIT_TOOLBOX.CHANGED_COUNT_ATTRIBUTES">
       <value>
-        <option name="FOREGROUND" value="e6b858" />" />
+        <option name="FOREGROUND" value="e6b858" />
         <option name="FONT_TYPE" value="1" />
       </value>
     </option>
@@ -906,7 +881,7 @@
     </option>
     <option name="HTTP_REQUEST_INPUT_FILE">
       <value>
-        <option name="FOREGROUND" value="E6A9B4" />
+        <option name="FOREGROUND" value="9FE69B" />
       </value>
     </option>
     <option name="HTTP_REQUEST_PARAMETER_NAME">
@@ -916,7 +891,7 @@
     </option>
     <option name="HTTP_REQUEST_PARAMETER_VALUE">
       <value>
-        <option name="FOREGROUND" value="E6A9B4" />
+        <option name="FOREGROUND" value="9FE69B" />
       </value>
     </option>
     <option name="HTTP_REQUEST_PORT">
@@ -1146,7 +1121,7 @@
     </option>
     <option name="JS.REGEXP">
       <value>
-        <option name="FOREGROUND" value="E6A9B4" />
+        <option name="FOREGROUND" value="9FE69B" />
       </value>
     </option>
     <option name="JS.THIS_SUPER">
@@ -1233,7 +1208,7 @@
     </option>
     <option name="LOG_WARNING_OUTPUT">
       <value>
-        <option name="FOREGROUND" value="e6b858" />" />
+        <option name="FOREGROUND" value="e6b858" />
       </value>
     </option>
     <option name="List/map to object conversion">
@@ -1546,31 +1521,6 @@
         <option name="BACKGROUND" value="252b39" />
       </value>
     </option>
-    <option name="ROUND_BRACKETS_RAINBOW_COLOR0">
-      <value>
-        <option name="FOREGROUND" value="E8DFA8" />
-      </value>
-    </option>
-    <option name="ROUND_BRACKETS_RAINBOW_COLOR1">
-      <value>
-        <option name="FOREGROUND" value="9FE69B" />
-      </value>
-    </option>
-    <option name="ROUND_BRACKETS_RAINBOW_COLOR2">
-      <value>
-        <option name="FOREGROUND" value="F8A295" />
-      </value>
-    </option>
-    <option name="ROUND_BRACKETS_RAINBOW_COLOR3">
-      <value>
-        <option name="FOREGROUND" value="89b4f7" />
-      </value>
-    </option>
-    <option name="ROUND_BRACKETS_RAINBOW_COLOR4">
-      <value>
-        <option name="FOREGROUND" value="A7DBD8" />
-      </value>
-    </option>
     <option name="RUNTIME_ERROR">
       <value>
         <option name="BACKGROUND" value="ff7597" />
@@ -1585,7 +1535,7 @@
     </option>
     <option name="ReSharper.ASP_NET_ATTRIBUTE_VALUE">
       <value>
-        <option name="FOREGROUND" value="E6A9B4" />
+        <option name="FOREGROUND" value="9FE69B" />
       </value>
     </option>
     <option name="ReSharper.ASP_NET_COMMENT">
@@ -1625,7 +1575,7 @@
     </option>
     <option name="ReSharper.ASP_NET_MVC_VIEW">
       <value>
-        <option name="FOREGROUND" value="E6A9B4" />
+        <option name="FOREGROUND" value="9FE69B" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
     </option>
@@ -1643,7 +1593,7 @@
     </option>
     <option name="ReSharper.ASP_NET_RAZOR_ATTRIBUTE_VALUE">
       <value>
-        <option name="FOREGROUND" value="E6A9B4" />
+        <option name="FOREGROUND" value="9FE69B" />
       </value>
     </option>
     <option name="ReSharper.ASP_NET_RAZOR_CODE_BLOCK">
@@ -1805,56 +1755,6 @@
       <value>
         <option name="BACKGROUND" value="33e5d" />
         <option name="ERROR_STRIPE_COLOR" value="4d6168" />
-      </value>
-    </option>
-    <option name="SQUARE_BRACKETS_RAINBOW_COLOR0">
-      <value>
-        <option name="FOREGROUND" value="E8DFA8" />
-      </value>
-    </option>
-    <option name="SQUARE_BRACKETS_RAINBOW_COLOR1">
-      <value>
-        <option name="FOREGROUND" value="9FE69B" />
-      </value>
-    </option>
-    <option name="SQUARE_BRACKETS_RAINBOW_COLOR2">
-      <value>
-        <option name="FOREGROUND" value="F8A295" />
-      </value>
-    </option>
-    <option name="SQUARE_BRACKETS_RAINBOW_COLOR3">
-      <value>
-        <option name="FOREGROUND" value="89b4f7" />
-      </value>
-    </option>
-    <option name="SQUARE_BRACKETS_RAINBOW_COLOR4">
-      <value>
-        <option name="FOREGROUND" value="A7DBD8" />
-      </value>
-    </option>
-    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR0">
-      <value>
-        <option name="FOREGROUND" value="E8DFA8" />
-      </value>
-    </option>
-    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR1">
-      <value>
-        <option name="FOREGROUND" value="9FE69B" />
-      </value>
-    </option>
-    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR2">
-      <value>
-        <option name="FOREGROUND" value="F8A295" />
-      </value>
-    </option>
-    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR3">
-      <value>
-        <option name="FOREGROUND" value="89b4f7" />
-      </value>
-    </option>
-    <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR4">
-      <value>
-        <option name="FOREGROUND" value="A7DBD8" />
       </value>
     </option>
     <option name="STATIC_FINAL_FIELD_ATTRIBUTES">
@@ -2053,7 +1953,7 @@
     </option>
     <option name="YAML_SCALAR_VALUE">
       <value>
-        <option name="FOREGROUND" value="E6A9B4" />
+        <option name="FOREGROUND" value="9FE69B" />
         <option name="EFFECT_TYPE" value="5" />
       </value>
     </option>
